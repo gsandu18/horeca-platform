@@ -1,5 +1,3 @@
-const lista = document.querySelector('#lista-angajati ul');
-
 document.getElementById('adauga-angajat').addEventListener('submit', e => {
   e.preventDefault();
   const form = e.target;
@@ -8,13 +6,7 @@ document.getElementById('adauga-angajat').addEventListener('submit', e => {
   const feedback = form.feedbackAng.value;
 
   const li = document.createElement('li');
-  li.innerHTML = `<strong>${nume}</strong> – Scor: ${punctaj}/10<br>${feedback}`;
-  lista.appendChild(li);
-
+  li.innerHTML = `<strong>${nume}</strong> – Scor: ${punctaj}/10 <br> Feedback: ${feedback}`;
+  document.getElementById('lista-angajati').appendChild(li);
   form.reset();
-});
-
-document.getElementById('upload-docs').addEventListener('submit', e => {
-  e.preventDefault();
-  alert('Documentele au fost încărcate (simulare locală).');
 });
