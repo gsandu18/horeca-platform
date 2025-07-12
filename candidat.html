@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cont Candidat - HoReCa Staffing</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="main-header">
+    <div class="container">
+      <h1>HoReCa Staffing</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Acasă</a></li>
+          <li><a href="candidat.html">Cont Candidat</a></li>
+          <li><a href="firma.html">Cont Firmă</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="candidat" class="section">
+    <div class="container">
+      <h2>Formular Candidat</h2>
+      <form id="form-candidat">
+        <input type="text" name="nume" placeholder="Numele complet" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <textarea name="experienta" placeholder="Experiența ta..." required></textarea>
+        <input type="text" name="domenii" placeholder="Domenii preferate (ex: restaurant, hotel)" required />
+        <input type="text" name="firme" placeholder="Firme preferate (separate prin virgulă)" required />
+        <button type="submit" class="btn">Trimite aplicația</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 HoReCa Staffing.</p>
+    </div>
+  </footer>
+
+  <script src="js/candidat.js"></script>
+</body>
+</html>
