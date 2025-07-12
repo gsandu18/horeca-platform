@@ -1,61 +1,92 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>HoReCa Staffing</title>
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
-  <header class="main-header">
-    <div class="container">
-      <h1>HoReCa Staffing</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Acasă</a></li>
-          <li><a href="#despre">Despre</a></li>
-          <li><a href="#servicii">Servicii</a></li>
-          <li><a href="candidat.html">Creează cont candidat</a></li>
-          <li><a href="firma.html">Cont firmă</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+/* Reset & bază */
+* { margin:0; padding:0; box-sizing:border-box; }
+body{ font-family:'Poppins',sans-serif; color:#2c3e50; background:#f8f9fa; line-height:1.6; }
+.container{ max-width:1140px; margin:0 auto; padding:20px; }
 
-  <section class="hero">
-    <div class="container">
-      <h2>Conectăm profesioniști cu oportunități HoReCa</h2>
-      <p>Recrutăm personal de încredere pentru restaurante, hoteluri și cafenele.</p>
-      <a href="candidat.html" class="btn">Începe acum</a>
-    </div>
-  </section>
+/* Header */
+.main-header{ background:#1f3a93; padding:20px 0; }
+.main-header h1{ color:#fff; font-size:1.8rem; }
+.main-header nav ul{ list-style:none; display:flex; gap:20px; }
+.main-header nav a{ color:#ecf0f1; text-decoration:none; font-weight:600; transition:color .3s; }
+.main-header nav a:hover{ color:#1abc9c; }
 
-  <section id="despre" class="section">
-    <div class="container about">
-      <div class="about-text">
-        <h2>Despre Noi</h2>
-        <p>Suntem lideri în staffing HoReCa, cu peste 10 ani de experiență în industrie.</p>
-      </div>
-      <img src="images/team.jpg" alt="Echipa HoReCa" class="about-img">
-    </div>
-  </section>
+/* Hero */
+.hero{ background:url('../images/hero.jpg') center/cover no-repeat; position:relative; padding:100px 20px; }
+.hero::before{ content:""; position:absolute; inset:0; background:rgba(0,0,0,0.5); }
+.hero .container{ position:relative; color:#fff; text-align:center; }
+.hero h2{ font-size:2.2rem; margin-bottom:15px; }
+.btn{ display:inline-block; margin-top:20px; padding:10px 20px; background:#1abc9c; color:#fff; border:none; border-radius:4px; font-weight:600; transition:background .3s; text-decoration:none; }
+.btn:hover{ background:#16a085; }
 
-  <section id="servicii" class="section dark">
-    <div class="container">
-      <h2>Servicii</h2>
-      <ul class="grid">
-        <li><img src="images/waiter.jpg" alt="Ospătar"><span>Ospătari</span></li>
-        <li><img src="images/chef.jpg" alt="Bucătar"><span>Bucătari</span></li>
-        <li><img src="images/barista.jpg" alt="Barista"><span>Barista</span></li>
-        <li><img src="images/cleaning.jpg" alt="Curățenie"><span>Curățenie</span></li>
-      </ul>
-    </div>
-  </section>
+/* Despre */
+.section{ padding:60px 20px; }
+.section.dark{ background:#ecf0f1; }
+.about{ display:flex; gap:30px; align-items:center; flex-wrap:wrap; }
+.about-img{ max-width:400px; width:100%; border-radius:8px; }
+.about-text{ flex:1; }
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 HoReCa Staffing. Toate drepturile rezervate.</p>
-    </div>
-  </footer>
-</body>
-</html>
+/* Servicii */
+.grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:20px; list-style:none; padding:0; }
+.grid li{ text-align:center; }
+.grid li img{ width:100%; max-width:180px; border-radius:8px; margin-bottom:10px; }
+
+/* Formulare */
+.contact-form, #form-candidat, #upload-docs, #adauga-angajat{ display:flex; flex-direction:column; gap:15px; margin-top:20px; }
+input, textarea{ padding:10px; font-size:1rem; border:1px solid #bdc3c7; border-radius:4px; }
+.contact-form button, #form-candidat button, #upload-docs button, #adauga-angajat button{ background:#1abc9c; color:#fff; padding:12px; font-weight:bold; border:none; border-radius:4px; cursor:pointer; transition:background .3s; }
+.contact-form button:hover, #form-candidat button:hover, #upload-docs button:hover, #adauga-angajat button:hover{ background:#16a085; }
+
+/* Dashboard firmă */
+#lista-angajati ul{ list-style:none; padding:0; }
+#lista-angajati li{ background:#fff; margin-bottom:10px; padding:10px; border-radius:4px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+
+/* Footer */
+footer{ background:#1f3a93; color:#fff; text-align:center; padding:20px; font-size:.9rem; }
+
+/* Responsiv */
+@media(max-width:768px){
+  .main-header nav ul{ flex-wrap:wrap; justify-content:center; }
+  .about{ flex-direction:column; }
+}
+document.getElementById('form-candidat').addEventListener('submit', function(e){
+  e.preventDefault();
+  const data = new FormData(this);
+  const firme = data.get('firme').split(',').map(f=>f.trim());
+  firme.forEach(firma=>{
+    const email = firma.toLowerCase().replace(/\s+/g,'')+'@hplatform.ro';
+    const body = `Nume: ${data.get('nume')}
+Email: ${data.get('email')}
+Experiență: ${data.get('experienta')}
+Domenii: ${data.get('domenii')}`;
+    const link = `mailto:${email}?subject=Candidatură de la ${encodeURIComponent(data.get('nume'))}&body=${encodeURIComponent(body)}`;
+    window.open(link);
+  });
+  alert('Aplicația a fost trimisă către firmele selectate!');
+  this.reset();
+});
+const lista = document.querySelector('#lista-angajati ul');
+document.getElementById('adauga-angajat').addEventListener('submit', e=>{
+  e.preventDefault();
+  const form = e.target;
+  const nume = form.numeAng.value;
+  const punctaj = form.punctaj.value;
+  const feedback = form.feedbackAng.value;
+  const li = document.createElement('li');
+  li.innerHTML = `<strong>${nume}</strong> – Scor: ${punctaj}/10<br>${feedback}`;
+  lista.appendChild(li);
+  form.reset();
+});
+document.getElementById('upload-docs').addEventListener('submit', e=>{
+  e.preventDefault();
+  alert('Documentele au fost încărcate (simulat).');
+});
+# HoReCa Platform
+
+## Structură
+- `index.html` – pagina principală
+- `candidat.html` – formular candidat (trimite mail)
+- `firma.html` – dashboard firmă (adaugă angajați)
+- `css/style.css`, `js/candidat.js`, `js/firma.js`, `images/`
+
+## Instalare
+1. Clonează repo:
