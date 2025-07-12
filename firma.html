@@ -1,56 +1,25 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dashboard Firmă – HoReCa Staffing</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8">
+  <title>Firmă</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header class="main-header">
-    <div class="container">
-      <h1>HoReCa Staffing</h1>
-      <nav>
-        <ul>
-          <li><a href="index.html">Acasă</a></li>
-          <li><a href="candidat.html">Cont Candidat</a></li>
-          <li><a href="firma.html">Cont Firmă</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
   <section class="section">
     <div class="container">
-      <h2>Dashboard Firmă</h2>
-
-      <form id="upload-docs">
-        <label>Încarcă documente firmă:</label>
-        <input type="file" multiple accept=".pdf,.jpg,.png,.docx" />
-        <button type="submit" class="btn">Încarcă</button>
-      </form>
-
-      <h3>Adaugă Angajat</h3>
+      <h2>Adaugă angajat</h2>
       <form id="adauga-angajat">
-        <input type="text" name="numeAng" placeholder="Nume angajat" required />
-        <input type="number" name="punctaj" placeholder="Punctaj (1–10)" min="1" max="10" required />
-        <textarea name="feedbackAng" placeholder="Feedback despre angajat"></textarea>
-        <button type="submit" class="btn">Salvează</button>
+        <input type="text" name="numeAng" placeholder="Nume angajat" required>
+        <input type="text" name="punctaj" placeholder="Punctaj (1-10)" required>
+        <input type="text" name="feedbackAng" placeholder="Feedback" required>
+        <button type="submit" class="btn">Adaugă</button>
       </form>
 
-      <div id="lista-angajati">
-        <h3>Angajați evaluați:</h3>
-        <ul></ul>
-      </div>
+      <h3>Lista angajați</h3>
+      <ul id="lista-angajati"></ul>
     </div>
   </section>
-
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 HoReCa Staffing.</p>
-    </div>
-  </footer>
-
   <script src="js/firma.js"></script>
 </body>
 </html>
