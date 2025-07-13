@@ -1,20 +1,20 @@
-document.getElementById('form-candidat').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const data = new FormData(this);
-  const body = `Nume: ${data.get('nume')}
-Email: ${data.get('email')}
-Experiență: ${data.get('experienta')}
-Domenii: ${data.get('domenii')}
-Firme: ${data.get('firme')}`;
-  const mailto = `mailto:?subject=Candidatură de la ${encodeURIComponent(data.get('nume'))}&body=${encodeURIComponent(body)}`;
-  window.open(mailto);
-  this.reset();
-});
-document.getElementById('formular-candidat').addEventListener('submit', function(e) {
-  e.preventDefault();
+document.addEventListener('DOMContentLoaded', function () {
+  const formular = document.getElementById('formular-candidat');
 
-  // Aici poți adăuga validarea + trimiterea la server dacă ai back-end
-  
-  // Simulăm succesul înregistrării
-  window.location.href = 'mulțumim.html';
+  formular.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const nume = document.getElementById('nume').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const experienta = document.getElementById('experienta').value.trim();
+
+    if (!nume || !email || !experienta) {
+      alert('Te rugăm să completezi numele, emailul și experiența!');
+      return;
+    }
+
+    // Redirecționează la pagina de mulțumire
+    window.location.href = 'mulțumim.html';
+  });
 });
+
