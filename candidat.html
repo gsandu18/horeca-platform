@@ -1,20 +1,20 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-  <meta charset="UTF-8">
-  <title>Candidat</title>
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
-<body>
-  <section id="candidat" class="section">
-    <div class="container">
-      <h2>Formular Candidat</h2>
-<form id="form-candidat">
-  <input type="text" name="nume" placeholder="Nume complet" required />
-  <input type="email" name="email" placeholder="Email" required />
-  <textarea name="experienta" placeholder="Experiența ta..." required></textarea>
-  <input type="text" name="domenii" placeholder="Domenii preferate (ex: restaurant, hotel)" />
-  <input type="text" name="firme" placeholder="Firme preferate (separate prin virgulă)" />
-  <button type="submit">Trimite aplicația</button>
-</form>
+<section class="formular-candidat">
+  <h2>Formular Candidat</h2>
+  <form>
+    <div class="form-row">
+      <input type="text" placeholder="Nume complet" required />
+      <input type="email" placeholder="Email" required />
+    </div>
+    <div class="form-row">
+      <textarea placeholder="Experiența ta..." required></textarea>
+    </div>
+    <div class="form-row">
+      <input type="text" placeholder="Domenii preferate (ex: restaurant, bar)" />
+      <input type="text" placeholder="Firme preferate (separate prin virgulă)" />
+    </div>
+    <div class="form-row center">
+      <button type="submit">Trimite aplicația</button>
+    </div>
+  </form>
+</section>
 
