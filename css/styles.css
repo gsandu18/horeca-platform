@@ -303,3 +303,21 @@ footer { background:#111; color:#fff; text-align:center; padding:15px 0; font-si
 .blog-content a:hover {
   text-decoration: underline;
 }
+.hero-blog {
+  background-image: url('../img/blog-bg.jpg'); /* pune aici poza ta */
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  padding: 120px 20px;
+  text-align: center;
+}
+
+.hero-blog h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.hero-blog p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
