@@ -71,3 +71,74 @@ footer { background:#111; color:#fff; text-align:center; padding:15px 0; font-si
   .hero { padding:60px 20px; }
   .header-content { flex-direction:column; gap:15px; }
 }
+/* FORMULAR CANDIDAT */
+.formular-candidat {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: #f9f9f9;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.formular-candidat h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #003366;
+}
+
+.formular-candidat form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form-row input,
+.form-row textarea {
+  flex: 1;
+  padding: 14px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: border-color 0.2s;
+}
+
+.form-row textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-row input:focus,
+.form-row textarea:focus {
+  border-color: #0099ff;
+  outline: none;
+}
+
+.form-row.center {
+  justify-content: center;
+}
+
+.formular-candidat button {
+  background-color: #0099ff;
+  color: #fff;
+  border: none;
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.formular-candidat button:hover {
+  background-color: #007acc;
+}
