@@ -10,3 +10,11 @@ Firme: ${data.get('firme')}`;
   window.open(mailto);
   this.reset();
 });
+document.getElementById('formular-candidat').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // Aici poți adăuga validarea + trimiterea la server dacă ai back-end
+  
+  // Simulăm succesul înregistrării
+  window.location.href = 'mulțumim.html';
+});
