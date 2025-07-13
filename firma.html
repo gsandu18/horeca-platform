@@ -1,26 +1,26 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-  <meta charset="UTF-8">
-  <title>Firmă</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <section class="section">
-    <div class="container">
-      <h2>Adaugă angajat</h2>
-      <form id="adauga-angajat">
-        <input type="text" name="numeAng" placeholder="Nume angajat" required>
-        <input type="text" name="punctaj" placeholder="Punctaj (1-10)" required>
-        <input type="text" name="feedbackAng" placeholder="Feedback" required>
-        <button type="submit" class="btn">Adaugă</button>
-      </form>
-
-      <h3>Lista angajați</h3>
-      <ul id="lista-angajati"></ul>
+<section class="formular-firma">
+  <h2>Formular Firmă</h2>
+  <form>
+    <div class="form-row">
+      <input type="text" placeholder="Nume firmă" required />
+      <input type="email" placeholder="Email contact" required />
     </div>
-  </section>
-  <script src="js/firma.js"></script>
-</body>
-</html>
 
+    <div class="form-row">
+      <input type="text" placeholder="Telefon" required />
+      <input type="text" placeholder="CUI / CIF" required />
+    </div>
+
+    <div class="form-row">
+      <input type="text" placeholder="Industrie (ex: restaurant, bar, hotel)" />
+    </div>
+
+    <div class="form-row">
+      <textarea placeholder="Cerințe / mesaj către candidați..." rows="4"></textarea>
+    </div>
+
+    <div class="form-row center">
+      <button type="submit">Înregistrează firma</button>
+    </div>
+  </form>
+</section>
