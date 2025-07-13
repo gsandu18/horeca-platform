@@ -204,4 +204,40 @@ footer { background:#111; color:#fff; text-align:center; padding:15px 0; font-si
 
 .formular-firma button:hover {
   background-color: #007acc;
+}.formular-firma input[type="text"],
+.formular-firma input[type="email"] {
+  flex: 1 1 calc(50% - 10px);
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.formular-firma textarea {
+  min-height: 120px;
+  resize: vertical;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.formular-firma .form-row.center {
+  justify-content: center;
+}
+
+.formular-firma button {
+  background-color: #009dff;
+  color: white;
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.formular-firma button:hover {
+  background-color: #007acc;
 }
