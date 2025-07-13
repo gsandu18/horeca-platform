@@ -10,3 +10,4 @@ document.getElementById('adauga-angajat').addEventListener('submit', e => {
   document.getElementById('lista-angajati').appendChild(li);
   form.reset();
 });
+<link rel="stylesheet" href="css/styles.css">
