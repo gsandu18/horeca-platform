@@ -1,64 +1,78 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
- <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Blog | HoReCa Personal</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+
+  <!-- HEADER -->
   <header class="main-header">
-  <div class="container header-content">
-    <div class="logo">
-      <h1><span class="logo-black">HoReCa</span> <span class="logo-blue">Personal</span></h1>
+    <div class="container header-content">
+      <div class="logo">
+        <h1><span class="logo-black">HoReCa</span> <span class="logo-blue">Personal</span></h1>
+      </div>
+      <nav class="nav-links">
+        <ul>
+          <li><a href="index.html">Acasă</a></li>
+          <li><a href="candidat.html">Cont candidat</a></li>
+          <li><a href="firma.html">Cont firmă</a></li>
+          <li><a href="blog.html" class="active">Blog</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav class="nav-links">
-      <ul>
-        <li><a href="index.html">Acasă</a></li>
-        <li><a href="candidat.html">Cont candidat</a></li>
-        <li><a href="firma.html">Cont firmă</a></li>
-        <li><a href="blog.html" class="active">Blog</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-<section class="blog-section">
-  <section id="hero-blog" class="hero-blog">
-  <div class="container">
-    <h2>Blog HoReCa Personal</h2>
-    <p>Cele mai noi articole & resurse pentru profesioniștii din HoReCa.</p>
-  </div>
-</section>  
- <h1>Articole & Resurse</h1>
+  </header>
 
-  <div class="blog-grid">
-    <article class="blog-post">
-      <img src="https://source.unsplash.com/800x400/?resume,cv" alt="CV atractiv HoReCa">
-      <div class="blog-content">
-        <h2>✔️ Cum să-ți creezi un CV atrăgător în domeniul HoReCa</h2>
-        <p>Un CV bine structurat face diferența. Află ce caută angajatorii în 2025...</p>
-        <a href="#">Citește mai mult</a>
-      </div>
-    </article>
+  <!-- BACKGROUND -->
+  <section class="blog-hero">
+    <div class="container">
+      <h2>Blog HoReCa Personal</h2>
+      <p>Cele mai noi articole & resurse pentru profesioniștii din HoReCa.</p>
+    </div>
+  </section>
 
-    <article class="blog-post">
-      <img src="Captură de ecran din 2025-07-13 la 19.19.22.png" alt="Angajat ideal în restaurant">
-      <div class="blog-content">
-        <h2>✔️ Top 5 calități ale unui angajat ideal în restaurant</h2>
-        <p>Empatie, rapiditate și seriozitate. Detalii despre ce impresionează managerii HoReCa...</p>
-        <a href="#">Citește mai mult</a>
-      </div>
-    </article>
+  <!-- BLOG SECTION -->
+  <section class="blog-section container">
+    <h2 class="section-title">📰 Articole & Resurse</h2>
 
-    <article class="blog-post">
-      <img src="https://source.unsplash.com/800x400/?documents,legal" alt="Documente angajare legală">
-      <div class="blog-content">
-        <h2>✔️ Ce documente sunt necesare pentru angajarea legală în HoReCa</h2>
-        <p>De la CI la aviz medical – ce acte trebuie să aibă orice angajat pregătit...</p>
-        <a href="#">Citește mai mult</a>
+    <div class="blog-grid">
+
+      <div class="blog-card">
+        <img src="css/img/cv-atractiv.png" alt="CV atractiv HoReCa">
+        <div class="blog-content">
+          <h3>✅ Cum să-ți creezi un CV atrăgător în domeniul HoReCa</h3>
+          <p>Un CV bine structurat face diferența. Află ce caută angajatorii în 2025...</p>
+          <a href="#">Citește mai mult</a>
+        </div>
       </div>
-    </article>
-  </div>
-</section>
-  
+
+      <div class="blog-card">
+        <img src="css/img/angajat-ideal.png" alt="Angajat ideal restaurant">
+        <div class="blog-content">
+          <h3>✅ Top 5 calități ale unui angajat ideal în restaurant</h3>
+          <p>Empatie, rapiditate și seriozitate. Detalii despre ce impresionează managerii HoReCa...</p>
+          <a href="#">Citește mai mult</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <img src="css/img/documente-legale.png" alt="Documente angajare legală">
+        <div class="blog-content">
+          <h3>✅ Ce documente sunt necesare pentru angajarea legală în HoReCa</h3>
+          <p>De la CI la aviz medical – ce acte trebuie să aibă orice angajat pregătit...</p>
+          <a href="#">Citește mai mult</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>© 2025 HoReCa Personal. Toate drepturile rezervate.</p>
+  </footer>
+
+</body>
+</html>
