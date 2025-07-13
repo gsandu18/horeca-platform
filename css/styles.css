@@ -142,14 +142,15 @@ footer { background:#111; color:#fff; text-align:center; padding:15px 0; font-si
 .formular-candidat button:hover {
   background-color: #007acc;
 }
-/* FORMULAR FIRMĂ */
+/* FORMULAR FIRMĂ DESIGN */
 .formular-firma {
-  background: #f9f9f9;
+  background-color: #f8f9fa;
   padding: 40px;
-  margin: 60px auto;
+  margin: 50px auto;
   max-width: 800px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
 }
 
 .formular-firma h2 {
@@ -169,11 +170,10 @@ footer { background:#111; color:#fff; text-align:center; padding:15px 0; font-si
 .formular-firma input,
 .formular-firma textarea {
   flex: 1 1 100%;
-  padding: 14px;
+  padding: 14px 16px;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 16px;
-  font-family: inherit;
   background-color: white;
 }
 
@@ -183,8 +183,8 @@ footer { background:#111; color:#fff; text-align:center; padding:15px 0; font-si
 }
 
 .formular-firma textarea {
+  min-height: 120px;
   resize: vertical;
-  min-height: 100px;
 }
 
 .formular-firma .form-row.center {
@@ -192,17 +192,17 @@ footer { background:#111; color:#fff; text-align:center; padding:15px 0; font-si
 }
 
 .formular-firma button {
-  background: #009dff;
+  background-color: #009dff;
   color: #fff;
-  padding: 14px 30px;
-  border: none;
-  border-radius: 6px;
+  padding: 14px 32px;
   font-size: 16px;
   font-weight: bold;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 .formular-firma button:hover {
-  background: #007acc;
+  background-color: #007acc;
 }
