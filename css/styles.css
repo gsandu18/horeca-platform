@@ -241,14 +241,30 @@ footer { background:#111; color:#fff; text-align:center; padding:15px 0; font-si
 .formular-firma button:hover {
   background-color: #007acc;
 }
+.blog-section {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.blog-section h1 {
+  text-align: center;
+  font-size: 32px;
+  color: #003366;
+  margin-bottom: 40px;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
 .blog-post {
-  display: flex;
-  flex-direction: column;
   background: #fff;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-  margin-bottom: 32px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
   transition: transform 0.3s ease;
 }
 
@@ -258,24 +274,23 @@ footer { background:#111; color:#fff; text-align:center; padding:15px 0; font-si
 
 .blog-post img {
   width: 100%;
-  height: auto;
+  height: 200px;
   object-fit: cover;
-  border-bottom: 1px solid #eee;
 }
 
 .blog-content {
-  padding: 20px 24px;
+  padding: 16px 20px;
 }
 
 .blog-content h2 {
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 10px;
   color: #111;
 }
 
 .blog-content p {
-  color: #444;
   font-size: 15px;
+  color: #555;
   margin-bottom: 12px;
 }
 
