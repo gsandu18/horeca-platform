@@ -1,1 +1,28 @@
+<section class="pricing-section">
+  <h2>Planuri pentru Firme</h2>
+  <div class="pricing-cards">
+    <div class="card">
+      <h3>Start</h3>
+      <p>✓ 3 anunțuri active</p>
+      <p>✓ Acces 7 zile</p>
+      <p><strong>€19 / lună</strong></p>
+      <a href="formular.html?plan=start">Alege</a>
+    </div>
 
+    <div class="card">
+      <h3>Pro</h3>
+      <p>✓ 10 anunțuri active</p>
+      <p>✓ Acces 30 zile + suport email</p>
+      <p><strong>€49 / lună</strong></p>
+      <a href="formular.html?plan=pro">Alege</a>
+    </div>
+
+    <div class="card">
+      <h3>Elite</h3>
+      <p>✓ Anunțuri nelimitate</p>
+      <p>✓ Acces prioritar CV-uri</p>
+      <p><strong>€99 / lună</strong></p>
+      <a href="formular.html?plan=elite">Alege</a>
+    </div>
+  </div>
+</section>
