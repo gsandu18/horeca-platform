@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formular abonament firmă</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 { color: #003366; margin-bottom: 20px; }
+    form { display: grid; gap: 15px; }
+    label { font-weight: bold; }
+    input, select { padding: 8px; font-size: 1rem; width: 100%; }
+    button {
+      padding: 12px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover { background: #0056b3; }
+  </style>
+</head>
+<body>
+
+  <h1>Abonament firmă</h1>
+  <p id="info-plan">Se încarcă detalii plan…</p>
+
+  <form action="multumim.html" method="GET">
+    <input type="hidden" name="plan" id="inp-plan" />
+    <input type="hidden" name="tip" id="inp-tip" />
+
+    <label for="numeFirma">Nume firmă:</label>
+    <input type="text" id="numeFirma" name="numeFirma" required />
+
+    <label for="emailFirma">Email firmă:</label>
+    <input type="email" id="emailFirma" name="emailFirma" required />
+
+    <label for="persContact">Persoană de contact:</label>
+    <input type="text" id="persContact" name="persContact" required />
+
+    <label for="telefon">Telefon:</label>
+    <input type="tel" id="telefon" name="telefon" required />
+
+    <button type="submit">Trimite cerere</button>
+  </form>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const plan = params.get('plan') || 'nevalid';
+    const tip   = params.get('tip') || 'lunar';
+
+    const planName = plan.charAt(0).toUpperCase() + plan.slice(1);
+    const tipName = tip === 'anual' ? 'anual' : 'lunar';
+    document.getElementById('info-plan').textContent =
+      `Alegeți: Plan ${planName} (${tipName})`;
+
+    document.getElementById('inp-plan').value = plan;
+    document.getElementById('inp-tip').value = tip;
+  </script>
+
+</body>
+</html>
