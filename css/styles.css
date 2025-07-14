@@ -488,32 +488,6 @@ body {
   padding: 80px 20px;
   text-align: center;
 }
-
-.pricing-section h2 {
-  font-size: 36px;
-  color: #001e40;
-  margin-bottom: 50px;
-}
-
-.pricing-cards {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.card {
-  background: white;
-  border: 2px solid #007bff;
-  border-radius: 12px;
-  padding: 30px 20px;
-  width: 280px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-8px);
 }
 
 .card h3 {
