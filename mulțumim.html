@@ -54,3 +54,42 @@
   </div>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mulțumim pentru Înregistrare</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <section class="thank-you-section">
+    <div class="container">
+      <h2>Mulțumim pentru înregistrare!</h2>
+      <p id="mesajPlan">Procesăm datele companiei tale...</p>
+      <a href="index.html" class="btn-back">Înapoi la prima pagină</a>
+    </div>
+  </section>
+
+  <script>
+    const param = new URLSearchParams(window.location.search).get('plan');
+    const mesaj = document.getElementById("mesajPlan");
+
+    switch (param) {
+      case "pro":
+        mesaj.textContent = "Ai ales planul PRO – ai 10 anunțuri active, suport dedicat și acces 30 zile.";
+        break;
+      case "elite":
+        mesaj.textContent = "Ai ales planul ELITE – anunțuri nelimitate, promovare extinsă și acces VIP la CV-uri.";
+        break;
+      case "start":
+        mesaj.textContent = "Ai ales planul START – 3 anunțuri gratuite, perfect pentru început!";
+        break;
+      default:
+        mesaj.textContent = "Vom reveni în curând cu mai multe detalii despre contul tău.";
+    }
+  </script>
+
+</body>
+</html>
