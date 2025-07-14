@@ -488,9 +488,7 @@ body {
   padding: 80px 20px;
   text-align: center;
 }
-}
-
-.card h3 {
+card h3 {
   font-size: 24px;
   color: #007bff;
   margin-bottom: 20px;
