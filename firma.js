@@ -16,5 +16,5 @@ document.getElementById('formular-candidat').addEventListener('submit', function
   // Aici poți adăuga validarea + trimiterea la server dacă ai back-end
   
   // Simulăm succesul înregistrării
-  window.location.href = 'mulțumim.html';
+  window.location.href = `mulțumim.html?plan=${plan}`;
 });
