@@ -484,68 +484,63 @@ body {
   transform: translateY(-8px);
   transform: translateY(-8px);
 }
-pricing-section {
-  background-color: #f4f6fa;
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.pricing-section h2 {
-  font-size: 36px;
-  color: #001e40;
-  margin-bottom: 50px;
+/* Card layout */
+.pricing-section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 60px 20px;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 .pricing-cards {
   display: flex;
-  justify-content: center;
-  gap: 30px;
   flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 .card {
-  background: white;
-  border: 2px solid #007bff;
+  background: #fff;
+  border: 1px solid #ddd;
   border-radius: 12px;
-  padding: 30px 20px;
+  padding: 30px;
   width: 280px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  text-align: center;
   transition: transform 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-8px);
+  transform: scale(1.03);
 }
+
 .card h3 {
   font-size: 24px;
-  color: #007bff;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  color: #0a0a23;
 }
 
 .card p {
   font-size: 16px;
-  color: #333;
-  margin: 8px 0;
+  margin: 10px 0;
+  color: #444;
 }
 
 .card strong {
   font-size: 20px;
-  display: block;
-  margin-top: 15px;
+  color: #000;
 }
 
 .card a {
   display: inline-block;
   margin-top: 20px;
-  padding: 12px 24px;
-  background-color: #007bff;
+  padding: 10px 20px;
+  background: #007bff;
   color: white;
-  border-radius: 6px;
   text-decoration: none;
-  font-weight: 600;
-  transition: background-color 0.3s;
+  border-radius: 6px;
 }
 
 .card a:hover {
-  background-color: #0056b3;
+  background: #0056b3;
 }
