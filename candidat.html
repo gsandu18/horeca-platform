@@ -1,23 +1,61 @@
-<section class="formular-candidat">
-  <h2>Formular Candidat</h2>
-  <<form id="formular-candidat" onsubmit="trimiteCandidat(event)">
-    <div class="form-row">
-      <input type="text" placeholder="Nume complet" required />
-      <input type="email" placeholder="Email" required />
-    </div>
-    <div class="form-row">
-    <textarea placeholder="Experiența ta..." required></textarea>
-    </div>
-    <div class="form-row">
-      <input type="text" placeholder="Domenii preferate (ex: restaurant, bar)"required/>
-      <input type="text" placeholder="Firme preferate (separate prin virgulă)" required/>
-    </div>
-    <div class="form-row center">
-      <button type="submit">Trimite aplicația</button>
-    </div>
-  </form>
-    <p id="mesajSucces" style="display:none; color:green; font-weight:bold; margin-top:20px;">
-  Cererea dumneavoastră a fost înregistrată cu succes. Vom reveni în cel mai scurt timp!
-</p>
-</section>
- <link rel="stylesheet" href="css/styles.css">
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formular Candidat</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .form-row {
+      margin-bottom: 15px;
+    }
+
+    #mesajSucces {
+      display: none;
+      color: green;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="formular-candidat">
+    <h2>Formular Candidat</h2>
+    
+    <form id="formular-candidat" onsubmit="trimiteCandidat(event)">
+      <div class="form-row">
+        <input type="text" placeholder="Nume complet" required />
+        <input type="email" placeholder="Email" required />
+      </div>
+
+      <div class="form-row">
+        <textarea placeholder="Experiența ta..." required></textarea>
+      </div>
+
+      <div class="form-row">
+        <input type="text" placeholder="Domenii preferate (ex: restaurant, bar)" />
+        <input type="text" placeholder="Firme preferate (separate prin virgulă)" />
+      </div>
+
+      <div class="form-row center">
+        <button type="submit">Trimite aplicația</button>
+      </div>
+    </form>
+
+    <p id="mesajSucces">
+      Cererea dumneavoastră a fost înregistrată cu succes. Vom reveni în cel mai scurt timp!
+    </p>
+  </section>
+
+  <script>
+    function trimiteCandidat(e) {
+      e.preventDefault();
+      document.getElementById("formular-candidat").style.display = "none";
+      document.getElementById("mesajSucces").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
