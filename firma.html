@@ -1,40 +1,103 @@
-<section class="formular-firma">
-  <h2>Formular Firmă</h2>
-  <form>
-    <div class="form-row">
-      <input type="text" placeholder="Nume firmă" required />
-      <input type="email" placeholder="Email contact" required />
-    </div>
-    <div class="form-row">
-      <input type="text" placeholder="Telefon" required />
-      <input type="text" placeholder="CUI / CIF" required />
-    </div>
-    <div class="form-row">
-      <input type="text" placeholder="Industrie (ex: restaurant, bar)" required />
-    </div>
-    <div class="form-row">
-      <textarea placeholder="Cerințe / mesaj către candidați..." required></textarea>
-    </div>
-    <div class="form-row center">
-      <button type="submit">Înregistrează firma</button>
-    </div>
-  </form>
-</section>
-<form id="formFirma" onsubmit="handleFirma(event)">
-  <!-- câmpuri input aici -->
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formular Firmă</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f2f5;
+      padding: 20px;
+      margin: 0;
+    }
 
-  <button type="submit">Trimite cererea</button>
-</form>
+    .formular-firma {
+      background: white;
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
 
-<p id="mesajSuccesFirma" style="color: green; display: none; font-weight: bold; margin-top: 20px;">
-  Cererea dumneavoastră a fost înregistrată cu succes. Vă mulțumim!
-</p>
+    h2 {
+      color: #003366;
+    }
 
-<script>
-  function handleFirma(e) {
-    e.preventDefault();
-    document.getElementById('formFirma').style.display = 'none';
-    document.getElementById('mesajSuccesFirma').style.display = 'block';
-  }
-</script>
-<link rel="stylesheet" href="css/styles.css">
+    .form-row {
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #mesajSuccesFirma {
+      margin-top: 20px;
+      color: green;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="formular-firma">
+    <h2>Formular Firmă</h2>
+
+    <form id="formular-firma" onsubmit="trimiteFirma(event)">
+      <div class="form-row">
+        <input type="text" name="numeFirma" placeholder="Nume firmă" required />
+      </div>
+      <div class="form-row">
+        <input type="email" name="emailFirma" placeholder="Email firmă" required />
+      </div>
+      <div class="form-row">
+        <input type="text" name="persContact" placeholder="Persoană de contact" required />
+      </div>
+      <div class="form-row">
+        <textarea name="mesaj" placeholder="Mesaj sau cerințe suplimentare" rows="4"></textarea>
+      </div>
+      <div class="form-row">
+        <button type="submit">Trimite formularul</button>
+      </div>
+    </form>
+
+    <p id="mesajSuccesFirma" style="display:none;">
+      Cererea dumneavoastră a fost înregistrată cu succes. Vom reveni în cel mai scurt timp!
+    </p>
+  </section>
+
+  <script>
+    function trimiteFirma(e) {
+      e.preventDefault();
+      document.getElementById("formular-firma").style.display = "none";
+      document.getElementById("mesajSuccesFirma").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
