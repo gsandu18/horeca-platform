@@ -71,3 +71,144 @@ footer { background:#111; color:#fff; text-align:center; padding:15px 0; font-si
   .hero { padding:60px 20px; }
   .header-content { flex-direction:column; gap:15px; }
 }
+/* ===================
+   Layout general
+=================== */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f5f7fa;
+  color: #111;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+/* ===================
+   Hero section
+=================== */
+.hero {
+  background: linear-gradient(to right, #002b60, #000);
+  color: white;
+  padding: 100px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  max-width: 600px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 500px;
+}
+
+.hero .btn {
+  background: #0099ff;
+  color: white;
+  padding: 14px 28px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+/* ===================
+   Despre noi
+=================== */
+.about {
+  background: white;
+  padding: 60px 20px;
+}
+
+.about h2 {
+  font-size: 1.8rem;
+  color: #002b60;
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ===================
+   Servicii
+=================== */
+.services {
+  padding: 60px 20px;
+}
+
+.services h2 {
+  font-size: 1.8rem;
+  color: #002b60;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.services-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.services-content .image {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+.services-content .image img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+}
+
+.services-content .list {
+  flex: 1 1 300px;
+}
+
+.services-content .list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.services-content .list li {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.services-content .list li::before {
+  content: "✔️";
+  position: absolute;
+  left: 0;
+  color: #0099ff;
+}
+
+/* ===================
+   Responsive Fix
+=================== */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .services-content {
+    flex-direction: column;
+    align-items: center;
+  }
+}
