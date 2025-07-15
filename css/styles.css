@@ -544,3 +544,21 @@ body {
 .card a:hover {
   background: #0056b3;
 }
+.thank-you-box {
+  max-width: 500px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+.thank-you-box a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+}
