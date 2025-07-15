@@ -166,3 +166,69 @@ form button:hover {
   text-decoration: none;
   font-weight: 500;
 }
+/* 👉 Importa font profesional */
+body {
+  font-family: 'Segoe UI', sans-serif;
+}
+.pricing-section {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+.pricing-section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #222;
+}
+.pricing-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 25px;
+  width: 280px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+.card.popular {
+  border: 2px solid #007bff;
+}
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #444;
+}
+.card p {
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #555;
+}
+.card strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 1.25rem;
+  color: #000;
+}
+.card a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+.card a:hover {
+  background: #0056b3;
+}
