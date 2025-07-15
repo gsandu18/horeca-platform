@@ -5,8 +5,7 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background: #f5f7fa;
-   color:
-}
+   color: #111;}
 
 .container {
   max-width: 1200px;
@@ -39,7 +38,7 @@ body {
 }
 
 .hero .btn {
-  background: #0099ff;
+  background: 
   color: white;
   padding: 14px 28px;
   font-weight: 600;
