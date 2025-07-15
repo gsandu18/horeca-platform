@@ -5,7 +5,8 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background: #f5f7fa;
-   color: #111;}
+  color: #111;
+}
 
 .container {
   max-width: 1200px;
