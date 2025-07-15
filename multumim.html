@@ -3,82 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Multumim!</title>
+  <title>Mulțumim pentru Înregistrare</title>
   <link rel="stylesheet" href="css/styles.css" />
   <style>
     body {
-      background-color: #f8f9fa;
       font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f8ff;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
     }
-    .thank-you-box {
+
+    .thank-you-section {
       background: white;
-      padding: 40px 60px;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-      text-align: center;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       max-width: 500px;
+      width: 90%;
+      text-align: center;
     }
-    .thank-you-box h1 {
+
+    .thank-you-section h2 {
       color: #003366;
-      font-size: 32px;
+      font-size: 28px;
       margin-bottom: 20px;
     }
-    .thank-you-box p {
+
+    .thank-you-section p {
       font-size: 18px;
       color: #333;
       margin-bottom: 30px;
     }
-    .thank-you-box a {
-      background-color: #0099ff;
+
+    .btn-back {
+      display: inline-block;
+      background-color: #007bff;
       color: white;
       padding: 12px 24px;
-      border-radius: 8px;
       text-decoration: none;
+      border-radius: 6px;
       font-weight: bold;
     }
-    .thank-you-box a:hover {
-      background-color: #007acc;
+
+    .btn-back:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
-</html>
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=fi device-width, initial-scale=1.0"/>
-<body>
 
   <section class="thank-you-section">
-    <div class="container">
-      <h2>Mulțumim pentru înregistrare!</h2>
-      <p id="mesajPlan">Procesăm datele companiei tale...</p>
-      <a href="index.html" class="btn-back">Înapoi la prima pagină</a>
-    </div>
+    <h2>Mulțumim pentru înregistrare!</h2>
+    <p id="mesajPlan">Procesăm datele completate...</p>
+    <a href="index.html" class="btn-back">Înapoi la prima pagină</a>
   </section>
 
   <script>
-    const param = new URLSearchParams(window.location.search).get('plan');
-    const mesaj = document.getElementById("mesajPlan");
+    const param = new URLSearchParams(window.location.search);
+    const plan = param.get('plan');
 
-    switch (param) {
-      case "pro":
-        mesaj.textContent = "Ai ales planul PRO – ai 10 anunțuri active, suport dedicat și acces 30 zile.";
-        break;
-      case "elite":
-        mesaj.textContent = "Ai ales planul ELITE – anunțuri nelimitate, promovare extinsă și acces VIP la CV-uri.";
-        break;
-      case "start":
-        mesaj.textContent = "Ai ales planul START – 3 anunțuri gratuite, perfect pentru început!";
-        break;
-      default:
-        mesaj.textContent = "Vom reveni în curând cu mai multe detalii despre contul tău.";
+    const mesaj = document.getElementById('mesajPlan');
+    if (plan === 'start') {
+      mesaj.textContent = 'Ai ales planul START – 3 anunțuri gratuite, perfect pentru început!';
+    } else if (plan === 'pro') {
+      mesaj.textContent = 'Ai ales planul PRO – vizibilitate extinsă și suport dedicat timp de 30 de zile.';
+    } else if (plan === 'elite') {
+      mesaj.textContent = 'Ai ales planul ELITE – anunțuri nelimitate și acces prioritar la CV-uri.';
+    } else {
+      mesaj.textContent = 'Formularul a fost trimis cu succes. Vom reveni în curând!';
     }
   </script>
 
