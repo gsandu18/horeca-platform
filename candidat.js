@@ -17,4 +17,4 @@ document.addEventListener('DOMContentLoaded', function () {
     window.location.href = 'mulțumim.html';
   });
 });
-
+<link rel="stylesheet" href="css/styles.css" />
