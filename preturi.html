@@ -1,3 +1,108 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Planuri Firme – HoReCa Personal</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #000;
+      color: #fff;
+      padding: 15px 20px;
+      text-align: center;
+    }
+
+    .pricing-section {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .pricing-section h2 {
+      font-size: 2.5rem;
+      color: #003366;
+      margin-bottom: 30px;
+    }
+
+    .pricing-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 30px;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: 0.3s ease-in-out;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    .card p {
+      font-size: 1rem;
+      margin: 8px 0;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 12px 0;
+      color: #007bff;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .card a:hover {
+      background: #0056b3;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      background: #000;
+      color: #fff;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>HoReCa Personal – Pachete Firme</h1>
+</header>
+
 <section class="pricing-section">
   <h2>Alege planul potrivit pentru firma ta</h2>
   <div class="pricing-cards">
@@ -9,8 +114,8 @@
       <p>✓ Acces 7 zile</p>
       <p class="price">€19 / lună</p>
       <p class="price">€180 / an (20% reducere)</p>
-      <a href="formular-firma.html?plan=start&tip=lunar">Alege lunar</a><br>
-      <a href="formular-firma.html?plan=start&tip=anual">Alege anual</a>
+      <a href="formular.html?plan=start&tip=lunar">Alege lunar</a><br>
+      <a href="formular.html?plan=start&tip=anual">Alege anual</a>
     </div>
 
     <!-- Pro -->
@@ -20,8 +125,8 @@
       <p>✓ Acces 30 zile + suport email</p>
       <p class="price">€49 / lună</p>
       <p class="price">€470 / an (20% reducere)</p>
-      <a href="formular-firma.html?plan=pro&tip=lunar">Alege lunar</a><br>
-      <a href="formular-firma.html?plan=pro&tip=anual">Alege anual</a>
+      <a href="formular.html?plan=pro&tip=lunar">Alege lunar</a><br>
+      <a href="formular.html?plan=pro&tip=anual">Alege anual</a>
     </div>
 
     <!-- Elite -->
@@ -31,9 +136,17 @@
       <p>✓ Acces prioritar CV-uri</p>
       <p class="price">€99 / lună</p>
       <p class="price">€950 / an (20% reducere)</p>
-      <a href="formular-firma.html?plan=elite&tip=lunar">Alege lunar</a><br>
-      <a href="formular-firma.html?plan=elite&tip=anual">Alege anual</a>
+      <a href="formular.html?plan=elite&tip=lunar">Alege lunar</a><br>
+      <a href="formular.html?plan=elite&tip=anual">Alege anual</a>
     </div>
-    </div>
+
+  </div>
 </section>
+
+<footer>
+  © 2025 HoReCa Personal. Toate drepturile rezervate.
+</footer>
+
+</body>
+</html>
     
