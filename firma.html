@@ -20,4 +20,21 @@
     </div>
   </form>
 </section>
+<form id="formFirma" onsubmit="handleFirma(event)">
+  <!-- câmpuri input aici -->
+
+  <button type="submit">Trimite cererea</button>
+</form>
+
+<p id="mesajSuccesFirma" style="color: green; display: none; font-weight: bold; margin-top: 20px;">
+  Cererea dumneavoastră a fost înregistrată cu succes. Vă mulțumim!
+</p>
+
+<script>
+  function handleFirma(e) {
+    e.preventDefault();
+    document.getElementById('formFirma').style.display = 'none';
+    document.getElementById('mesajSuccesFirma').style.display = 'block';
+  }
+</script>
 <link rel="stylesheet" href="css/styles.css">
