@@ -88,3 +88,12 @@ docForm.addEventListener('submit', (e) => {
 
   docInput.value = '';
 });
+list.innerHTML = docs.map(doc => `
+  <p><strong>${doc.nume}</strong> – Status: 
+  <span style="color:${doc.status === 'aprobat' ? 'green' : doc.status === 'respins' ? 'red' : '#999'}">
+    ${doc.status}
+  </span>
+  ${doc.comentariu ? `<br/>Comentariu: ${doc.comentariu}` : ''}
+  ${doc.actualizat_de ? `<br/>Verificat de: ${doc.actualizat_de}` : ''}
+  </p><hr/>`
+).join('');
