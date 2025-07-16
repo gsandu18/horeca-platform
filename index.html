@@ -1,48 +1,63 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HoReCa Personal</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
- <header>
-  <div class="container">
-    <h1>HoReCa Personal</h1>
+  <header class="navbar">
+    <div class="logo">HoReCa <span>Personal</span></div>
     <nav>
-      <a href="#">Acasă</a>
-      <a href="#despre">Despre</a>
-      <a href="#servicii">Servicii</a>
-      <a href="#candidat">Cont candidat</a>
-      <a href="#firma">Cont firmă</a>
+      <ul class="nav-links">
+        <li><a href="#">Acasă</a></li>
+        <li><a href="#">Despre</a></li>
+        <li><a href="#">Servicii</a></li>
+        <li><a href="#">Cont candidat</a></li>
+        <li><a href="#">Cont firmă</a></li>
+      </ul>
     </nav>
-  </div>
-</header>
+  </header>
 
-<section class="hero">
-  <h2>Conectăm profesioniști cu oportunități HoReCa</h2>
-  <p>Recrutăm personal de încredere pentru restaurante, hoteluri și cafenele.</p>
-  <button class="btn-primary">Începe acum</button>
-</section>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Conectăm profesioniști cu oportunități HoReCa</h1>
+      <p>Recrutăm personal de încredere pentru restaurante, hoteluri și cafenele.</p>
+      <a href="#" class="btn-primary">Începe acum</a>
+    </div>
+  </section>
 
-<section id="despre" class="despre">
-  <h2>Despre Noi</h2>
-  <p>Suntem lideri în staffing HoReCa, cu peste 10 ani de experiență în industrie...</p>
-</section>
+  <section class="about">
+    <div class="container">
+      <h2>Despre Noi</h2>
+      <p>Suntem lideri în staffing HoReCa, cu peste 10 ani de experiență în industrie. Găsim rapid cei mai buni candidați pentru nevoile tale.</p>
+    </div>
+  </section>
 
-<section id="servicii">
-  <ul class="grid">
-    <li><img src="images/waiter.jpg" alt="Ospătar"><span>Ospătari</span></li>
-    <li><img src="images/chef.jpg" alt="Bucătar"><span>Bucătari</span></li>
-    <li><img src="images/barista.jpg" alt="Barista"><span>Barista</span></li>
-    <li><img src="images/cleaning.jpg" alt="Curățenie"><span>Curățenie</span></li>
-  </ul>
-</section>
+  <section class="services">
+    <div class="container">
+      <h2>Servicii</h2>
+      <div class="service-cards">
+        <div class="card">
+          <h3>Recrutare rapidă</h3>
+          <p>Identificăm cei mai buni candidați în cel mai scurt timp.</p>
+        </div>
+        <div class="card">
+          <h3>Personal verificat</h3>
+          <p>Fiecare candidat este evaluat înainte de a fi recomandat.</p>
+        </div>
+        <div class="card">
+          <h3>Suport complet</h3>
+          <p>Consultanță dedicată pentru companiile din domeniul HoReCa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<footer>
-  <div class="container">
-    <p>&copy; 2025 HoReCa Personal. Toate drepturile rezervate.</p>
-  </div>
-</footer>
+  <footer class="footer">
+    <p>&copy; 2025 HoReCa Personal. Toate drepturile rezervate.</p>
+  </footer>
+</body>
+</html>
