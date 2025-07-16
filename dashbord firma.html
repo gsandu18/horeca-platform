@@ -94,7 +94,31 @@
     </div>
   </div>
 </section>
+<section class="feedback-section">
+  <h2>Feedback pentru angajați</h2>
 
+  <div class="employee-feedback">
+    <label for="employee">Alege angajatul:</label>
+    <select id="employee">
+      <option value="">Selectează</option>
+      <option value="ana-popescu">Ana Popescu</option>
+      <option value="marius-ion">Marius Ion</option>
+      <!-- Poți genera dinamic cu JS -->
+    </select>
+
+    <label for="rating">Punctaj:</label>
+    <div class="stars" id="rating">
+      ★★★★★
+    </div>
+
+    <label for="feedback">Feedback:</label>
+    <textarea id="feedback" placeholder="Scrie feedback-ul aici..."></textarea>
+
+    <button id="submit-feedback" class="btn-primary">Trimite feedback</button>
+  </div>
+
+  <div id="feedback-list"></div>
+</section>
       <section id="settings" class="section">
         <h2>Setări cont firmă</h2>
         <form id="settingsForm">
