@@ -67,12 +67,13 @@ body {
 .hero p {
   text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
 }
-}
 .hero-content {
   position: relative;
   z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
 }
-
 .btn-primary {
   background-color: #00c6b0;
   color: white;
