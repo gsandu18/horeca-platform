@@ -28,3 +28,11 @@ async function updateDoc(id, status) {
 }
 
 loadAdminDocs();
+await fetch(`http://localhost:5000/api/docs/update/${id}`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'x-admin': 'admin@horeca.ro'
+  },
+  body: JSON.stringify({ status, comentariu })
+});
