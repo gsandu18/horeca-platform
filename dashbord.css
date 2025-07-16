@@ -149,3 +149,21 @@ textarea {
 .stars .active {
   color: gold;
 }
+#logo-preview-container {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+#logo-preview {
+  max-width: 120px;
+  height: auto;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+.hidden {
+  display: none;
+}
