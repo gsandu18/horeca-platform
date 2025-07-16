@@ -17,3 +17,44 @@ document.getElementById('jobForm').addEventListener('submit', e => {
   alert('Job publicat cu succes 🚀');
   e.target.reset();
 });
+const starsDiv = document.getElementById('rating');
+let selectedRating = 0;
+
+starsDiv.innerHTML = [...Array(5)].map((_, i) => `<span data-star="${i + 1}">★</span>`).join('');
+
+starsDiv.addEventListener('click', (e) => {
+  if (e.target.dataset.star) {
+    selectedRating = parseInt(e.target.dataset.star);
+    updateStars(selectedRating);
+  }
+});
+
+function updateStars(count) {
+  document.querySelectorAll('#rating span').forEach((star, idx) => {
+    star.classList.toggle('active', idx < count);
+  });
+}
+
+document.getElementById('submit-feedback').addEventListener('click', () => {
+  const employee = document.getElementById('employee').value;
+  const feedbackText = document.getElementById('feedback').value;
+
+  if (!employee || !feedbackText || selectedRating === 0) {
+    alert("Completează toate câmpurile!");
+    return;
+  }
+
+  const entry = document.createElement('div');
+  entry.innerHTML = `
+    <p><strong>${employee}</strong> — <span style="color:gold;">${'★'.repeat(selectedRating)}</span></p>
+    <p>${feedbackText}</p>
+    <hr/>
+  `;
+  document.getElementById('feedback-list').appendChild(entry);
+
+  // Reset
+  document.getElementById('employee').value = '';
+  document.getElementById('feedback').value = '';
+  selectedRating = 0;
+  updateStars(0);
+});
