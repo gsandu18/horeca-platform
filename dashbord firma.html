@@ -129,6 +129,19 @@
           <button type="submit" class="btn-primary">Salvează</button>
         </form>
       </section>
+      <section id="documents" class="section">
+  <h2>Documente justificative</h2>
+  <form id="docUploadForm">
+    <label for="doc-file">Încarcă document (.pdf, .jpg, .png):</label>
+    <input type="file" id="doc-file" accept=".pdf, .jpg, .jpeg, .png" required />
+    <button type="submit" class="btn-primary">Trimite document</button>
+  </form>
+
+  <div id="uploaded-documents">
+    <h3>Documente încărcate:</h3>
+    <ul id="doc-list"></ul>
+  </div>
+</section>
     </main>
   </div>
 <div id="subscription-modal" class="modal hidden">
