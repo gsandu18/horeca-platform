@@ -71,8 +71,6 @@ footer { background:#111; color:#fff; text-align:center; padding:15px 0; font-si
   .hero { padding:60px 20px; }
   .header-content { flex-direction:column; gap:15px; }
 }
-
-}
 /* Formular Candidat Styling */
 form {
   max-width: 900px;
