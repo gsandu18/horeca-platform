@@ -60,10 +60,9 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.65); /* mai întunecat pentru contrast mai bun */
   z-index: 1;
 }
-
 .hero-content {
   position: relative;
   z-index: 2;
