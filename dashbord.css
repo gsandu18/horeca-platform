@@ -184,3 +184,46 @@ textarea {
   margin-bottom: 0.75rem;
   color: #003087;
 }
+.admin-docs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.admin-doc {
+  background: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.admin-doc h4 {
+  color: #003087;
+  margin-bottom: 0.5rem;
+}
+
+.admin-doc textarea {
+  width: 100%;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.admin-doc button {
+  margin-right: 1rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.approve {
+  background: #00c6b0;
+  color: white;
+}
+
+.reject {
+  background: #d9534f;
+  color: white;
+}
