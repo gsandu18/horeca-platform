@@ -667,3 +667,72 @@ body {
   background-color: #007bff;
   color: white;
 }
+/* ===========================
+   Secțiunea Servicii / Roluri
+=========================== */
+.roluri-section {
+  background: #fff;
+  padding: 60px 20px;
+}
+.roluri-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.roluri-section h2 {
+  text-align: center;
+  font-size: 32px;
+  color: #0d47a1;
+  margin-bottom: 40px;
+}
+
+/* Grid */
+.roluri-grid {
+  display: grid;
+  gap: 24px;
+  padding: 0;
+  list-style: none;
+  /* 4 coloane desktop, se adaptează la ecran */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Card */
+.rol-card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+.rol-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+.rol-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.rol-card span {
+  display: block;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  background: #0d47a1;
+  color: #fff;
+}
+
+/* Responsive Mobile */
+@media (max-width: 600px) {
+  .roluri-section {
+    padding: 40px 10px;
+  }
+  .roluri-section h2 {
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+  .rol-card span {
+    padding: 12px;
+    font-size: 16px;
+  }
+}
