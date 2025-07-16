@@ -72,3 +72,19 @@ logoInput.addEventListener('change', function () {
     reader.readAsDataURL(file);
   }
 });
+const docForm = document.getElementById('docUploadForm');
+const docInput = document.getElementById('doc-file');
+const docList = document.getElementById('doc-list');
+
+docForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const file = docInput.files[0];
+  if (!file) return alert('Selectează un document');
+
+  const listItem = document.createElement('li');
+  listItem.textContent = `${file.name} ✅ (simulat)`;
+  docList.appendChild(listItem);
+
+  docInput.value = '';
+});
