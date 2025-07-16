@@ -73,6 +73,15 @@ body {
   max-width: 700px;
   margin: 0 auto;
   text-align: center;
+  
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  position: relative;
+}
+  
 }
 .btn-primary {
   background-color: #00c6b0;
