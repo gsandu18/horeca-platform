@@ -116,18 +116,59 @@ body {
   margin: auto;
   padding: 60px 20px;
 }
-
-.about, .services {
+ .despre-hero {
+  background-image: url('../pexels-cottonbro-9198282.jpg'); /* ajustează dacă imaginea e în alt folder */
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;.about, .services {
   background-color: #fff;
   margin-top: 2rem;
+    
+}.about-page ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
 }
 
-.about h2, .services h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+.about-page ul li {
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+  position: relative;
+  padding-left: 2rem;
+}
+
+.about-page ul li::before {
+  content: "✔️";
+  position: absolute;
+  left: 0;
+  top: 0;
+  
+}.about-page h2 {
   color: #003087;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.7rem;
 }
 
+.about-page p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+.about-page .container {
+  animation: fadeIn 1s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+}
 .service-cards {
   display: flex;
   gap: 2rem;
