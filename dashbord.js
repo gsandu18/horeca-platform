@@ -6,6 +6,9 @@ document.querySelectorAll('.sidebar li').forEach(btn => {
     document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
     document.getElementById(section).classList.add('active');
   });
+});// Existing navigation code...
+btns.forEach(btn => {
+  // removed code...
 });
 
 // Optional: formulare de trimitere (ex: jobForm)
