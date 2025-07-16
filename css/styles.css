@@ -943,4 +943,57 @@ body {
   .container {
     padding: 40px 16px;
   }
+.timeline-horizontal {
+  background-color: #f9f9f9;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.timeline-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 3rem;
+  position: relative;
+}
+
+.timeline-step {
+  background: white;
+  padding: 2rem;
+  width: 260px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.timeline-step:hover {
+  transform: translateY(-6px);
+}
+
+.icon {
+  font-size: 2rem;
+  background-color: #00c6b0;
+  color: white;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 5px #f9f9f9;
+}
+
+.timeline-step h3 {
+  color: #003087;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-step p {
+  color: #555;
+  font-size: 0.95rem;
 }
