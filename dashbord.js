@@ -58,3 +58,17 @@ document.getElementById('submit-feedback').addEventListener('click', () => {
   selectedRating = 0;
   updateStars(0);
 });
+const logoInput = document.getElementById('logo-upload');
+const logoPreview = document.getElementById('logo-preview');
+
+logoInput.addEventListener('change', function () {
+  const file = this.files[0];
+  if (file && file.type.startsWith('image/')) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      logoPreview.src = e.target.result;
+      logoPreview.classList.remove('hidden');
+    };
+    reader.readAsDataURL(file);
+  }
+});
