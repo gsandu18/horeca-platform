@@ -1,120 +1,126 @@
-/* Reset & fonturi */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
+
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #F0F4F8;
-  color: #101820;
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
   line-height: 1.6;
 }
 
-/* Header */
-header {
-  background: #0D3B66;
-  padding: 15px 20px;
-}
-header .container {
+.navbar {
+  background-color: #003087;
+  color: #fff;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-}
-header a {
-  color: white;
-  text-decoration: none;
-  margin-left: 20px;
-}
-header a:hover {
-  opacity: 0.8;
+  align-items: center;
+  padding: 1rem 2rem;
 }
 
-/* Hero section */
+.logo {
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+.logo span {
+  color: #00c6b0;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #00c6b0;
+}
+
 .hero {
-  background: #606060;
+  background: linear-gradient(to right, #4e54c8, #8f94fb);
   color: white;
+  padding: 100px 20px;
   text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.btn-primary {
+  background-color: #00c6b0;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #009f94;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
   padding: 60px 20px;
 }
-.hero .btn-primary {
-  background: #3FC1C9;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-top: 20px;
-}
-.hero .btn-primary:hover {
-  background: #2E9A9D;
+
+.about, .services {
+  background-color: #fff;
+  margin-top: 2rem;
 }
 
-/* Despre Noi */
-.despre {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 0 20px;
-  text-align: center;
-}
-.despre h2 {
-  color: #0D3B66;
-  margin-bottom: 10px;
+.services h2,
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #003087;
 }
 
-/* Servicii (grid imagini) */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 20px;
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 0 20px;
+.service-cards {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
 }
-.grid li {
-  list-style: none;
-  background: white;
+
+.card {
+  background: #f0f2f5;
+  padding: 1.5rem;
   border-radius: 8px;
-  overflow: hidden;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-.grid li img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-.grid li span {
-  display: block;
-  padding: 12px;
-  font-weight: 600;
-  color: #0D3B66;
+  flex: 1 1 calc(33.333% - 2rem);
+  min-width: 250px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* Footer */
-footer {
-  background: #0D3B66;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-footer p {
-  margin: 0;
-  font-size: 0.9rem;
+.card h3 {
+  color: #003087;
+  margin-bottom: 0.5rem;
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
-  header .container {
-    flex-direction: column;
-  }
-  .hero {
-    padding: 40px 10px;
-  }
-  .grid {
-    gap: 12px;
-  }
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #003087;
+  color: #fff;
 }
 /* Formular Candidat Styling */
 form {
@@ -779,5 +785,48 @@ body {
   .rol-card span {
     padding: 12px;
     font-size: 16px;
+  }
+@media (max-width: 1024px) {
+  .service-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    flex: 1 1 100%;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    padding-top: 1rem;
+  }
+
+  .nav-links li {
+    margin-bottom: 0.5rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    padding: 0.6rem 1.2rem;
+  }
+
+  .container {
+    padding: 40px 16px;
   }
 }
