@@ -167,3 +167,20 @@ textarea {
 .hidden {
   display: none;
 }
+#uploaded-documents {
+  margin-top: 2rem;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+#uploaded-documents ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#uploaded-documents li {
+  margin-bottom: 0.75rem;
+  color: #003087;
+}
