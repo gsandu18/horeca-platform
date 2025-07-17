@@ -59,11 +59,12 @@
   function toggleMenu() {
     const menu = document.getElementById("mobileMenu");
     menu.classList.toggle("mobile-hidden");
-    const links = menu.querySelectorAll("a");
-    links.forEach(link => {
-      link.addEventListener("click", () => {
-        menu.classList.add("mobile-hidden");
-      });
-    });
   }
+
+  // Variante: dacă vrei ca meniul să se ascundă la click pe link:
+  document.querySelectorAll("#mobileMenu a").forEach(link => {
+    link.addEventListener("click", () => {
+      document.getElementById("mobileMenu").classList.add("mobile-hidden");
+    });
+  });
 </script>
