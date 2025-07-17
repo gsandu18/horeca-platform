@@ -2,106 +2,70 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HoReCa Personal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css" />
-
+  <link rel="stylesheet" href="styles.css">
 </head>
-  <script>
-  function toggleMenu() {
-    document.getElementById("mobileMenu").classList.toggle("mobile-hidden");
-  }
-</script>
-  <script>
- <script>
-  <script>
-  function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
-    menu.classList.toggle("mobile-hidden");
-  }
-
-  // Când se încarcă pagina, ascultă click pe fiecare link
-  document.addEventListener("DOMContentLoaded", function () {
-    const menu = document.getElementById("mobileMenu");
-    const links = menu.querySelectorAll("a");
-
-    links.forEach(link => {
-      link.addEventListener("click", () => {
-        menu.classList.add("mobile-hidden");
-      });
-</script>
 <body>
- <header class="navbar">
-  <div class="logo">HoReCa <span>Personal</span></div>
-  <div class="hamburger" onclick="toggleMenu()">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
 
+<header class="navbar">
+  <div class="logo">HoReCa <span>Personal</span></div>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
   <nav>
     <ul class="nav-links mobile-hidden" id="mobileMenu">
-      <li><a href="acasa">Acasă</a></li>
-      <li><a href="despre.html">Despre</a></li>
-      <li><a href="servicii">Servicii</a></li>
+      <li><a href="#acasa" class="active">Acasă</a></li>
+      <li><a href="#despre">Despre</a></li>
+      <li><a href="#servicii">Servicii</a></li>
       <li><a href="candidat.html">Cont candidat</a></li>
       <li><a href="firma.html">Cont firmă</a></li>
     </ul>
   </nav>
-   <div class="hamburger" onclick="toggleMenu()">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
 </header>
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Conectăm profesioniști cu oportunități HoReCa</h1>
-      <p>Recrutăm personal de încredere pentru restaurante, hoteluri și cafenele.</p>
-      <a href="#" class="btn-primary">Începe acum</a>
-    </div>
-  </section>
 
-  <section class="about">
-    <div class="container">
-      <h2>Despre Noi</h2>
-      <p>Suntem lideri în staffing HoReCa, cu peste 10 ani de experiență în industrie. Găsim rapid cei mai buni candidați pentru nevoile tale.</p>
-    </div>
-  </section>
-<section class="services">
-  <h2>Serviciile Noastre</h2>
-  <div class="services-section">
-    
-    <div class="service-card">
-      <div class="service-icon">👥</div>
-      <div class="service-title">Recrutare rapidă</div>
-      <div class="service-desc">Găsim rapid profesioniști care se potrivesc perfect cerințelor tale.</div>
-    </div>
-
-    <div class="service-card">
-      <div class="service-icon">✅</div>
-      <div class="service-title">Personal verificat</div>
-      <div class="service-desc">Fiecare candidat este evaluat și validat înainte de a fi recomandat.</div>
-    </div>
-
-    <div class="service-card">
-      <div class="service-icon">🎧</div>
-      <div class="service-title">Support complet</div>
-      <div class="service-desc">Consultanță și asistență continuă pe tot parcursul colaborării.</div>
-    </div>
-
-    <div class="service-card">
-      <div class="service-icon">🌞</div>
-      <div class="service-title">Personal sezonier</div>
-      <div class="service-desc">Flexibilitate pentru perioade aglomerate, sezon estival sau evenimente.</div>
-    </div>
-
+<section class="hero" id="acasa">
+  <div class="hero-content">
+    <h1>Conectăm profesioniști cu oportunități HoReCa</h1>
+    <p>Recrutăm personal de încredere pentru restaurante, hoteluri și cafenele.</p>
+    <a href="#servicii" class="btn-primary">Începe acum</a>
   </div>
 </section>
 
-  <footer class="footer">
-    <p>&copy; 2025 HoReCa Personal. Toate drepturile rezervate.</p>
-  </footer>
+<section class="about-page container" id="despre">
+  <h2>Despre Noi</h2>
+  <p>Suntem lideri în staffing HoReCa, με peste 10 ani de experiență în industrie. Găsim rapid cei mai buni candidați pentru nevoile tale.</p>
+  <ul>
+    <li>Rețea extinsă de candidați calificați</li>
+    <li>Recrutare rapidă și eficientă</li>
+    <li>Consultanță personalizată pentru fiecare client</li>
+  </ul>
+</section>
+
+<section class="services-section container" id="servicii">
+  <h2>Serviciile Noastre</h2>
+  <div class="roluri-grid">
+    <div class="rol-card"><img src="img/icon1.png" alt=""><span>Recrutare rapidă</span></div>
+    <div class="rol-card"><img src="img/icon2.png" alt=""><span>Personal verificat</span></div>
+    <div class="rol-card"><img src="img/icon3.png" alt=""><span>Suport complet</span></div>
+    <div class="rol-card"><img src="img/icon4.png" alt=""><span>Personal sezonier</span></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  &copy; 2025 HoReCa Personal. Toate drepturile rezervate.
+</footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.toggle("mobile-hidden");
+    const links = menu.querySelectorAll("a");
+    links.forEach(link => {
+      link.addEventListener("click", () => {
+        menu.classList.add("mobile-hidden");
+      });
+    });
+  }
+</script>
+
 </body>
 </html>
