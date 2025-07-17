@@ -42,17 +42,14 @@ body {
 .nav-links a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
-}
-
-/* HERO */
+  font-weight: /* HERO */
 .hero {
   background: #777;
   color: white;
   padding: 3rem 1rem;
   text-align: center;
 }
-.hero h1 {
+.dhero h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
   text-shadow: 1px 1px 2px black;
@@ -109,39 +106,10 @@ body {
   }
 }
 /* HERO */
-.hero {
-  background: url('img/pexels-cottonbro-9198282.jpg') center/cover no-repeat;
-  height: 400px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
+bold;
 }
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-}
-.hero-content { position: relative; z-index: 2; max-width: 700px; }
-.hero h1 { font-size: clamp(1.8rem, 5vw, 3rem); text-shadow: 0 2px 4px rgba(0,0,0,0.6); }
-.hero p { font-size: clamp(1rem, 3vw, 1.2rem); margin: 1rem 0 2rem; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
-.btn-primary {
-  display: inline-block;
-  background: #00c6b0;
-  color: #fff;
-  padding: .8rem 1.8rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 6px;
-  box-shadow: 0 6px 12px rgba(0,198,176,0.3);
-  transition: all .3s;
-  text-decoration: none;
-}
-.btn-primary:hover { background: #009f94; transform: scale(1.05); }
+
+
 
 /* ABOUT PAGE */
 .container { max-width: 1140px; margin: auto; padding: 40px 20px; }
