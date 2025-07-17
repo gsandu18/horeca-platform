@@ -988,3 +988,55 @@ body {
   color: #555;
   font-size: 0.95rem;
 }
+.hamburger {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+  padding: 10px 20px;
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  z-index: 999;
+}
+
+#mobileMenu {
+  background-color: #003087;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 60px;
+  z-index: 998;
+}
+
+#mobileMenu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#mobileMenu li {
+  padding: 15px;
+  text-align: center;
+}
+
+#mobileMenu a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+}
+
+.mobile-hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
