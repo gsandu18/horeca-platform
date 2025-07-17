@@ -1067,3 +1067,14 @@ body {
     margin-bottom: 1rem;
   }
 }
+/* Animație smooth când se deschide meniul */
+.nav-links {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+}
+
+/* Când e activ (fără clasa mobile-hidden) */
+.nav-links.open {
+  max-height: 500px; /* suficient pentru toate linkurile */
+}
