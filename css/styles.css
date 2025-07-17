@@ -1095,5 +1095,35 @@ body {
   background-color: white;
   border-radius: 2px;
   transition: all 0.3s ease;
+}/* Ascunde hamburger-ul pe ecrane mari */
+.hamburger {
+  display: none;
+}
+
+/* Arată hamburger-ul DOAR pe ecrane mici */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #003087;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    z-index: 999;
+  }
+
+  .nav-links.mobile-visible {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 1rem 0;
+    text-align: center;
+  }
 }
 
