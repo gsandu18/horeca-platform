@@ -128,28 +128,6 @@ body { font-family: 'Segoe UI', sans-serif; background: #f8f9fa; color: #333; li
   .hamburger { display: none; }
   .nav-links { display: flex !important; }
 }
-/* MOBILE & TABLET MEDIA QUERIES */
-@media (max-width: 1024px) {
-  .container { padding: 30px 16px; }
-}
-@media (max-width: 768px) {
-  .hamburger { display: block; }
-  .nav-links {
-    flex-direction: column;
-    width: 100%;
-    background-color: #003087;
-    position: absolute;
-    top: 100%;
-    left: 0;
-  }
-  .nav-links.mobile-hidden { display: none; }
-  .nav-links a { padding: .8rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.2); }
-}
-@media (min-width: 769px) {
-  .hamburger { display: none; }
-  .nav-links { display: flex !important; }
-}
-}
 /* Formular Candidat Styling */
 form {
   max-width: 900px;
