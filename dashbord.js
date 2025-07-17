@@ -87,6 +87,9 @@ docForm.addEventListener('submit', (e) => {
   docList.appendChild(listItem);
 
   docInput.value = '';
+  const azi = new Date();
+const expirareTrial = new Date(azi.getTime() + 14 * 24 * 60 * 60 * 1000);
+localStorage.setItem("abonamentTrialPanaLa", expirareTrial.toISOString());
 });
 list.innerHTML = docs.map(doc => `
   <p><strong>${doc.nume}</strong> – Status: 
