@@ -98,6 +98,16 @@
       document.getElementById("mesajSuccesFirma").style.display = "block";
     }
   </script>
+<script>
+  document.getElementById("doc-validare").addEventListener("change", function () {
+    const file = this.files[0];
+    const validTypes = ['application/pdf', 'image/png', 'image/jpeg'];
 
+    if (file && !validTypes.includes(file.type)) {
+      alert("⚠️ Document invalid. Te rugăm să încarci un fișier PDF, PNG sau JPG.");
+      this.value = ""; // Resetăm câmpul
+    }
+  });
+</script>
 </body>
 </html>
