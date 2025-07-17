@@ -1,0 +1,26 @@
+const loginForm = document.getElementById("login-firma");
+
+loginForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = loginForm.email.value;
+  const parola = loginForm.parola.value;
+
+  // Simulăm baza de date
+  const firme = await fetch("firme.json").then(res => res.json());
+  const firma = firme.find(f => f.email === email && f.parola === parola);
+
+  if (!firma) {
+    alert("Email sau parolă greșită");
+    return;
+  }
+
+  if (!firma.validata) {
+    window.location.href = "asteptare-validare.html";
+    return;
+  }
+
+  localStorage.setItem("firmaEmail", firma.email);
+  localStorage.setItem("firmaNume", firma.nume);
+  window.location.href = "dashbord-firma.html";
+});
