@@ -157,3 +157,9 @@
   <script src="js/dashboard.js"></script>
 </body>
 </html>
+<script>
+  const firma = localStorage.getItem("firmaEmail");
+  if (!firma) {
+    window.location.href = "login-firma.html";
+  }
+</script>
