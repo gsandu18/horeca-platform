@@ -1078,3 +1078,21 @@ body {
 .nav-links.open {
   max-height: 500px; /* suficient pentru toate linkurile */
 }
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  width: 30px;
+  height: 24px;
+  margin-left: auto;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
