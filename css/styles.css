@@ -1,218 +1,133 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* RESET & GLOBAL */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Segoe UI', sans-serif; background: #f8f9fa; color: #333; line-height: 1.6; }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
-  line-height: 1.6;
-}
-
+/* NAVBAR */
 .navbar {
-  background-color: #003087;
+  background: #003087;
   color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
 }
+.logo { font-size: 1.5rem; font-weight: 800; }
+.logo span { color: #00c6b0; }
+.hamburger { display: none; font-size: 1.8rem; cursor: pointer; }
 
-.logo {
-  font-weight: 800;
-  font-size: 1.5rem;
-}
-
-.logo span {
-  color: #00c6b0;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
+/* NAV LINKS */
+.nav-links { list-style: none; display: flex; gap: 1.5rem; }
 .nav-links a {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.3s;
+  transition: color .3s;
 }
+.nav-links a:hover,
+.nav-links a.active { color: #00c6b0; }
 
-.nav-links a:hover {
-  color: #00c6b0;
-}
-
+/* HERO */
 .hero {
-  background-image: url('../pexels-cottonbro-9198282.jpg');
-  background-size: cover;
-  background-position: center;
+  background: url('img/pexels-cottonbro-9198282.jpg') center/cover no-repeat;
+  height: 400px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 400px;
-  position: relative;
   text-align: center;
   color: white;
 }
-
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1;
+  background: rgba(0,0,0,0.6);
 }
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.hero h1, .hero p {
-  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.6);
-}
-
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-}
-
+.hero-content { position: relative; z-index: 2; max-width: 700px; }
+.hero h1 { font-size: clamp(1.8rem, 5vw, 3rem); text-shadow: 0 2px 4px rgba(0,0,0,0.6); }
+.hero p { font-size: clamp(1rem, 3vw, 1.2rem); margin: 1rem 0 2rem; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
 .btn-primary {
   display: inline-block;
-  background-color: #00c6b0;
-  color: white;
-  padding: 1rem 2rem;
+  background: #00c6b0;
+  color: #fff;
+  padding: .8rem 1.8rem;
   font-size: 1.1rem;
   font-weight: 600;
-  border-radius: 6px;
-  text-decoration: none;
-  box-shadow: 0 8px 16px rgba(0, 198, 176, 0.3);
-  transition: all 0.3s ease;
   border: none;
+  border-radius: 6px;
+  box-shadow: 0 6px 12px rgba(0,198,176,0.3);
+  transition: all .3s;
+  text-decoration: none;
 }
+.btn-primary:hover { background: #009f94; transform: scale(1.05); }
 
-.btn-primary:hover {
-  background-color: #009f94;
-  transform: scale(1.05);
-}
-
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 60px 20px;
-}
- .despre-hero {
-  background-image: url('../pexels-cottonbro-9198282.jpg'); /* ajustează dacă imaginea e în alt folder */
-  background-size: cover;
-  background-position: center;
-  height: 300px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;.about, .services {
-  background-color: #fff;
-  margin-top: 2rem;
-    
-}.about-page ul {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 1rem;
-}
-
+/* ABOUT PAGE */
+.container { max-width: 1140px; margin: auto; padding: 40px 20px; }
+.about-page h2 { color: #003087; font-size: 1.8rem; margin-bottom: 1rem; }
+.about-page p { font-size: 1.05rem; margin-bottom: 1rem; }
+.about-page ul { list-style: none; padding-left: 0; }
 .about-page ul li {
-  margin-bottom: 0.75rem;
-  font-size: 1.05rem;
   position: relative;
-  padding-left: 2rem;
+  padding-left: 1.8rem;
+  font-size: 1rem;
+  margin-bottom: .6rem;
 }
-
 .about-page ul li::before {
   content: "✔️";
-  position: absolute;
-  left: 0;
-  top: 0;
-  
-}.about-page h2 {
-  color: #003087;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-  font-size: 1.7rem;
+  position: absolute; left: 0; top: 0;
 }
 
-.about-page p {
-  margin-bottom: 1.5rem;
-  font-size: 1.1rem;
-  line-height: 1.7;
+/* SERVICES GRID */
+.services-section h2 { text-align: center; font-size: 1.8rem; color: #003087; margin-bottom: 2rem; }
+.roluri-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
 }
-.about-page .container {
-  animation: fadeIn 1s ease forwards;
-  opacity: 0;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-}
-.services-section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  padding: 1rem;
-}
-
-.service-card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  padding: 1rem;
-  flex: 1 1 280px;
-  max-width: 300px;
-  transition: transform 0.2s ease;
-}
-
-.service-card:hover {
-  transform: scale(1.02);
-}
-
-.service-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  display: inline-block;
-}
-
-.service-title {
-  font-weight: bold;
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
-.service-desc {
-  color: #444;
-  font-size: 0.95rem;
-}
-}
-.footer {
+.rol-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform .3s, box-shadow .3s;
   text-align: center;
-  padding: 1.5rem;
-  background-color: #003087;
+  padding-bottom: 1rem;
+}
+.rol-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+.rol-card img { width: 100px; height: 100px; object-fit: contain; margin: 1rem auto 0; }
+.rol-card span { display: block; padding: .6rem 1rem; font-size: 1.05rem; font-weight: 600; background: #0d47a1; color: #fff; border-radius: 0 0 12px 12px; }
+
+/* FOOTER */
+.site-footer {
+  background: #003087;
   color: #fff;
+  text-align: center;
+  padding: 1.5rem 0;
+  font-size: .9rem;
+}
+
+/* MOBILE & TABLET MEDIA QUERIES */
+@media (max-width: 1024px) {
+  .container { padding: 30px 16px; }
+}
+@media (max-width: 768px) {
+  .hamburger { display: block; }
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    background-color: #003087;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+  .nav-links.mobile-hidden { display: none; }
+  .nav-links a { padding: .8rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.2); }
+}
+@media (min-width: 769px) {
+  .hamburger { display: none; }
+  .nav-links { display: flex !important; }
+}
 }
 /* Formular Candidat Styling */
 form {
