@@ -158,8 +158,11 @@
 </body>
 </html>
 <script>
-  const firma = localStorage.getItem("firmaEmail");
-  if (!firma) {
-    window.location.href = "login-firma.html";
-  }
+  const trialPanaLa = new Date(localStorage.getItem("abonamentTrialPanaLa"));
+const azi = new Date();
+
+if (azi > trialPanaLa) {
+  alert("Perioada gratuită a expirat. Te rugăm să alegi un abonament activ.");
+  window.location.href = "abonamente.html";
+}
 </script>
