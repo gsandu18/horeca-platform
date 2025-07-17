@@ -1039,4 +1039,31 @@ body {
   .hamburger {
     display: block;
   }
+}/* Ascunde meniul când are clasa mobile-hidden */
+.mobile-hidden {
+  display: none;
+}
+
+/* Arată doar pe mobil */
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    background-color: #003087;
+    padding: 1rem 2rem;
+  }
+
+  .nav-links li {
+    margin-bottom: 1rem;
+  }
 }
