@@ -15,12 +15,13 @@
 </script>
   <script>
  <script>
+  <script>
   function toggleMenu() {
     const menu = document.getElementById("mobileMenu");
     menu.classList.toggle("mobile-hidden");
   }
 
-  // ✅ Se rulează o singură dată la început
+  // Când se încarcă pagina, ascultă click pe fiecare link
   document.addEventListener("DOMContentLoaded", function () {
     const menu = document.getElementById("mobileMenu");
     const links = menu.querySelectorAll("a");
