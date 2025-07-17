@@ -1081,18 +1081,19 @@ body {
 .hamburger {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  cursor: pointer;
+  justify-content: space-around;
   width: 30px;
-  height: 24px;
-  margin-left: auto;
+  height: 22px;
+  cursor: pointer;
+  z-index: 1001;
 }
 
 .hamburger span {
+  display: block;
   height: 3px;
   width: 100%;
-  background: white;
+  background-color: white;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
+
