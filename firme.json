@@ -1,9 +1,10 @@
 [
   {
-    "nume": "Restaurant Top",
-    "email": "firma@top.ro",
-    "parola": "parolatop",
-    "validata": false
+   {
+  "nume": "Restaurant Top",
+  "email": "firma@top.ro",
+  "parola": "parolatop",
+  "validata": true
   },
   {
     "nume": "Pizzeria Luca",
