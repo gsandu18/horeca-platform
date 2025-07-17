@@ -7,6 +7,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/dashboard.css" />
 </head>
+  <!-- ... alt conținut din dashboard-firma.html ... -->
+
+<div id="trial-counter" style="font-weight: bold; margin-top: 20px; color: green;"></div>
+</body>
+</html>
 <body>
   <header class="navbar">
     <div class="logo">HoReCa <span>Personal</span></div>
@@ -155,6 +160,40 @@
   </div>
 </div>
   <script src="js/dashboard.js"></script>
+  <!-- ... alt conținut din dashboard-firma.html ... -->
+
+<div id="trial-counter" style="font-weight: bold; margin-top: 20px; color: green;"></div>
+
+<!-- SCRIPTUL CRONOMETRU -->
+<script>
+  function updateTrialTimer() {
+    const endDateStr = localStorage.getItem("abonamentTrialPanaLa");
+    if (!endDateStr) return;
+
+    const endDate = new Date(endDateStr);
+    const now = new Date();
+
+    const timeLeft = endDate - now;
+
+    if (timeLeft <= 0) {
+      document.getElementById("trial-counter").innerHTML = "❌ Perioada gratuită a expirat.";
+      return;
+    }
+
+    const zile = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const ore = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+    const minute = Math.floor((timeLeft / (1000 * 60)) % 60);
+
+    document.getElementById("trial-counter").innerHTML =
+      `🕒 Ai ${zile} zile, ${ore} ore și ${minute} minute rămase din perioada gratuită.`;
+  }
+
+  setInterval(updateTrialTimer, 60000); 
+  updateTrialTimer(); 
+</script>
+
+</body>
+</html>
 </body>
 </html>
 <script>
