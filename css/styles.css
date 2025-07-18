@@ -180,7 +180,6 @@ body {
   font-weight: bold;
   transition: all 0.3s;
 }
-
 .tab.active {
   background: #00d1b2;
   color: white;
@@ -189,7 +188,12 @@ body {
 .login-card {
   display: none;
 }
-
 .login-card.active-form {
   display: block;
+}
+.error-message {
+  color: #d9534f;
+  margin-top: 1rem;
+  text-align: center;
+  display: none;
 }
