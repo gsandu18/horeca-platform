@@ -96,7 +96,7 @@ body { font-family: 'Segoe UI', sans-serif; background: #f8f9f8; color: #333; li
 }
 .rol-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
 .rol-card img { width: 100px; height: 100px; object-fit: contain; margin: 1rem auto 0; }
-.rol-card span { display: block; padding: .6rem 1rem; font-size: 1.05rem; font-weight: 600; background: #0d47a1; color: #fff; border-radius: 0 0 12px 12px; }
+.rol-card span { display: block; padding: .6rem 1rem; font-size: 1.05rem; font-weight: 600; background: #00c6b0; color: #fff; border-radius: 0 0 12px 12px; }
 
 /* FOOTER */
 .site-footer {
