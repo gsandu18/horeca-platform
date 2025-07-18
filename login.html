@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Autentificare</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body class="login-page">
-
   <div class="login-wrapper">
     <div class="tab-switcher">
       <button class="tab active" data-tab="cand">Candidați</button>
       <button class="tab" data-tab="firma">Firmă</button>
     </div>
 
-    <!-- FORMULAR CANDIDAT -->
+    <!-- FORM CANDIDAT -->
     <div class="login-card form-cand active-form">
       <h2>Login Candidat</h2>
       <form id="login-candidat">
-        <label for="email-c">Email</label>
-        <input type="email" name="email" required>
-        <label for="parola-c">Parolă</label>
-        <input type="password" name="parola" required>
+        <label>Email</label>
+        <input type="email" name="email" required />
+        <label>Parolă</label>
+        <input type="password" name="parola" required />
         <button type="submit" class="btn-login">Intră în cont</button>
+        <p class="error-message" id="error-cand"></p>
       </form>
     </div>
 
-    <!-- FORMULAR FIRMĂ -->
+    <!-- FORM FIRMĂ -->
     <div class="login-card form-firma">
       <h2>Login Firmă</h2>
       <form id="login-firma">
-        <label for="email-f">Email</label>
-        <input type="email" name="email" required>
-        <label for="parola-f">Parolă</label>
-        <input type="password" name="parola" required>
+        <label>Email</label>
+        <input type="email" name="email" required />
+        <label>Parolă</label>
+        <input type="password" name="parola" required />
         <button type="submit" class="btn-login">Intră în cont</button>
+        <p class="error-message" id="error-firma"></p>
       </form>
     </div>
   </div>
