@@ -1,3 +1,10 @@
+let html = `
+  <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+    <img src="img/logo-horeca.png" alt="Logo" style="height: 40px;" />
+    <h2 style="margin: 0;">${nume}</h2>
+  </div>
+  <p><strong>Email:</strong> ${email}</p>
+`;
 document.querySelectorAll('.sidebar li').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.sidebar li').forEach(x => x.classList.remove('active'));
