@@ -4,38 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Autentificare</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="login.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="login-page">
+<body>
   <div class="login-wrapper">
-    <div class="tab-switcher">
-      <button class="tab active" data-tab="cand">Candidați</button>
-      <button class="tab" data-tab="firma">Firmă</button>
+    <h1>Autentificare Platformă</h1>
+
+    <div class="tab-buttons">
+      <button id="btn-candidat" class="active">👤 Candidat</button>
+      <button id="btn-firma">🏢 Firmă</button>
     </div>
 
-    <!-- FORM CANDIDAT -->
-    <div class="login-card form-cand active-form">
+    <div id="form-candidat" class="form-container active">
       <h2>Login Candidat</h2>
       <form id="login-candidat">
-        <label>Email</label>
-        <input type="email" name="email" required />
-        <label>Parolă</label>
-        <input type="password" name="parola" required />
-        <button type="submit" class="btn-login">Intră în cont</button>
-        <p class="error-message" id="error-cand"></p>
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="parola" placeholder="Parolă" required />
+        <button type="submit" class="btn-primary">Intră în cont</button>
       </form>
     </div>
 
-    <!-- FORM FIRMĂ -->
-    <div class="login-card form-firma">
+    <div id="form-firma" class="form-container">
       <h2>Login Firmă</h2>
       <form id="login-firma">
-        <label>Email</label>
-        <input type="email" name="email" required />
-        <label>Parolă</label>
-        <input type="password" name="parola" required />
-        <button type="submit" class="btn-login">Intră în cont</button>
-        <p class="error-message" id="error-firma"></p>
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="parola" placeholder="Parolă" required />
+        <button type="submit" class="btn-primary">Intră în cont</button>
       </form>
     </div>
   </div>
