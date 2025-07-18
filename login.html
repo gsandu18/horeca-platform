@@ -1,26 +1,44 @@
-const loginForm = document.getElementById("login-firma");
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autentificare</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
 
-loginForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+  <div class="login-wrapper">
+    <div class="tab-switcher">
+      <button class="tab active" data-tab="cand">Candidați</button>
+      <button class="tab" data-tab="firma">Firmă</button>
+    </div>
 
-  const email = loginForm.email.value;
-  const parola = loginForm.parola.value;
+    <!-- FORMULAR CANDIDAT -->
+    <div class="login-card form-cand active-form">
+      <h2>Login Candidat</h2>
+      <form id="login-candidat">
+        <label for="email-c">Email</label>
+        <input type="email" name="email" required>
+        <label for="parola-c">Parolă</label>
+        <input type="password" name="parola" required>
+        <button type="submit" class="btn-login">Intră în cont</button>
+      </form>
+    </div>
 
-  // Simulăm baza de date
-  const firme = await fetch("firme.json").then(res => res.json());
-  const firma = firme.find(f => f.email === email && f.parola === parola);
+    <!-- FORMULAR FIRMĂ -->
+    <div class="login-card form-firma">
+      <h2>Login Firmă</h2>
+      <form id="login-firma">
+        <label for="email-f">Email</label>
+        <input type="email" name="email" required>
+        <label for="parola-f">Parolă</label>
+        <input type="password" name="parola" required>
+        <button type="submit" class="btn-login">Intră în cont</button>
+      </form>
+    </div>
+  </div>
 
-  if (!firma) {
-    alert("Email sau parolă greșită");
-    return;
-  }
-
-  if (!firma.validata) {
-    window.location.href = "asteptare-validare.html";
-    return;
-  }
-
-  localStorage.setItem("firmaEmail", firma.email);
-  localStorage.setItem("firmaNume", firma.nume);
-  window.location.href = "dashbord-firma.html";
-});
+  <script src="login.js"></script>
+</body>
+</html>
