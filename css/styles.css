@@ -71,48 +71,15 @@ nav a {
   display: grid;
   gap: 1.5rem;
   margin-top: 2rem;
-  grid-template-columns: 1fr; /* Mobil: 1 card / rând */
+  grid-template-columns: 1fr;
 }
 
 @media (min-width: 768px) {
   .services .grid {
-    grid-template-columns: repeat(3, 1fr); /* Desktop: 3 carduri / rând */
+    grid-template-columns: repeat(4, 1fr); /* 👈 Afișează 4 carduri pe o linie */
   }
-}.services .grid {
-  display: grid;
-  gap: 1.5rem;
-  margin-top: 2rem;
-  grid-template-columns: 1fr; /* Mobil: 1 card / rând */
 }
 
-@media (min-width: 768px) {
-  .services .grid {
-    grid-template-columns: repeat(3, 1fr); /* Desktop: 3 carduri / rând */
-  }
-}.services .grid {
-  display: grid;
-  gap: 1.5rem;
-  margin-top: 2rem;
-  grid-template-columns: 1fr; /* Mobil: 1 card / rând */
-}
-
-@media (min-width: 768px) {
-  .services .grid {
-    grid-template-columns: repeat(3, 1fr); /* Desktop: 3 carduri / rând */
-  }
-}
-.services .grid {
-  display: grid;
-  gap: 1.5rem;
-  margin-top: 2rem;
-  grid-template-columns: 1fr; /* Mobil: 1 card / rând */
-}
-
-@media (min-width: 768px) {
-  .services .grid {
-    grid-template-columns: repeat(3, 1fr); /* Desktop: 3 carduri / rând */
-  }
-}
 /* FOOTER */
 footer {
   background: #222;
