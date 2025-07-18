@@ -6,7 +6,7 @@ body { font-family: 'Segoe UI', sans-serif; background: #f8f9f8; color: #333; li
 /* NAVBAR */
 .navbar {
   background: #000;
-  color: #000;
+  color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
