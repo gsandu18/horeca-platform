@@ -68,19 +68,17 @@ nav a {
   padding: 3rem 0;
 }
 .services .grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 1.5rem;
   margin-top: 2rem;
+  grid-template-columns: 1fr;
 }
 
-.card {
-  background: white;
-  padding: 1.5rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  text-align: center;
-}
+/* Pe ecrane mai mari: 2 sau 4 pe rând */
+@media (min-width: 768px) {
+  .services .grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
 
 /* FOOTER */
 footer {
