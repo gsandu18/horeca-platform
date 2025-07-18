@@ -60,3 +60,25 @@ document.getElementById("login-candidat").addEventListener("submit", async (e) =
   localStorage.setItem("candidatNume", candidat.nume);
   window.location.href = "dashbord-candidat.html";
 });p
+<script>
+  // Trecere între taburi
+  const btnCandidat = document.getElementById("btn-candidat");
+  const btnFirma = document.getElementById("btn-firma");
+  const formCandidat = document.getElementById("form-candidat");
+  const formFirma = document.getElementById("form-firma");
+
+  btnCandidat.addEventListener("click", () => {
+    btnCandidat.classList.add("active");
+    btnFirma.classList.remove("active");
+    formCandidat.classList.add("active");
+    formFirma.classList.remove("active");
+  });
+
+  btnFirma.addEventListener("click", () => {
+    btnFirma.classList.add("active");
+    btnCandidat.classList.remove("active");
+    formFirma.classList.add("active");
+    formCandidat.classList.remove("active");
+  });
+</script>
+</body>
