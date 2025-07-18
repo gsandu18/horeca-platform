@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Candidat</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <nav class="navbar">
+    <h1>Bine ai venit, <span id="candidat-nume">Candidat</span></h1>
+    <button id="btn-logout">Deconectare</button>
+  </nav>
+  <main class="dashboard">
+    <section class="profile-card">
+      <img id="profile-pic" src="default-user.png" alt="Profil">
+      <h2 id="profile-nume">Nume Prenume</h2>
+      <p id="profile-email">email@exemplu.com</p>
+    </section>
+    <section class="cv-section">
+      <h2>CV Generat</h2>
+      <textarea id="generated-cv" readonly></textarea>
+      <button id="download-cv">Descarcă CV (PDF)</button>
+    </section>
+  </main>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
