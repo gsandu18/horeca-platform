@@ -68,11 +68,12 @@ nav a {
   padding: 3rem 0;
 }
 .services .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
   margin-top: 2rem;
 }
+
 .card {
   background: white;
   padding: 1.5rem;
