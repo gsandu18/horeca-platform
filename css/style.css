@@ -14,7 +14,7 @@ body { font-family: 'Segoe UI', sans-serif; background: #f8f9f8; color: #333; li
 }
 .logo { font-size: 1.5rem; font-weight:800; }
 .logo span { color: #00c6b0; }
-.hamburger { display:#000; font-size: 1.8rem; cursor: pointer; }
+.hamburger { display:#000;/* negru */font-size: 1.8rem; cursor: pointer; }
 
 /* NAV LINKS */
 .nav-links { list-style: none; display: flex; gap: 1.5rem; }
