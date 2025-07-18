@@ -2,46 +2,43 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HoReCa Personal</title>
-  <link rel="stylesheet" href="css/style.css">
-  <i class="fa fa-bars" style="color: black;"></i>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="logo">HoReCa <span>Personal</span></div>
-   <div class="hamburger" onclick="toggleMenu()">
-  ☰
-</div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="acasa">Acasă</a></li>
-      <li><a href="despre.html">Despre Noi</a></li>
-      <li><a href="servicii">Servicii</a></li>
-      <li><a href="contact.html">Contact</a></li>
-       <li><a href="">Contact</a></li>    
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+    <ul class="nav-links">
+      <li><a href="#">Acasă</a></li>
+      <li><a href="#">Despre Noi</a></li>
+      <li><a href="#">Servicii</a></li>
+      <li><a href="#">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Scriptul pentru funcționalitate -->
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Conectăm profesioniști cu oportunități HoReCa</h1>
+      <p>Recrutăm personal de încredere pentru restaurante, hoteluri și cafenele.</p>
+      <a href="#" class="btn">Începe acum</a>
+    </div>
+  </section>
+
   <script>
     function toggleMenu() {
-      document.getElementById("navLinks").classList.toggle("active");
+      document.querySelector('.nav-links').classList.toggle('active');
     }
   </script>
 
 </body>
-
-<section class="hero" id="acasa">
-  <div class="hero-content">
-    <h1>Conectăm profesioniști cu oportunități HoReCa</h1>
-    <p>Recrutăm personal de încredere pentru restaurante, hoteluri și cafenele.</p>
-    <a href="#servicii" class="btn-primary">Începe acum</a>
-  </div>
-</section>
-
+</html>
 <section class="about-page container" id="despre">
   <h2>Despre Noi</h2>
   <p>Suntem lideri în staffing HoReCa, με peste 10 ani de experiență în industrie. Găsim rapid cei mai buni candidați pentru nevoile tale.</p>
