@@ -1044,3 +1044,39 @@ body {
     text-align: center;
   }
 }
+/* Ascunde meniul pe mobil */
+.mobile-hidden {
+  display: none;
+}
+
+/* Afișează meniul când este activ */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    background-color: #003087;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+  }
+
+  .hamburger {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}
+
+/* Pe desktop, ascunde hamburger */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex !important;
+    position: static;
+  }
+}
