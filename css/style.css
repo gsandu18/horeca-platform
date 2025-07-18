@@ -86,7 +86,7 @@ body { font-family: 'Segoe UI', sans-serif; background: #f8f9f8; color: #333; li
   gap: 1.5rem;
 }
 .rol-card {
-  background: #fff;
+  background:#fff,
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -106,6 +106,30 @@ body { font-family: 'Segoe UI', sans-serif; background: #f8f9f8; color: #333; li
   padding: 1.5rem 0;
   font-size: .9rem;
 }
+
+/* MOBILE & TABLET MEDIA QUERIES */
+@media (max-width: 1024px) {
+  .container { padding: 30px 16px; }
+}
+@media (max-width: 768px) {
+  .hamburger { display: block; }
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    background-color: #003087;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+  .nav-links.mobile-hidden { display: none; }
+  .nav-links a { padding: .8rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.2); }
+}
+@media (min-width: 769px) {
+  .hamburger { display: none; }
+  .nav-links { display: flex !important; }
+}
+
+
 
 /* MOBILE & TABLET MEDIA QUERIES */
 @media (max-width: 1024px) {
