@@ -82,3 +82,29 @@ body { font-family: 'Inter', sans-serif; background:#f4f7fa; color:#333; }
 .cv-section .cv-content p {
   margin-bottom: 0.5rem;
 }
+#projects-container h3 {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.project-item {
+  margin-bottom: 1rem;
+}
+.project-item input,
+.project-item textarea {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.6rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+#add-project {
+  margin-top: 0.5rem;
+  background: #00c6b0;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
