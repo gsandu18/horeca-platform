@@ -67,13 +67,13 @@ nav a {
 .about, .services {
   padding: 3rem 0;
 }
-.services .grid {
-  display: grid;
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.5rem;
-  margin-top: 2rem;
-  grid-template-columns: 1fr;
+  padding: 2rem 1rem;
 }
-
 @media (min-width: 768px) {
   .services .grid {
     grid-template-columns: repeat(4, 1fr); /* 👈 Afișează 4 carduri pe o linie */
