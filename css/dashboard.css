@@ -152,3 +152,130 @@ body { body {
   background: #d8ecf0;
   color: #00d1b2;
 }
+/* Container general */
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  font-family: 'Inter', sans-serif;
+  color: #f4f7fa;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #22356f;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.navbar a {
+  color: #f4f7fa;
+  margin: 0.5rem 1rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+.navbar a:hover {
+  color: #00c6b0;
+}
+
+/* Profil firmă */
+.profile-card {
+  background: #fff;
+  color: #333;
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+.profile-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+.profile-card h2 {
+  margin: 0.5rem 0 0;
+}
+
+/* Formular job + secțiuni */
+.section {
+  background: #fff;
+  color: #333;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+}
+.section h3 {
+  margin-top: 0;
+}
+.section form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.section input[type="text"],
+.section select,
+.section textarea {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.section textarea {
+  min-height: 120px;
+}
+.section button {
+  padding: 0.75rem 1.5rem;
+  background: #00c6b0;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.section button:hover {
+  background: #009f94;
+}
+
+/* Feedback list */
+.feedback-list {
+  list-style: none;
+  padding: 0;
+}
+.feedback-item {
+  background: #fff;
+  color: #333;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+  }
+  .section form {
+    flex-direction: column;
+  }
+  .section input, .section select, .section textarea, .section button {
+    width: 100%;
+  }
+}
+
+/* Mobile specific */
+@media (max-width: 480px) {
+  .dashboard {
+    padding: 1rem;
+  }
+  .navbar a {
+    margin: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+  }
+}
