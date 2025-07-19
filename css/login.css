@@ -162,4 +162,20 @@ body {
 .login-section button:hover {
   background: #009f94;
 }
+  .page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f7fa;
+}
+
+.center-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
 <link rel="stylesheet" href="style-login.css" />
