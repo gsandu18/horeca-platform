@@ -270,6 +270,9 @@ body {
   height: 100vh;
 }
 body {
+  background-color: pink;
+}
+body {
   height: 100%;
   margin: 0;
   padding: 0;
