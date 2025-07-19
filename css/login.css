@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = loginForm.email.value.trim();
     const parola = loginForm.parola.value.trim();
 
-    // Simulăm baza de date locală (poți înlocui cu fetch din JSON sau API)
     const firme = [
       { email: "test@firma.ro", parola: "123456", validata: true, nume: "Firma Test" },
       { email: "alta@firma.ro", parola: "parola123", validata: false, nume: "Firma Nouă" }
@@ -27,11 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Salvăm date în localStorage și redirectăm
     localStorage.setItem("firmaEmail", firma.email);
     localStorage.setItem("firmaNume", firma.nume);
+    window.location.href = "dashboard-firma.html";
+  });
+});
+  
+    window.location.href = "dashboard-firma.html"; // sau altă pagină relevantă
 
-    window.location.hre
   }
 }
 .site-header {
