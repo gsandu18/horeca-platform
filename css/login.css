@@ -89,32 +89,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 body {
   font-family: 'Inter', sans-serif;
-  margin: 0;
   background: #f4f7fa;
-}
-
-.page-wrapper {
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  min-height: 100vh;
+  margin: 0;
 }
 
-.center-container {
+.login-container {
   background: #fff;
-  padding: 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
+  padding: 2rem 3rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  max-width: 400px;
   width: 100%;
   text-align: center;
 }
 
-.title {
+.login-container h1 {
   color: #003087;
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .login-section {
@@ -122,12 +117,12 @@ body {
 }
 
 .login-section h2 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #333;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
-.login-section .icon {
+.login-section i {
   color: #00c6b0;
   margin-right: 0.5rem;
 }
@@ -135,27 +130,19 @@ body {
 .login-section input {
   width: 100%;
   padding: 0.75rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 1rem;
-}
-
-.login-section input:focus {
-  border-color: #00c6b0;
-  box-shadow: 0 0 5px rgba(0, 198, 176, 0.3);
-  outline: none;
 }
 
 .login-section button {
-  width: 100%;
-  padding: 0.75rem;
-  border: none;
   background: #00c6b0;
-  color: white;
-  font-weight: bold;
+  color: #fff;
+  border: none;
+  padding: 0.75rem;
+  width: 100%;
   border-radius: 6px;
-  cursor: pointer;
+  font-weight: bold;
   transition: background 0.3s;
 }
 
@@ -163,4 +150,14 @@ body {
   background: #009f94;
 }
 
-<link rel="stylesheet" href="style-login.css" />
+.title {
+  color: #003087;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;<link rel="stylesheet" href="style-login.css" />
+  
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
