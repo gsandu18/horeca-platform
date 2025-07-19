@@ -197,3 +197,53 @@ body {
   text-align: center;
   display: none;
 }
+.despre-hero {
+  background-color: #00687f;
+  color: white;
+  text-align: center;
+  padding: 3rem 1rem;
+}
+.despre-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.despre-hero p {
+  font-size: 1.2rem;
+}
+
+.despre-content {
+  padding: 3rem 1rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.despre-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .despre-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
+.despre-text h2, .despre-text h3 {
+  color: #003087;
+  margin-bottom: 0.5rem;
+}
+.despre-text ul {
+  list-style: none;
+  padding-left: 0;
+}
+.despre-text li {
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+.despre-image img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
