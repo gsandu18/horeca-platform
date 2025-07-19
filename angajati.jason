@@ -1,0 +1,20 @@
+[
+  {
+    "nume": "Maria Popescu",
+    "rol": "Ospătar",
+    "feedback": "Foarte profesionistă, punctuală și sociabilă.",
+    "punctaj": 4.8
+  },
+  {
+    "nume": "Andrei Ionescu",
+    "rol": "Bucătar",
+    "feedback": "Organizat, rapid în execuție, se adaptează bine.",
+    "punctaj": 4.5
+  },
+  {
+    "nume": "Ioana Radu",
+    "rol": "Recepționer",
+    "feedback": "Empatică, foarte calmă și comunicativă.",
+    "punctaj": 4.9
+  }
+]
