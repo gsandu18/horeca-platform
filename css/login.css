@@ -1,80 +1,36 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: 'Inter', sans-serif;
-  background: #f0f4f8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const loginForm = document.getElementById("login-firma");
 
-.login-wrapper {
-  background: #fff;
-  padding: 2rem 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-}
+  if (!loginForm) return;
 
-.login-wrapper h1 {
-  margin-bottom: 1rem;
-  color: #003087;
-}
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-.tab-buttons {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-  gap: 1rem;
-}
-.tab-buttons button {
-  padding: 0.5rem 1.2rem;
-  border: none;
-  background: #e0e0e0;
-  border-radius: 25px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-.tab-buttons button.active {
-  background: #00c6b0;
-  color: white;
-}
+    const email = loginForm.email.value.trim();
+    const parola = loginForm.parola.value.trim();
 
-.form-container {
-  display: none;
-}
-.form-container.active {
-  display: block;
-}
-.form-container h2 {
-  margin-bottom: 1rem;
-  color: #003087;
-}
-form input {
-  width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 1rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-.btn-primary {
-  width: 100%;
-  background: #003087;
-  color: white;
-  border: none;
-  padding: 0.8rem;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.btn-primary:hover {
-  background: #001e5f;
-}
+    // Simulăm baza de date locală (poți înlocui cu fetch din JSON sau API)
+    const firme = [
+      { email: "test@firma.ro", parola: "123456", validata: true, nume: "Firma Test" },
+      { email: "alta@firma.ro", parola: "parola123", validata: false, nume: "Firma Nouă" }
+    ];
+
+    const firma = firme.find(f => f.email === email && f.parola === parola);
+
+    if (!firma) {
+      alert("Email sau parolă greșită.");
+      return;
+    }
+
+    if (!firma.validata) {
+      window.location.href = "asteptare-validare.html";
+      return;
+    }
+
+    // Salvăm date în localStorage și redirectăm
+    localStorage.setItem("firmaEmail", firma.email);
+    localStorage.setItem("firmaNume", firma.nume);
+
+    window.location.href = "dashbord-firma.html";
+  });
+});
