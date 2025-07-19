@@ -82,3 +82,36 @@ document.getElementById("login-candidat").addEventListener("submit", async (e) =
   });
 </script>
 </body>
+document.addEventListener("DOMContentLoaded", () => {
+  const loginForm = document.getElementById("login-firma");
+
+  if (!loginForm) return;
+
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = loginForm.email.value.trim();
+    const parola = loginForm.parola.value.trim();
+
+    const firme = [
+      { email: "test@firma.ro", parola: "123456", validata: true, nume: "Firma Test" },
+      { email: "alta@firma.ro", parola: "parola123", validata: false, nume: "Firma Nouă" }
+    ];
+
+    const firma = firme.find(f => f.email === email && f.parola === parola);
+
+    if (!firma) {
+      alert("Email sau parolă greșită.");
+      return;
+    }
+
+    if (!firma.validata) {
+      window.location.href = "asteptare-validare.html";
+      return;
+    }
+
+    localStorage.setItem("firmaEmail", firma.email);
+    localStorage.setItem("firmaNume", firma.nume);
+    window.location.href = "dashboard-firma.html";
+  });
+});
