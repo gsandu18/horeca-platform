@@ -71,8 +71,10 @@ nav a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;
+  align-items: flex-start;
+  gap: 2rem;
   padding: 2rem 1rem;
+  text-align: center;
 }
 @media (min-width: 768px) {
   .services .grid {
@@ -109,15 +111,18 @@ footer {
   .hamburger {
     display: block;
   }
-}
-..card {
-  flex: 1 1 180px;              /* redimensionare flexibilă mai mică */
-  max-width: 200px;            /* limităm dimensiunea maximă */
-  background: transparent;     /* fără fundal alb */
-  border: none;                /* fără border */
-  box-shadow: none;            /* fără umbră */
-  padding: 1rem 0;             /* spațiu mai mic */
-  text-align: center;
+.card {
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+
   transition: transform 0.3s ease;
   opacity: 0;
   transform: translateY(30px);
@@ -125,18 +130,16 @@ footer {
 }
 
 .card i {
-  font-size: 2rem;             /* iconițe mai mici */
+  font-size: 2rem;
   color: #007f91;
   margin-bottom: 0.5rem;
-  display: block;
 }
 
 .card p {
   font-weight: bold;
-  font-size: 0.9rem;           /* text mai mic */
+  font-size: 1rem;
   margin: 0;
 }
-
 
 /* Apare în valuri */
 .card:nth-child(1) { animation-delay: 0.1s; }
