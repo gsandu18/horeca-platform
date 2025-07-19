@@ -107,7 +107,30 @@
       alert("⚠️ Document invalid. Te rugăm să încarci un fișier PDF, PNG sau JPG.");
       this.value = ""; // Resetăm câmpul
     }
-  });
+  })
+  <script>
+  document.getElementById("firma-nume").textContent = localStorage.getItem("firmaNume") || "Firmă";
+
+  async function incarcaAngajati() {
+    const res = await fetch('angajati.json');
+    const angajati = await res.json();
+    const lista = document.getElementById('angajati-list');
+
+    lista.innerHTML = '';
+
+    angajati.forEach(a => {
+      const li = document.createElement('li');
+      li.className = 'feedback-item';
+      li.innerHTML = `
+        <strong>${a.nume}</strong> — <em>${a.rol}</em><br>
+        <span style="display:block; margin: 5px 0;">„${a.feedback}”</span>
+        <strong>Punctaj:</strong> ${a.punctaj.toFixed(1)} ⭐
+      `;
+      lista.appendChild(li);
+    });
+  }
+
+  incarcaAngajati();
 </script>
 </body>
 </html>
