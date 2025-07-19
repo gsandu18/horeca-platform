@@ -34,3 +34,31 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "dashbord-firma.html";
   });
 });
+@media (max-width: 480px) {
+  .login-container {
+    padding: 1.5rem 1rem;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .login-section {
+    margin-bottom: 2rem;
+  }
+
+  .login-section h2 {
+    font-size: 1.3rem;
+  }
+
+  .login-section input,
+  .login-section button {
+    font-size: 0.95rem;
+  }
+
+  .login-section button {
+    width: 100%;
+  }
+
+  .login-section i {
+    font-size: 1.2rem;
+  }
+}
