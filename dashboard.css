@@ -120,3 +120,35 @@ body { font-family: 'Inter', sans-serif; background:#f4f7fa; color:#333; }
   font-weight: bold;
   font-size: 1.2rem;
 }
+* { margin:0;padding:0;box-sizing:border-box; }
+body { body {
+  font-family: 'Inter', sans-serif;
+  background: #f5f7fb;
+  color: #2e3a59;
+}
+}
+.navbar { .navbar {
+  background: #22356f;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+ }
+.logo span { color:#00c6b0; }
+.nav-links a.active {
+  color: #00d1b2;
+}
+.btn-primary {
+  background: #00d1b2;
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #00bfa6;
+}
+.sidebar li.active,
+.sidebar li:hover {
+  background: #d8ecf0;
+  color: #00d1b2;
+}
