@@ -112,9 +112,10 @@ body {
   text-align: center;
 }
 
-.login-container h1 {
+.title {
   color: #003087;
-  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
 }
 
 .login-section {
@@ -154,7 +155,6 @@ body {
 .login-section button:hover {
   background: #009f94;
 }
-
 .site-header {
   display: flex;
   justify-content: space-between;
