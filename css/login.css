@@ -92,11 +92,15 @@ document.addEventListener("DOMContentLoaded", () => {
 body {
   font-family: 'Inter', sans-serif;
   background: #f4f7fa;
+  margin: 0;
+}
+
+.page-wrapper {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  margin: 0;
+  padding: 2rem;
 }
 
 .login-container {
@@ -152,14 +156,57 @@ body {
   background: #009f94;
 }
 
-.title {
-  color: #003087;
-  font-size: 1.8rem;
-  margin-bottom: 2rem;<link rel="stylesheet" href="style-login.css" />
-  
-.page-wrapper {
-  min-height: 100vh;
+.site-header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  background-color: #003087;
+  padding: 1rem 2rem;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.site-header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-header .logo img {
+  height: 30px;
+}
+
+.site-header .logo span {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.site-header .nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.site-header .nav-links a:hover {
+  color: #00d6c1;
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .site-header .nav-links {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .site-header .nav-links a {
+    margin: 0.5rem 0;
+  }
+}
