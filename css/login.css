@@ -62,3 +62,4 @@ document.addEventListener("DOMContentLoaded", () => {
     font-size: 1.2rem;
   }
 }
+<link rel="stylesheet" href="style-login.css" />
