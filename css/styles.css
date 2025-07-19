@@ -110,32 +110,33 @@ footer {
     display: block;
   }
 }
-.card {
-  background: white;
-  padding: 2rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+..card {
+  flex: 1 1 180px;              /* redimensionare flexibilă mai mică */
+  max-width: 200px;            /* limităm dimensiunea maximă */
+  background: transparent;     /* fără fundal alb */
+  border: none;                /* fără border */
+  box-shadow: none;            /* fără umbră */
+  padding: 1rem 0;             /* spațiu mai mic */
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
   opacity: 0;
   transform: translateY(30px);
   animation: fadeUp 0.6s ease forwards;
 }
+
 .card i {
-  font-size: 2.5rem;
+  font-size: 2rem;             /* iconițe mai mici */
   color: #007f91;
   margin-bottom: 0.5rem;
   display: block;
 }
+
 .card p {
   font-weight: bold;
+  font-size: 0.9rem;           /* text mai mic */
   margin: 0;
 }
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
+
 
 /* Apare în valuri */
 .card:nth-child(1) { animation-delay: 0.1s; }
