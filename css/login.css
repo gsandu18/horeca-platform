@@ -34,4 +34,58 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.hre
   }
 }
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #003087;
+  padding: 1rem 2rem;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.site-header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-header .logo img {
+  height: 30px;
+}
+
+.site-header .logo span {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.site-header .nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.site-header .nav-links a:hover {
+  color: #00d6c1;
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .site-header .nav-links {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .site-header .nav-links a {
+    margin: 0.5rem 0;
+  }
+}
 <link rel="stylesheet" href="style-login.css" />
