@@ -87,41 +87,5 @@ document.addEventListener("DOMContentLoaded", () => {
   .site-header .nav-links a {
     margin: 0.5rem 0;
   }
-}
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background: #f4f7fa;
-  font-family: 'Inter', sans-serif;
-}
 
-.page-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.center-container {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.login-container {
-  background: #fff;
-  padding: 2rem 3rem;
-  border-radius: 12px;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-  max-width: 420px;
-  width: 100%;
-  text-align: center;
-}
-
-.login-container h1 {
-  color: #003087;
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
-}
 <link rel="stylesheet" href="style-login.css" />
