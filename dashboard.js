@@ -133,3 +133,23 @@ function generateCV() {
   }
   document.getElementById("generated-cv").innerHTML = html;
 }
+// Aplică tema salvată (light/dark)
+if (localStorage.getItem("tema-site") === "dark-theme") {
+  document.body.classList.add("dark-theme");
+}
+
+// Aplică accentul tematic (firma sau candidat)
+const tip = localStorage.getItem("tipUser");
+if (tip) {
+  document.body.classList.add(`theme-${tip}`);
+}
+
+// Toggle între light / dark theme
+document.getElementById("toggle-theme").addEventListener("click", () => {
+  document.body.classList.toggle("dark-theme");
+  if (document.body.classList.contains("dark-theme")) {
+    localStorage.setItem("tema-site", "dark-theme");
+  } else {
+    localStorage.removeItem("tema-site");
+  }
+});
