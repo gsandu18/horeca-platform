@@ -62,7 +62,20 @@ nav a {
   text-decoration: none;
   font-weight: bold;
 }
+button.btn {
+  background-color: #A8E6CF; /* verde mentă */
+  color: #1F2A44; /* contrast bun */
+  border: none;
+  padding: 12px 24px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
+button.btn:hover {
+  background-color: #8ddfbe;
+}
 /* ABOUT & SERVICES */
 .about, .services {
   padding: 3rem 0;
