@@ -279,3 +279,16 @@ body { body {
     font-size: 0.9rem;
   }
 }
+/* Meniu lateral responsive */
+@media (max-width: 768px) {
+  .navbar,
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar a {
+    padding: 0.5rem;
+    display: block;
+  }
+}
