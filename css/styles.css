@@ -53,14 +53,22 @@ nav a {
   text-align: center;
 }
 .btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  background:#A8E6CF;
-  color: #1F2A44;
-  border-radius: 4px;
-  text-decoration: none;
+  background-color: #A8E6CF; /* verde mentă */
+  color: #1F2A44; /* contrast bun */
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
   font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1em;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #8DDFBE;
+}
 }
 /* ABOUT & SERVICES */
 .about, .services {
