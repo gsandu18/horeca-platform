@@ -2,233 +2,84 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cont Firmă – Dashboard HoReCa Personal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/dashboard.css" />
-<link rel="stylesheet" href="css/dashboard-firma.css" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Firmă • HoReCa Personal</title>
+  <link rel="stylesheet" href="css/dashboard-firma.css" />
 </head>
-  <style>
-    .feedback-list {
-      list-style: none;
-      padding: 0;
-      margin-top: 2rem;
-    }
-
-    .feedback-item {
-      background: #ffffff;
-      border-radius: 8px;
-      padding: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      margin-bottom: 1rem;
-      font-size: 1rem;
-      color: #333;
-      line-height: 1.5;
-    }
-  </style>
-</head>
-  <!-- ... alt conținut din dashboard-firma.html ... -->
-
-<div id="trial-counter" style="font-weight: bold; margin-top: 20px; color: green;"></div>
-</body>
-</html>
 <body>
-  <header class="navbar">
-    <div class="logo">HoReCa <span>Personal</span></div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Acasă</a></li>
-        <li><a href="despre.html">Despre</a></li>
-        <li><a href="index.html#servicii">Servicii</a></li>
-        <li><a href="candidat.html">Cont candidat</a></li>
-        <li><a href="firma.html" class="active">Cont firmă</a></li>
-      </ul>
-      <i class="fas fa-users"></i> Angajați și feedback-uri
-<ul class="feedback-list" id="angajati-list"></ul>
-    </nav>
-  </head>
-<div id="trial-counter" style="font-weight: bold; margin-top: 20px; color: green;"></div>
+  <nav class="navbar">
+    <div class="nav-left">
+      <h1>HoReCa Personal</h1>
+    </div>
+    <div class="nav-right">
+      <button id="toggle-theme">🌙 Light/Dark</button>
+      <span class="user-label">Cont firmă</span>
+    </div>
+  </nav>
+
   <div class="dashboard">
     <aside class="sidebar">
-  <ul>
-    <li class="active" data-section="overview">Overview</li>
-    <li data-section="post-job">Postează job</li>
-    <li data-section="candidates">Candidați</li>
-    <li data-section="subscriptions">Abonamente</li>
-    <li data-section="settings">Setări cont</li>
-  </ul>
-</aside>
+      <ul>
+        <li class="active">Overview</li>
+        <li>Postează job</li>
+        <li>Candidați</li>
+        <li>Abonamente</li>
+        <li>Setări cont</li>
+      </ul>
+    </aside>
 
-    <main class="main-content">
-      <section id="overview" class="section active">
-        <h2>Bun venit în dashboard-ul firmei</h2>
-        <p>Aici poți vizualiza statisticile postărilor tale, numărul de candidați și statusul fiecărui job.</p>
+    <main class="content">
+      <section class="card welcome">
+        <h2>Bun venit în dashboard‑ul firmei</h2>
+        <p>Aici poți vizualiza statistici, joburi active și abonanți.</p>
       </section>
 
-      <section id="post-job" class="section">
-        <h2>Adaugă un job nou</h2>
-        <form id="jobForm">
-          <label>Titlu job</label>
-          <input type="text" required />
-
-          <label>Tip job</label>
-          <select required>
-            <option value="">Selectează</option>
-            <option value="chelner">Chelner</option>
-            <option value="bucatar">Bucătar</option>
-            <option value="barista">Barista</option>
-          </select>
-
-          <label>Descriere</label>
-          <textarea rows="4" required></textarea>
-
-          <button type="submit" class="btn-primary">Publică job</button>
+      <section class="card new-job">
+        <h3>Adaugă un job nou</h3>
+        <form>
+          <div class="form-group">
+            <label>Titlu job</label>
+            <input type="text" required />
+          </div>
+          <div class="form-group">
+            <label>Tip job</label>
+            <select required>
+              <option value="">Selectează</option>
+              <option value="fulltime">Full-time</option>
+              <option value="parttime">Part-time</option>
+            </select>
+          </div>
+          <div class="form-group flex-fill">
+            <label>Descriere</label>
+            <textarea rows="4" placeholder="Scrie descrierea job-ului..."></textarea>
+          </div>
+          <button type="submit" class="btn-accent">Publică job</button>
         </form>
       </section>
 
-      <section id="subscriptions" class="section">
-  <h2>Alege un abonament</h2>
-  <div class="subscription-cards">
-    <div class="sub-card">
-      <h3>Standard</h3>
-      <p><strong>€49/lună</strong></p>
-      <ul>
-        <li>Publică până la 5 joburi</li>
-        <li>Acces la CV-uri de bază</li>
-        <li>Support email</li>
-      </ul>
-      <button class="btn-primary">Alege Standard</button>
-    </div>
-    <div class="sub-card featured">
-      <h3>Premium</h3>
-      <p><strong>€99/lună</strong></p>
-      <ul>
-        <li>Joburi nelimitate</li>
-        <li>Acces complet la baze de date candidați</li>
-        <li>Support prioritar</li>
-      </ul>
-      <button class="btn-primary">Alege Premium</button>
-    </div>
-    <div class="sub-card">
-      <h3>Enterprise</h3>
-      <p><strong>€199/lună</strong></p>
-      <ul>
-        <li>Tot ce are Premium</li>
-        <li>Account Manager dedicat</li>
-        <li>Integrare API</li>
-      </ul>
-      <button class="btn-primary">Contactează-ne</button>
-    </div>
-  </div>
-</section>
-<section class="feedback-section">
-  <h2>Feedback pentru angajați</h2>
-
-  <div class="employee-feedback">
-    <label for="employee">Alege angajatul:</label>
-    <select id="employee">
-      <option value="">Selectează</option>
-      <option value="ana-popescu">Ana Popescu</option>
-      <option value="marius-ion">Marius Ion</option>
-      <!-- Poți genera dinamic cu JS -->
-    </select>
-
-    <label for="rating">Punctaj:</label>
-    <div class="stars" id="rating">
-      ★★★★★
-    </div>
-
-    <label for="feedback">Feedback:</label>
-    <textarea id="feedback" placeholder="Scrie feedback-ul aici..."></textarea>
-
-    <button id="submit-feedback" class="btn-primary">Trimite feedback</button>
-  </div>
-
-  <div id="feedback-list"></div>
-</section>
-      <section id="settings" class="section">
-        <h2>Setări cont firmă</h2>
-        <form id="settingsForm">
-          <label>Nume firmă</label>
-          <input type="text" value="Numele Meu SRL" required />
-          <label>Email firmă</label>
-          <input type="email" value="firma@exemplu.ro" required />
-          <button type="submit" class="btn-primary">Salvează</button>
-        </form>
+      <section class="card subscriptions">
+        <h3>Alege un abonament</h3>
+        <div class="plans">
+          <div class="plan">
+            <h4>Standard</h4>
+            <p>€49/lună<br>Publică până la 5 joburi</p>
+            <button class="btn-accent">Alege Standard</button>
+          </div>
+          <div class="plan">
+            <h4>Premium</h4>
+            <p>€99/lună<br>Joburi nelimitate + CV-uri</p>
+            <button class="btn-accent">Alege Premium</button>
+          </div>
+          <div class="plan">
+            <h4>Enterprise</h4>
+            <p>€199/lună<br>Totul inclus + API</p>
+            <button class="btn-accent">Contactează-ne</button>
+          </div>
+        </div>
       </section>
-      <section id="documents" class="section">
-  <h2>Documente justificative</h2>
-  <form id="docUploadForm">
-    <label for="doc-file">Încarcă document (.pdf, .jpg, .png):</label>
-    <input type="file" id="doc-file" accept=".pdf, .jpg, .jpeg, .png" required />
-    <button type="submit" class="btn-primary">Trimite document</button>
-  </form>
-
-  <div id="uploaded-documents">
-    <h3>Documente încărcate:</h3>
-    <ul id="doc-list"></ul>
-  </div>
-</section>
     </main>
   </div>
-<div id="subscription-modal" class="modal hidden">
-  <div class="modal-content">
-    <h3>Confirmă abonamentul</h3>
-    <p>Sigur dorești să alegi abonamentul <strong id="selected-plan-name"></strong>?</p>
-    <div class="modal-buttons">
-      <button id="confirm-subscription" class="btn-primary">Confirmă</button>
-      <button id="cancel-subscription" class="btn-secondary">Anulează</button>
-    </div>
-    <div class="feedback">
-  <h3><i class="fas fa-users"></i> Angajați și feedback-uri</h3>
-  <ul class="feedback-list" id="angajati-list"></ul>
-</div>
-  </div>
-</div>
-  <script src="js/dashboard.js"></script>
-  <!-- ... alt conținut din dashboard-firma.html ... -->
 
-<div id="trial-counter" style="font-weight: bold; margin-top: 20px; color: green;"></div>
-
-<!-- SCRIPTUL CRONOMETRU -->
-<script>
-  function updateTrialTimer() {
-    const endDateStr = localStorage.getItem("abonamentTrialPanaLa");
-    if (!endDateStr) return;
-
-    const endDate = new Date(endDateStr);
-    const now = new Date();
-
-    const timeLeft = endDate - now;
-
-    if (timeLeft <= 0) {
-      document.getElementById("trial-counter").innerHTML = "❌ Perioada gratuită a expirat.";
-      return;
-    }
-
-    const zile = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-    const ore = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
-    const minute = Math.floor((timeLeft / (1000 * 60)) % 60);
-
-    document.getElementById("trial-counter").innerHTML =
-      `🕒 Ai ${zile} zile, ${ore} ore și ${minute} minute rămase din perioada gratuită.`;
-  }
-
-  setInterval(updateTrialTimer, 60000); 
-  updateTrialTimer(); 
-</script>
-
+  <script src="js/dashboard-firma.js"></script>
 </body>
 </html>
-</body>
-</html>
-<script>
-  const trialPanaLa = new Date(localStorage.getItem("abonamentTrialPanaLa"));
-const azi = new Date();
-
-if (azi > trialPanaLa) {
-  alert("Perioada gratuită a expirat. Te rugăm să alegi un abonament activ.");
-  window.location.href = "abonamente.html";
-}
-</script>
