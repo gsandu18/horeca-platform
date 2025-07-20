@@ -21,29 +21,17 @@
 </head>
 <body>
 
-  <section class="formular-candidat">
-    <h2>Formular Candidat</h2>
+    <form id="candidate-form" class="form-card">
+  <h2>Formular Candidat</h2>
+  <input type="text" id="nume" placeholder="Nume complet" required />
+  <input type="email" id="email" placeholder="Email" required />
+  <textarea id="experienta" placeholder="Experiența ta..." required></textarea>
+  <input type="text" id="domenii" placeholder="Domenii preferate (ex: restaurant, hotel)" required />
+  <input type="text" id="firme" placeholder="Firme preferate (separate prin virgulă)" required />
+  <button type="submit">Trimite aplicația</button>
+  <p id="status-msg" class="hidden"></p>
+</form>
     
-    <form id="formular-candidat" onsubmit="trimiteCandidat(event)">
-      <div class="form-row">
-        <input type="text" placeholder="Nume complet" required />
-        <input type="email" placeholder="Email" required />
-      </div>
-
-      <div class="form-row">
-        <textarea placeholder="Experiența ta..." required></textarea>
-      </div>
-
-      <div class="form-row">
-        <input type="text" placeholder="Domenii preferate (ex: restaurant, bar)" />
-        <input type="text" placeholder="Firme preferate (separate prin virgulă)" />
-      </div>
-
-      <div class="form-row center">
-        <button type="submit">Trimite aplicația</button>
-      </div>
-    </form>
-
     <p id="mesajSuccesFirma" style="display:none;">
       Cererea dumneavoastră a fost înregistrată cu succes. Vom reveni în cel mai scurt timp!
     </p>
