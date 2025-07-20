@@ -1,9 +1,39 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const nume = localStorage.getItem("candidatNume") || "Candidat";
-  const email = localStorage.getItem("candidatEmail") || "nedefinit";
-  const educatie = localStorage.getItem("educatie") || "";
-  const experienta = localStorage.getItem("experienta") || "";
-  const pic = localStorage.getItem("profilePic");
+document.getElementById("cv-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const data = {
+    nume: document.getElementById("nume").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    telefon: document.getElementById("telefon").value.trim(),
+    experienta: document.getElementById("experienta").value.trim(),
+    studii: document.getElementById("studii").value.trim(),
+    competente: document.getElementById("competente").value.trim()
+  };
+
+  // Validare obligatorie
+  for (let key in data) {
+    if (!data[key]) {
+      alert("Toate câmpurile sunt obligatorii!");
+      return;
+    }
+  }
+
+  const output = `
+    <h2>${data.nume}</h2>
+    <p>${data.email}</p>
+    <p><strong>Telefon:</strong> ${data.telefon}</p>
+    <h3>Experiență profesională</h3><p>${data.experienta}</p>
+    <h3>Studii</h3><p>${data.studii}</p>
+    <h3>Competențe</h3><p>${data.competente}</p>
+  `;
+
+  const container = document.getElementById("generated-cv");
+  container.innerHTML = output;
+
+  // Salvează CV în localStorage
+  localStorage.setItem("cvData", JSON.stringify(data));
+});
+
 
   document.getElementById("profile-nume").textContent = nume;
   document.getElementById("candidat-nume").textContent = nume;
