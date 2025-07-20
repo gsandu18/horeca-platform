@@ -47,38 +47,38 @@ nav a {
 
 /* HERO */
 .hero {
-  background: ##F5F5F5;
-  color: #333;
+  background: #005f73;
+  color: white;
   padding: 4rem 0;
   text-align: center;
-  
-  .hero .btn {
+}
+.hero .btn {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.75rem 1.5rem;
-  background: #A8E6CF;
+  background: #94d2bd;
   color: #000;
   border-radius: 4px;
   text-decoration: none;
   font-weight: bold;
 }
+
 /* ABOUT & SERVICES */
 .about, .services {
   padding: 3rem 0;
 }
-.services {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 2rem;
-  padding: 2rem 1rem;
-  text-align: center;
+.services .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
-@media (min-width: 768px) {
-  .services .grid {
-    grid-template-columns: repeat(4, 1fr); /* 👈 Afișează 4 carduri pe o linie */
-  }
+.card {
+  background: white;
+  padding: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
 }
 
 /* FOOTER */
@@ -110,6 +110,7 @@ footer {
   .hamburger {
     display: block;
   }
+}
 .services {
   display: flex;
   justify-content: center;
