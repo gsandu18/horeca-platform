@@ -46,3 +46,11 @@ button:hover {
 .hidden {
   display: none;
 }
+.cv-content {
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  line-height: 1.6;
+  font-size: 16px;
+}
