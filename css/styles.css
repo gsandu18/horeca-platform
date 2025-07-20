@@ -315,6 +315,14 @@ body {
   gap: 15px;
 }
 
+.contact-form {
+  max-width: 600px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .contact-form input,
 .contact-form textarea {
   padding: 14px;
@@ -322,6 +330,8 @@ body {
   border-radius: 8px;
   font-family: 'Open Sans', sans-serif;
   font-size: 1em;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .contact-form textarea {
@@ -342,3 +352,4 @@ body {
 
 .contact-form button:hover {
   background-color: #8DDFBE;
+}
