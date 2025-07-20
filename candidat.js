@@ -30,6 +30,18 @@ Email: ${data.get('email')}
 Experiență: ${data.get('experienta')}
 Domenii preferate: ${data.get('domenii')}
 Firme selectate: ${data.get('firme')}
+
+document.getElementById("cv-form").addEventListener("submit", function (e) {
+  const experienta = document.getElementById("experienta").value.trim();
+
+  // verifică dacă există minimum 2 denumiri separate prin virgulă
+  const entries = experienta.split(",").map(s => s.trim()).filter(s => s.length >= 3);
+
+  if (entries.length < 2) {
+    alert("⚠️ Te rugăm să menționezi cel puțin două locuri unde ai lucrat (ex: Restaurant X, Hotel Y).");
+    e.preventDefault();
+  }
+});
     `;
 
     const mailto = `mailto:${email}?subject=Candidatură HoReCa&body=${encodeURIComponent(body)}`;
