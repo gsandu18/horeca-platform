@@ -1,82 +1,108 @@
+<!-- cv-autocomplete.html -->
 <!DOCTYPE html>
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Formular abonament firmă</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Validare Firmă HoReCa</title>
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Inter', sans-serif;
+      background: #f4f7fa;
       padding: 20px;
-      max-width: 600px;
-      margin: auto;
+      display: flex;
+      justify-content: center;
     }
-    h1 { color: #003366; margin-bottom: 20px; }
-    form { display: grid; gap: 15px; }
-    label { font-weight: bold; }
-    input, select { padding: 8px; font-size: 1rem; width: 100%; }
-    button {
-      padding: 12px;
-      background: #007bff;
+    .form-wrapper {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    h1 {
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      color: #22356f;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #333;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="file"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      transition: border-color 0.2s;
+    }
+    input:focus {
+      border-color: #00c8a0;
+      outline: none;
+    }
+    .submit-btn {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.75rem;
+      background: #0066d0;
       color: #fff;
       border: none;
-      font-size: 1rem;
+      border-radius: 5px;
+      font-size: 1.1rem;
       cursor: pointer;
-      border-radius: 4px;
+      transition: background 0.3s;
     }
-    button:hover { background: #0056b3; }
+    .submit-btn:hover {
+      background: #0052a3;
+    }
+    @media (max-width: 480px) {
+      .form-wrapper {
+        padding: 1rem;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
-    <script src="firma.js"></script>
-</body>
-</html>
 <body>
+  <div class="form-wrapper">
+    <h1>Validare Firmă HoReCa</h1>
+    <form id="firma-form">
+      <label for="nume">Nume firmă*</label>
+      <input type="text" id="nume" name="nume" placeholder="Introduceți numele firmei" required />
 
-  <h1>Abonament firmă</h1>
-  <p id="info-plan">Se încarcă detalii plan…</p>
+      <label for="email">Email firmă*</label>
+      <input type="email" id="email" name="email" placeholder="email@firma.ro" required />
 
-  <form action="multumim.html" method="GET">
-    <input type="hidden" name="plan" id="inp-plan" />
-    <input type="hidden" name="tip" id="inp-tip" />
+      <label for="persoana">Persoană de contact*</label>
+      <input type="text" id="persoana" name="persoana" placeholder="Nume complet" required />
 
-    <label for="numeFirma">Nume firmă:</label>
-    <input type="text" id="numeFirma" name="numeFirma" required />
+      <label for="document">Document validare (PDF, PNG, JPG)*</label>
+      <input type="file" id="document" name="document" accept=".pdf,.png,.jpg,.jpeg" required />
 
-    <label for="emailFirma">Email firmă:</label>
-    <input type="email" id="emailFirma" name="emailFirma" required />
+      <label for="telefon">Telefon*</label>
+      <input type="tel" id="telefon" name="telefon" placeholder="+40 712 345 678" required />
 
-    <label for="persContact">Persoană de contact:</label>
-    <input type="text" id="persContact" name="persContact" required />
-   <div class="form-group">
-  <label for="doc-validare">Document validare firmă (PDF, PNG, JPG):</label>
-  <input type="file" id="doc-validare" name="doc-validare" accept=".pdf,.png,.jpg,.jpeg" required>
-</div>
-    <label for="telefon">Telefon:</label>
-    <input type="tel" id="telefon" name="telefon" required />
-
-    <button type="submit">Trimite cerere</button>
-  </form>
+      <button type="submit" class="submit-btn">Trimite cerere</button>
+    </form>
+  </div>
 
   <script>
-    const params = new URLSearchParams(location.search);
-    const plan = params.get('plan') || 'nevalid';
-    const tip   = params.get('tip') || 'lunar';
-
-    const planName = plan.charAt(0).toUpperCase() + plan.slice(1);
-    const tipName = tip === 'anual' ? 'anual' : 'lunar';
-    document.getElementById('info-plan').textContent =
-      `Alegeți: Plan ${planName} (${tipName})`;
-
-    document.getElementById('inp-plan').value = plan;
-    document.getElementById('inp-tip').value = tip;
+    document.getElementById("firma-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      // aici poți adăuga validare JS suplimentară sau trimite ajax/fetch
+      alert("Cererea a fost trimisă! Vom reveni cu un răspuns în scurt timp.");
+      this.reset();
+    });
   </script>
-
 </body>
 </html>
-<label>Logo firmă</label>
-<input type="file" id="logo-upload" accept="image/*" />
-
-<div id="logo-preview-container">
-  <img id="logo-preview" src="#" alt="Logo firmă" class="hidden" />
-</div>
