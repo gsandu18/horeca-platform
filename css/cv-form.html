@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <title>Formular CV</title>
+  <link rel="stylesheet" href="css/cv.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Completează CV-ul</h1>
+    <form id="cv-form">
+      <label>Nume complet *</label>
+      <input type="text" name="nume" required />
+
+      <label>Email *</label>
+      <input type="email" name="email" required />
+
+      <label>Telefon *</label>
+      <input type="tel" name="telefon" required />
+
+      <label>Experiență profesională *</label>
+      <textarea name="experienta" required></textarea>
+
+      <label>Studii *</label>
+      <textarea name="studii" required></textarea>
+
+      <label>Competențe *</label>
+      <textarea name="competente" required></textarea>
+
+      <button type="submit">Generează CV</button>
+    </form>
+
+    <div id="cv-output" class="hidden"></div>
+  </div>
+  <script src="js/cv.js"></script>
+</body>
+</html>
