@@ -51,6 +51,16 @@ nav a {
   color: #333;
   padding: 4rem 0;
   text-align: center;
+  
+  .hero .btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: #A8E6CF;
+  color: #000;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
 }
 /* ABOUT & SERVICES */
 .about, .services {
