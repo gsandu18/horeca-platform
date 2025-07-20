@@ -48,6 +48,7 @@
   <h2 style="text-align: center; color: #1F2A44;">Serviciile noastre</h2>
   <p style="text-align: center; color: #555;">Oferim soluții rapide și eficiente pentru angajatori din domeniul HoReCa.</p>
 
+  <!-- Stiluri specifice acestei secțiuni -->
   <style>
     .services-grid {
       display: grid;
@@ -67,46 +68,86 @@
       background-color: #F5F5F5;
       border-radius: 12px;
       padding: 20px;
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
-    .service-box h3 {
-      margin-top: 0;
-      color: #1F2A44;
-      font-size: 1.2em;
+    .service-icon {
+      font-size: 30px;
+      color: #A8E6CF;
     }
 
-    .service-box p {
+    .service-text h3 {
+      margin: 0;
+      color: #1F2A44;
+      font-size: 1.1em;
+    }
+
+    .service-text p {
+      margin: 6px 0 0;
       color: #555;
       font-size: 0.95em;
     }
   </style>
 
+  <!-- Iconuri Font Awesome (inclus dacă nu e deja în head) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <!-- Lista serviciilor -->
   <div class="services-grid">
+
     <div class="service-box">
-      <h3>Recrutare rapidă</h3>
-      <p>Găsim personal potrivit în timp scurt, pentru restaurante, hoteluri și cafenele.</p>
+      <i class="fas fa-clock service-icon"></i>
+      <div class="service-text">
+        <h3>Recrutare rapidă</h3>
+        <p>Găsim personal potrivit în timp scurt, pentru restaurante, hoteluri și cafenele.</p>
+      </div>
     </div>
+
     <div class="service-box">
-      <h3>Personal verificat</h3>
-      <p>Lucrăm doar cu candidați validați, cu experiență în domeniul HoReCa.</p>
+      <i class="fas fa-user-check service-icon"></i>
+      <div class="service-text">
+        <h3>Personal verificat</h3>
+        <p>Lucrăm doar cu candidați validați, cu experiență în domeniul HoReCa.</p>
+      </div>
     </div>
+
     <div class="service-box">
-      <h3>Personal sezonier</h3>
-      <p>Sprijinim locații care au nevoie de personal temporar, în sezon sau evenimente.</p>
+      <i class="fas fa-calendar-alt service-icon"></i>
+      <div class="service-text">
+        <h3>Personal sezonier</h3>
+        <p>Sprijinim locații care au nevoie de personal temporar sau pe perioadă determinată.</p>
+      </div>
     </div>
+
     <div class="service-box">
-      <h3>Consultanță dedicată</h3>
-      <p>Îți oferim recomandări personalizate în funcție de specificul afacerii tale.</p>
+      <i class="fas fa-comments service-icon"></i>
+      <div class="service-text">
+        <h3>Consultanță dedicată</h3>
+        <p>Îți oferim recomandări personalizate în funcție de specificul afacerii tale.</p>
+      </div>
     </div>
+
     <div class="service-box">
-      <h3>Staff complet</h3>
-      <p>Ospătari, bucătari, barista, recepționeri, cameriste — tot personalul de care ai nevoie.</p>
+      <i class="fas fa-users service-icon"></i>
+      <div class="service-text">
+        <h3>Staff complet</h3>
+        <p>Ospătari, bucătari, barista, cameriste — tot personalul de care ai nevoie.</p>
+      </div>
     </div>
+
     <div class="service-box">
-      <h3>Suport constant</h3>
-      <p>Răspundem prompt și rămânem alături de tine pe tot parcursul colaborării.</p>
+      <i class="fas fa-headset service-icon"></i>
+      <div class="service-text">
+        <h3>Suport constant</h3>
+        <p>Suntem alături de tine pe tot parcursul colaborării, nu doar la început.</p>
+      </div>
     </div>
+
+  </div>
+</section>
   </div>
 </section>
       </div>
