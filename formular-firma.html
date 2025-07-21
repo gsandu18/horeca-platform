@@ -2,66 +2,50 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Validare Firmă HoReCa</title>
-  <link rel="stylesheet" href="css/validare.css" />
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header>
-    <h1>HoReCa Personal</h1>
+
+  <header class="navbar">
+    <h1 class="logo">HoReCa Personal</h1>
   </header>
 
-  <section class="hero">
-    <div class="overlay">
+  <section class="validare-hero">
+    <div class="container">
       <h2>Validare Firmă</h2>
       <p>Completează formularul pentru a activa contul firmei</p>
     </div>
   </section>
 
-  <main class="container">
-    <form class="card" novalidate>
-      <label>
-        Nume firmă <span>*</span>
-        <input type="text" name="firma" required placeholder="Introdu numele firmei" />
-      </label>
+  <section>
+    <div class="validare-card">
+      <form id="firmaForm" enctype="multipart/form-data">
+        <label>Nume firmă *</label>
+        <input type="text" name="nume" required placeholder="Introdu numele firmei">
 
-      <label>
-        Email firmă <span>*</span>
-        <input type="email" name="email" required placeholder="email@firma.ro" />
-      </label>
+        <label>Email firmă *</label>
+        <input type="email" name="email" required placeholder="email@firma.ro">
 
-      <label>
-        Persoană de contact <span>*</span>
-        <input type="text" name="contact" required placeholder="Nume complet" />
-      </label>
+        <label>Persoană de contact *</label>
+        <input type="text" name="contact" required placeholder="Nume complet">
 
-      <label>
-        Document validare <span>*</span><br />
-        (PDF, PNG, JPG)
-        <input type="file" name="document" required accept=".pdf,.png,.jpg" />
-      </label>
+        <label>Document validare <small>(PDF, PNG, JPG)</small> *</label>
+        <input type="file" name="document" accept=".pdf,.png,.jpg,.jpeg" required>
 
-      <label>
-        Telefon <span>*</span>
-        <input type="tel" name="telefon" required placeholder="+40 712 345 678" />
-      </label>
+        <label>Telefon *</label>
+        <input type="tel" name="telefon" required placeholder="+40 712 345 678">
 
-      <button type="submit">Trimite cererea</button>
-    </form>
-  </main>
+        <button type="submit">Trimite cererea</button>
+      </form>
+    </div>
+  </section>
 
   <footer>
     © 2025 HoReCa Personal. Toate drepturile rezervate.
   </footer>
 
-  <script>
-    document.querySelector('form').addEventListener('submit', function(e) {
-      if (!e.target.checkValidity()) {
-        alert('Te rugăm să completezi toate câmpurile obligatorii corect.');
-        e.preventDefault();
-      }
-    });
-  </script>
 </body>
 </html>
