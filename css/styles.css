@@ -434,3 +434,54 @@ body {
 .contact-form button:hover {
   background-color: #8DDFBE;
 }
+.about-page {
+  padding: 60px 20px;
+  background-color: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.about-page h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #0e2a47;
+}
+
+.about-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.about-box .column {
+  flex: 1 1 30%;
+  min-width: 280px;
+}
+
+.about-box .column h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #0e2a47;
+}
+
+.about-box .column p,
+.about-box .column li {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.about-box ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .about-box {
+    flex-direction: column;
+  }
+}
