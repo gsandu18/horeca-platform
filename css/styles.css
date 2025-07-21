@@ -1,76 +1,93 @@
-/* RESET */
+/* ====== GENERAL ====== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
-  font-family: 'Segoe UI', sans-serif;
-  line-height: 1.6;
-  color: #222;
-  background: #F6F4F9;
+  font-family: 'Inter', sans-serif;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ====== HEADER ====== */
+.navbar {
+  background-color: #001f3f;
+  color: #ffffff;
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
 .container {
   max-width: 1200px;
   margin: auto;
-  padding: 0 1rem;
-}
-header {
-  background: #333;
-  color: white;
-  padding: 1rem 0;
-}
-.logo {
-  font-size: 1.5rem;
-}
-.nav-container {
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-nav a {
-  color: white;
-  text-decoration: none;
+
+.logo {
+  font-size: 1.8rem;
   font-weight: bold;
 }
+
+/* ====== NAVIGATION ====== */
+.nav-links ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: #ffffff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #00d9a0;
+}
+
+/* ====== HAMBURGER ====== */
 .hamburger {
   display: none;
   font-size: 2rem;
   cursor: pointer;
-  color: white;
+  color: #ffffff;
 }
 
-/* HERO */
-.hero {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100vh; /* sau 80vh */
-  text-align: center;
-}
-.hero {
-  background: #F5F5F5;
-  color: #000;
-  padding: 4rem 0;
-  text-align: center;
-}
-.hero .btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  background: #A8E6CF;
-  color: #000;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: bold;
-  
-  .hero h1, .hero p {
-  color: #fff;
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    width: 100%;
+    background-color: #001f3f;
+    position: absolute;
+    top: 70px;
+    left: 0;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .nav-links.active {
+    display: block;
+  }
+
+  .hamburger {
+    display: block;
+  }
 }
 
 /* ABOUT & SERVICES */
