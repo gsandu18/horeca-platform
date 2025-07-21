@@ -3,135 +3,64 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Validare Firmă HoReCa</title>
-  <style>
-    /* Reset & Fonturi */
-* { box-sizing: border-box; margin:0; padding:0; }
-body { font-family:'Segoe UI',sans-serif; background:#f0f4f8; color:#222; }
-
-/* Header */
-header {
-  background:#002f5f;
-  padding:1rem;
-  text-align:center;
-}
-header h1 {
-  color:#fff;
-  font-size:1.6rem;
-}
-
-/* Hero (fond imagine) */
-.hero {
-  background: url('../img/office-bg.jpg') no-repeat center / cover;
-  height:200px;
-  position:relative;
-}
-.hero .overlay {
-  background: rgba(0, 0, 0, 0.5);
-  height:100%;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  color:#fff;
-  text-align:center;
-}
-.hero h2 {
-  font-size:1.8rem;
-  margin-bottom:0.5rem;
-}
-.hero p {
-  font-size:1rem;
-}
-
-/* Form container */
-.container {
-  max-width:500px;
-  margin: -50px auto 2rem;
-  padding:0 1rem;
-}
-.card {
-  background:#fff;
-  padding:2rem;
-  border-radius:8px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.1);
-}
-.card label {
-  display:block;
-  margin-bottom:1rem;
-  font-weight:600;
-}
-.card span { color: red; }
-.card input {
-  width:100%;
-  padding:0.6rem;
-  margin-top:0.3rem;
-  border:1px solid #ccc;
-  border-radius:4px;
-  font-size:1rem;
-}
-.card button {
-  width:100%;
-  padding:0.8rem;
-  background:#007bff;
-  color:#fff;
-  border:none;
-  border-radius:4px;
-  font-size:1.1rem;
-  cursor:pointer;
-  transition:background 0.3s;
-}
-.card button:hover {
-  background:#0056b3;
-}
-
-/* Footer secțiune */
-footer {
-  text-align:center;
-  padding:1rem;
-  background:#002f5f;
-  color:#fff;
-  font-size:0.9rem;
-}
-
-/* Adaptare tabletă+*/ 
-@media (min-width:600px) {
-  .hero { height:300px; }
-  .hero h2 { font-size:2.4rem; }
-  .hero p { font-size:1.2rem; }
-}
-  </style>
+  <link rel="stylesheet" href="css/validare.css" />
 </head>
 <body>
-  <div class="form-wrapper">
-    <h1>Validare Firmă HoReCa</h1>
-    <form id="firma-form">
-      <label for="nume">Nume firmă*</label>
-      <input type="text" id="nume" name="nume" placeholder="Introduceți numele firmei" required />
+  <header>
+    <h1>HoReCa Personal</h1>
+  </header>
 
-      <label for="email">Email firmă*</label>
-      <input type="email" id="email" name="email" placeholder="email@firma.ro" required />
+  <section class="hero">
+    <div class="overlay">
+      <h2>Validare Firmă</h2>
+      <p>Completează formularul pentru a activa contul firmei</p>
+    </div>
+  </section>
 
-      <label for="persoana">Persoană de contact*</label>
-      <input type="text" id="persoana" name="persoana" placeholder="Nume complet" required />
+  <main class="container">
+    <form class="card" novalidate>
+      <label>
+        Nume firmă <span>*</span>
+        <input type="text" name="firma" required placeholder="Introdu numele firmei" />
+      </label>
 
-      <label for="document">Document validare (PDF, PNG, JPG)*</label>
-      <input type="file" id="document" name="document" accept=".pdf,.png,.jpg,.jpeg" required />
+      <label>
+        Email firmă <span>*</span>
+        <input type="email" name="email" required placeholder="email@firma.ro" />
+      </label>
 
-      <label for="telefon">Telefon*</label>
-      <input type="tel" id="telefon" name="telefon" placeholder="+40 712 345 678" required />
+      <label>
+        Persoană de contact <span>*</span>
+        <input type="text" name="contact" required placeholder="Nume complet" />
+      </label>
 
-      <button type="submit" class="submit-btn">Trimite cerere</button>
+      <label>
+        Document validare <span>*</span><br />
+        (PDF, PNG, JPG)
+        <input type="file" name="document" required accept=".pdf,.png,.jpg" />
+      </label>
+
+      <label>
+        Telefon <span>*</span>
+        <input type="tel" name="telefon" required placeholder="+40 712 345 678" />
+      </label>
+
+      <button type="submit">Trimite cererea</button>
     </form>
-  </div>
+  </main>
+
+  <footer>
+    © 2025 HoReCa Personal. Toate drepturile rezervate.
+  </footer>
 
   <script>
-    document.getElementById("firma-form").addEventListener("submit", function(e) {
-      e.preventDefault();
-      // aici poți adăuga validare JS suplimentară sau trimite ajax/fetch
-      alert("Cererea a fost trimisă! Vom reveni cu un răspuns în scurt timp.");
-      this.reset();
+    document.querySelector('form').addEventListener('submit', function(e) {
+      if (!e.target.checkValidity()) {
+        alert('Te rugăm să completezi toate câmpurile obligatorii corect.');
+        e.preventDefault();
+      }
     });
   </script>
 </body>
