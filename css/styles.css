@@ -507,3 +507,102 @@ footer {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: #222;
+  background-color: #fff;
+}
+
+.navbar {
+  background-color: #002f5f;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+.logo {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.validare-hero {
+  position: relative;
+  background-image: url('../img/hero-firma.jpg'); /* asigură-te că ai această imagine */
+  background-size: cover;
+  background-position: center;
+  padding: 100px 20px 60px;
+  text-align: center;
+  color: #fff;
+}
+
+.validare-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.validare-hero .container {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: auto;
+}
+
+.validare-hero h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.validare-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  padding: 20px;
+  margin: -70px auto 40px;
+  max-width: 500px;
+}
+
+.validare-card label {
+  font-weight: 600;
+  display: block;
+  margin-top: 15px;
+}
+
+.validare-card input,
+.validare-card button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.validare-card button {
+  background-color: #0066cc;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  margin-top: 20px;
+  transition: background 0.3s;
+}
+
+.validare-card button:hover {
+  background-color: #004c99;
+}
+
+footer {
+  text-align: center;
+  background-color: #002f5f;
+  color: white;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+  .validare-card {
+    padding: 40px;
+  }
+}
