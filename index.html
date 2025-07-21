@@ -242,8 +242,11 @@
   function toggleMenu() {
     document.getElementById('nav-menu').classList.toggle('active');
   }
+<script>
+  document.getElementById('start-btn').addEventListener('click', function () {
+    document.getElementById('candidati').scrollIntoView({ behavior: 'smooth' });
+  });
 </script>
-
 
 </body>
 </html>
