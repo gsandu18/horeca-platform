@@ -71,3 +71,10 @@ footer {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+.section-img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
