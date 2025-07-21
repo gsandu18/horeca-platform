@@ -307,25 +307,36 @@ body {
     grid-template-columns: 1fr 1fr;
     align-items: center;
   }
+.about {
+  padding: 2rem 1rem;
+  background: #f9f9f9;
+  color: #333;
 }
 
-.despre-text h2, .despre-text h3 {
-  color: #003087;
-  margin-bottom: 0.5rem;
+.hero-about {
+  background: #002f5f;
+  color: white;
+  padding: 3rem 1rem;
+  text-align: center;
 }
-.despre-text ul {
-  list-style: none;
-  padding-left: 0;
+
+.about-content h3 {
+  margin-top: 2rem;
+  color: #002f5f;
 }
-.despre-text li {
-  margin-bottom: 0.5rem;
-  font-size: 1.05rem;
+
+.about-content ul, .about-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
 }
-.despre-image img {
-  max-width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+.footer {
+  background: #001f3f;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
 }
+
 * {
   margin: 0;
   padding: 0;
