@@ -3,100 +3,138 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Formular Candidat</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  
+  <title>HoReCa Personal</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    .form-card {
-      max-width: 500px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #222;
+      background-color: #fff;
+    }
+
+    header {
+      background-color: #002f5f;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background-image: url('img/background.jpg'); /* Poți schimba imaginea */
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+      padding: 0.75rem 1.5rem;
+      background-color: #1e90ff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: #187bcd;
+    }
+
+    .container {
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    form {
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      background-color: #f5f5f5;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
-    .form-card input,
-    .form-card textarea {
-      padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+    label {
+      font-weight: bold;
+    }
+
+    input, textarea {
+      padding: 0.7rem;
       font-size: 1rem;
-      width: 100%;
-      box-sizing: border-box;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
 
-    .form-card button {
-      background: #00b894;
+    footer {
+      text-align: center;
+      background-color: #002f5f;
       color: white;
-      border: none;
-      padding: 0.75rem;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .form-card button:hover {
-      background: #019875;
-    }
-
-    #status-msg {
-      margin-top: 1rem;
-      color: green;
-      font-weight: bold;
-    }
-
-    .hidden {
-      display: none;
+      padding: 1rem;
+      margin-top: 2rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
-  </head>
+
 <body>
+  <header>
+    <h1>HoReCa Personal</h1>
+  </header>
 
-    <section class="candidate-section">
-  <div class="container">
+  <section class="hero">
+    <h2>Conectăm profesioniști cu oportunități HoReCa</h2>
+    <p>Aplică acum pentru joburi în restaurante, hoteluri și cafenele.</p>
+    <button id="start-btn" class="btn-primary">Începe acum</button>
+  </section>
+
+  <section id="candidati" class="container">
     <h2>Formular Candidat</h2>
-    <p class="intro">Completează profilul tău pentru a găsi jobul ideal în HoReCa.</p>
-    <form id="candidate-form">
-      <label for="nume">Numele complet *</label>
-      <input type="text" id="nume" name="nume" placeholder="Nume și prenume" required>
+    <form action="https://formspree.io/f/yourformid" method="POST">
+      <label for="nume">Nume complet*</label>
+      <input type="text" id="nume" name="nume" required />
 
-      <label for="email">Email *</label>
-      <input type="email" id="email" name="email" placeholder="exemplu@domeniu.com" required>
+      <label for="email">Email*</label>
+      <input type="email" id="email" name="email" required />
 
-      <label for="experienta">Experiență relevantă *</label>
-      <textarea id="experienta" name="experienta" rows="4" placeholder="Descrie locurile unde ai lucrat" required></textarea>
+      <label for="telefon">Telefon*</label>
+      <input type="tel" id="telefon" name="telefon" required />
 
-      <label for="domenii">Domenii preferate (ex: restaurant, hotel)</label>
-      <input type="text" id="domenii" name="domenii" placeholder="ex: restaurant, hotel">
-
-      <label for="companii">Companii preferate (separate prin virgulă)</label>
-      <input type="text" id="companii" name="companii" placeholder="ex: La Pergola, Hotel Plaza">
-
-      <label for="telefon">Telefon *</label>
-      <input type="tel" id="telefon" name="telefon" placeholder="+40 712 345 678" pattern="^\+?\d{7,15}$" required>
+      <label for="mesaj">Mesaj (opțional)</label>
+      <textarea id="mesaj" name="mesaj" rows="4" placeholder="Spune-ne mai multe despre tine..."></textarea>
 
       <button type="submit" class="btn-primary">Trimite aplicația</button>
     </form>
-    <div id="success-message" class="hidden">
-      <p>Mulțumim! Formularul a fost trimis cu succes.</p>
-    </div>
-  </div>
-</section>
   </section>
 
+  <footer>
+    © 2025 HoReCa Personal. Toate drepturile rezervate.
+  </footer>
 
   <script>
-    function trimiteCandidat(e) {
-      e.preventDefault();
-      document.getElementById("formular-candidat").style.display = "none";
-      document.getElementById("mesajSucces").style.display = "block";
-    }
-  <script>src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    document.getElementById('start-btn').addEventListener('click', function () {
+      document.getElementById('candidati').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
