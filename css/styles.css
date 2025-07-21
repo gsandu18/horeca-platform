@@ -434,58 +434,54 @@ body {
 .contact-form button:hover {
   background-color: #8DDFBE;
 }
-.about-page {
-  padding: 60px 20px;
-  background-color: #fff;
-  color: #222;
-  font-family: 'Helvetica Neue', sans-serif;
+.about {
+  padding: 4rem 1.5rem;
+  background-color: #f7f9fc;
+  color: #1a1a1a;
+  line-height: 1.7;
+  font-size: 1rem;
 }
 
 .hero-about {
+  background: #002b5c;
+  color: #fff;
+  padding: 3rem 1rem;
   text-align: center;
-  margin-bottom: 60px;
 }
 
-.hero-about h2 {
-  font-size: 2.4rem;
-  margin-bottom: 10px;
-  color: #002b5c;
-}
-
-.hero-about p {
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.about-sections {
+.about-content {
+  max-width: 1200px;
+  margin: 2rem auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
+  grid-template-columns: 1fr;
+  gap: 2rem;
 }
 
-.about-box {
-  background: #f9f9f9;
-  padding: 30px 25px;
+.about-content section {
+  background: #fff;
+  padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.about-box h3 {
+.about-content h3 {
+  margin-top: 0;
   color: #002b5c;
-  margin-bottom: 20px;
 }
 
-.about-box p,
-.about-box ul,
-.about-box ol {
-  font-size: 1rem;
-  line-height: 1.6;
+.about-content ul,
+.about-content ol {
+  padding-left: 1.25rem;
 }
 
-.about-box ul,
-.about-box ol {
-  padding-left: 20px;
+.about-content li {
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .about-content {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (min-width: 768px) {
