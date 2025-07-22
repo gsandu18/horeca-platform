@@ -123,18 +123,19 @@
       <label for="mesaj">Mesaj (opțional)</label>
       <textarea id="mesaj" name="mesaj" rows="4" placeholder="Spune-ne mai multe despre tine..."></textarea>
 
-      <button type="submit" class="btn-primary">Trimite aplicația</button>
+      <button type="submit" class="candidat.html">Trimite aplicația</button>
     </form>
   </section>
+    <script>
+    document.getElementById('start-btn').addEventListener('click', function () {
+      document.getElementById('candidati').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
 
   <footer>
     © 2025 HoReCa Personal. Toate drepturile rezervate.
   </footer>
 
-  <script>
-    document.getElementById('start-btn').addEventListener('click', function () {
-      document.getElementById('candidati').scrollIntoView({ behavior: 'smooth' });
-    });
-  </script>
+
 </body>
 </html>
