@@ -2,87 +2,47 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HoReCa Personal</title>
- <link rel="stylesheet" href="css/styles.css" />
-</section>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog HoReCa Personal</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
 </head>
 <body>
-  <header>
-  <header class="navbar">
-  <div class="container">
-    <h1 class="logo">Personal HoreCa</h1>
-    
-    <nav id="nav-menu" class="nav-links">
-      <ul>
-        <li><a href="#acasa">Acasă</a></li>
-        <li><a href="#despre">Despre Noi</a></li>
-        <li><a href="#servicii">Servicii</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="formular-firma.html">Cont Firma</a></li>
-        <li><a href="login.html">Contu Meu</a></li>
 
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-  </div>
-</header>
-  <!-- BACKGROUND -->
-  <section class="blog-hero">
+  <header class="site-header">
     <div class="container">
-      <img src="css/img/pexels-cottonbro-9198282.jpg" alt="HoReCa">     
-      <h2>Blog HoReCa Personal</h2>
-      <p>Cele mai noi articole & resurse pentru profesioniștii din HoReCa.</p>
+      <a href="#" class="logo">HoReCa Personal</a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#">Acasă</a></li>
+          <li><a href="#">Despre</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Servicii</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="blog-section">
+    <div class="container">
+      <h1 class="section-title">Blog HoReCa Personal</h1>
+      <p class="section-subtitle">Cele mai noi articole & resurse pentru profesioniștii din HoReCa</p>
+
+      <div class="blog-grid">
+        <article class="blog-card">
+          <img src="images/cv.png" alt="Icon CV" />
+          <div class="card-content">
+            <h3>Cum să-ți creezi un CV atrăgător în domeniul HoReCa</h3>
+            <p>Un CV bine structurat face diferența. Află ce caută angajatorii în 2025...</p>
+            <a href="#">Citește mai mult</a>
+          </div>
+        </article>
+        <!-- Alte articole pot fi duplicate aici -->
+      </div>
     </div>
   </section>
 
-  <!-- BLOG SECTION -->
-  <section class="blog-section container">
-    <h2 class="section-title">Articole & Resurse</h2>
-
-    <div class="blog-grid">
-
-      <div class="blog-card">
-        <img src="css/img/cv-atractiv.png" alt="CV atractiv HoReCa">
-        <div class="blog-content">
-          <h3>✅ Cum să-ți creezi un CV atrăgător în domeniul HoReCa</h3>
-          <p>Un CV bine structurat face diferența. Află ce caută angajatorii în 2025...</p>
-          <a href="#">Citește mai mult</a>
-        </div>
-      </div>
-
-      <div class="blog-card">
-        <img src="css/img/Captură de ecran din 2025-07-13 la 19.19.22.png" alt="Angajat ideal restaurant">
-        <div class="blog-content">
-          <h3>✅ Top 5 calități ale unui angajat ideal în restaurant</h3>
-          <p>Empatie, rapiditate și seriozitate. Detalii despre ce impresionează managerii HoReCa...</p>
-          <a href="#">Citește mai mult</a>
-        </div>
-      </div>
-
-      <div class="blog-card">
-        <img src="css/img/documente-legale.png" alt="Documente angajare legală">
-        <div class="blog-content">
-          <h3>✅ Ce documente sunt necesare pentru angajarea legală în HoReCa</h3>
-          <p>De la CI la aviz medical – ce acte trebuie să aibă orice angajat pregătit...</p>
-          <a href="#">Citește mai mult</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-
-
-
-    
-
-  <!-- FOOTER -->
-<footer>
-    <div class="container">
-      <p>© 2025 Personal HoreCa. Toate drepturile rezervate.</p>
 </body>
 </html>
