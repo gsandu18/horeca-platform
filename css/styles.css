@@ -789,6 +789,19 @@ body {
   transition: background 0.3s ease;
 }
 
+.cta-btn {
+  background-color: #A8E6CF;
+  color: #1F2A44;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 20px;
+  display: inline-block;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
 .cta-btn:hover {
   background-color: #94d9c2;
 }
