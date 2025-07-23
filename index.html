@@ -141,6 +141,63 @@
         <p>Suntem alături de tine pe tot parcursul colaborării, nu doar la început.</p>
         
   <!-- ===== CONTACT ===== -->
+   <!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal HoreCa</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="container">
+      <h1 class="logo">Personal HoreCa</h1>
+      <nav id="nav-menu" class="nav-links">
+        <ul>
+          <li><a href="#start">Acasă</a></li>
+          <li><a href="despre.html">Despre Noi</a></li>
+          <li><a href="#servicii">Servicii</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="formular-firma.html">Cont Firma</a></li>
+          <li><a href="login.html">Contul Meu</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="start">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h1>Conectăm profesioniști cu oportunități HoReCa</h1>
+        <p>Recrutăm personal de încredere pentru restaurante, hoteluri și cafenele.</p>
+        <a href="#contact" class="btn-primary">Începe acum</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICII ===== -->
+  <section id="servicii" style="padding: 60px 20px; background-color: #ffffff;">
+    <h2 style="text-align: center; color: #1F2A44;">Serviciile noastre</h2>
+    <p style="text-align: center; color: #555;">Oferim soluții rapide și eficiente pentru angajatori din domeniul HoReCa.</p>
+
+    <div class="services-grid">
+      <!-- Servicii individuale aici (au rămas neschimbate) -->
+      <!-- le poți păstra exact cum le-ai scris tu, cu .service-box, icon etc -->
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" style="padding: 60px 20px; background-color: #F5F5F5;">
+    <h2 style="text-align: center; color: #1F2A44;">Contactează-ne</h2>
+    <p style="text-align: center; color: #555;">Trimite-ne un mesaj și îți răspundem cât mai repede.</p>
+
     <form action="https://formspree.io/f/mjvnkzad" method="POST" class="contact-form">
       <input type="text" name="name" placeholder="Nume complet" required>
       <input type="email" name="email" placeholder="Adresă de email" required>
@@ -149,6 +206,23 @@
       <button type="submit">Trimite</button>
     </form>
   </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Personal HoreCa. Toate drepturile rezervate.</p>
+    </div>
+  </footer>
+
+  <!-- ===== JS ===== -->
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav-menu').classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
 
   <!-- ===== FOOTER ===== -->
   <footer>
