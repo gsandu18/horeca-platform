@@ -160,10 +160,14 @@
 
   <!-- ===== JS ===== -->
   <script>
-    function toggleMenu() {
-      document.getElementById('nav-menu').classList.toggle('active');
-    }
-  </script>
+  function toggleMenu() {
+    const menu = document.getElementById('nav-menu');
+    const hamburger = document.getElementById('hamburger');
+
+    menu.classList.toggle('active');
+    hamburger.classList.toggle('active');
+  }
+</script>
 
 </body>
 </html>
