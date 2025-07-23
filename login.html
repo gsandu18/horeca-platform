@@ -2,35 +2,225 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Autentificare Platformă</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 0;
+    }
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/login.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    .auth-container {
+      padding: 40px 20px;
+      max-width: 500px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .auth-container h1 {
+      font-size: 2rem;
+      color: #003087;
+      margin-bottom: 1rem;
+    }
+
+    .auth-container span {
+      font-size: 1.4rem;
+      color: #0077b6;
+    }
+
+    .tab-switcher {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      gap: 1rem;
+    }
+
+    .tab {
+      background: #eee;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .tab.active {
+      background: #00d1b2;
+      color: white;
+    }
+
+    .login-card {
+      display: none;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      animation: fadeIn 0.4s ease;
+    }
+
+    .login-card.active-form {
+      display: block;
+    }
+
+    .login-card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #1f2a44;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .login-card input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .login-card button {
+      width: 100%;
+      padding: 14px;
+      background-color: #00ccb4;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+      cursor: pointer;
+    }
+
+    .login-card button:hover {
+      background-color: #00a99d;
+    }
+
+    .extras {
+      margin-top: 15px;
+      font-size: 0.95rem;
+    }
+
+    .extras a {
+      color: #003087;
+      text-decoration: none;
+      display: inline-block;
+      margin: 5px 10px;
+      font-weight: 500;
+    }
+
+    .extras a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .google-btn {
+      background: #fff;
+      color: #333;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+    }
+
+    .google-btn:hover {
+      background: #f3f3f3;
+    }
+  </style>
 </head>
-
 <body>
-  <div class="login-container">
-    <h1 class="title">Autentificare Platformă</h1>
+  <div class="auth-container">
+    <h1>Autentificare<br><span>Platformă</span></h1>
 
-    <div class="login-section">
-      <h2><i class="fas fa-user icon"></i> Login Candidat</h2>
-      <form id="login-candidat">
-        <input type="email" name="email" placeholder="Email" required />
-        <input type="password" name="parola" placeholder="Parolă" required />
-        <button type="submit">Intră în cont</button>
-      </form>
+    <div class="tab-switcher">
+      <button class="tab active" onclick="switchTab('candidat')">Login Candidat</button>
+      <button class="tab" onclick="switchTab('firma')">Login Firmă</button>
     </div>
-    
-    <div class="login-section">
-      <h2><i class="fas fa-building icon"></i> Login Firmă</h2>
-      <form id="login-firma">
-        <input type="email" name="email" placeholder="Email" required />
-        <input type="password" name="parola" placeholder="Parolă" required />
-        <button type="submit">Intră în cont</button>
-      </form>
-    </div>
-  
-  <script src="login.js"></script>
 
+    <!-- Candidat -->
+    <div class="login-card active-form" id="form-candidat">
+      <h2><i class="fas fa-user"></i> Login Candidat</h2>
+      <input type="email" id="email-candidat" placeholder="Email" />
+      <input type="password" id="pass-candidat" placeholder="Parolă" />
+      <button onclick="login('candidat')">Intră în cont</button>
+      <button class="google-btn" onclick="loginWithGoogle()"> <i class="fab fa-google"></i> Continuă cu Google</button>
+      <div class="extras">
+        <a href="#">Ai uitat parola?</a> |
+        <a href="#">Creează cont</a>
+      </div>
+    </div>
+
+    <!-- Firmă -->
+    <div class="login-card" id="form-firma">
+      <h2><i class="fas fa-building"></i> Login Firmă</h2>
+      <input type="email" id="email-firma" placeholder="Email" />
+      <input type="password" id="pass-firma" placeholder="Parolă" />
+      <button onclick="login('firma')">Intră în cont</button>
+      <button class="google-btn" onclick="loginWithGoogle()"> <i class="fab fa-google"></i> Continuă cu Google</button>
+      <div class="extras">
+        <a href="#">Ai uitat parola?</a> |
+        <a href="#">Înregistrează firmă</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIz...yourKeyHere",
+      authDomain: "nume-proiect.firebaseapp.com",
+      projectId: "nume-proiect",
+      storageBucket: "nume-proiect.appspot.com",
+      messagingSenderId: "XXXXXXX",
+      appId: "X:XXX:web:XXXX"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.login-card').forEach(f => f.classList.remove('active-form'));
+
+      document.getElementById(`form-${tab}`).classList.add('active-form');
+      document.querySelector(`.tab-switcher .tab[onclick*="${tab}"]`).classList.add('active');
+    }
+
+    function login(tab) {
+      const email = document.getElementById(`email-${tab}`).value;
+      const pass = document.getElementById(`pass-${tab}`).value;
+
+      if (!email || !pass) return alert("Completează toate câmpurile.");
+
+      auth.signInWithEmailAndPassword(email, pass)
+        .then(userCred => {
+          alert("Autentificare reușită!");
+          window.location.href = "dashboard.html";
+        })
+        .catch(error => {
+          alert("Eroare: " + error.message);
+        });
+    }
+
+    function loginWithGoogle() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider)
+        .then(result => {
+          alert("Autentificat cu Google!");
+          window.location.href = "dashboard.html";
+        })
+        .catch(error => {
+          alert("Eroare Google: " + error.message);
+        });
+    }
+  </script>
+</body>
+</html>
