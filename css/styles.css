@@ -92,7 +92,30 @@ a { text-decoration: none; color: inherit; }
 .btn-primary:hover {
   background: #94d9c2;
 }
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
 
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 40px 20px;
+  text-align: center;
+  color: white;
+}
 /* Servicii */
 #servicii {
   padding: 3rem 1rem;
