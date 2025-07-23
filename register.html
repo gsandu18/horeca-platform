@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Înregistrare</title>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f7fb;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .form-container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 450px;
+      margin: auto;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: #00bfa6;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #009d8c;
+    }
+
+    a {
+      display: block;
+      margin-top: 15px;
+      color: #0077b6;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Crează un cont nou</h2>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Parolă">
+    <button onclick="register()">Înregistrare</button>
+    <a href="login.html">Ai deja cont? Autentifică-te</a>
+  </div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIz...yourKeyHere",
+      authDomain: "nume-proiect.firebaseapp.com",
+      projectId: "nume-proiect",
+      storageBucket: "nume-proiect.appspot.com",
+      messagingSenderId: "XXXXXXX",
+      appId: "X:XXX:web:XXXX"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    function register() {
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (!email || !password) {
+        alert("Completează toate câmpurile!");
+        return;
+      }
+
+      auth.createUserWithEmailAndPassword(email, password)
+        .then(userCredential => {
+          alert("Cont creat cu succes!");
+          window.location.href = "dashboard.html";
+        })
+        .catch(error => {
+          alert("Eroare: " + error.message);
+        });
+    }
+  </script>
+</body>
+</html>
