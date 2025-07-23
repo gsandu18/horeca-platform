@@ -159,7 +159,7 @@
   </footer>
 
   <!-- ===== JS ===== -->
-  <script>
+ <script>
   function toggleMenu() {
     const menu = document.getElementById('nav-menu');
     const hamburger = document.getElementById('hamburger');
@@ -167,7 +167,22 @@
     menu.classList.toggle('active');
     hamburger.classList.toggle('active');
   }
-</script>
 
+  // Închide meniul când se dă click pe un link
+  document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll('#nav-menu a');
+    const menu = document.getElementById('nav-menu');
+    const hamburger = document.getElementById('hamburger');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (menu.classList.contains('active')) {
+          menu.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>
