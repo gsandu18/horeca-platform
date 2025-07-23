@@ -776,32 +776,31 @@ body {
   color: #007b5e;
   font-weight: 600;
   text-decoration: none;
-}.cta-btn {
-  background-color: #A8E6CF;
-  color: #1F2A44;
-  padding: 12px 28px;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  margin-top: 20px;
-  display: inline-block;
-  text-decoration: none;
-  transition: background 0.3s ease;
+
+}
+.hero {
+  position: relative;
+  height: 90vh;
+  background: url('images/bg-hero.jpg') center/cover no-repeat;
+  color: #fff;
 }
 
 .overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 2; /* Asigură-te că există */
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
-  color: white;
   padding: 40px;
 }
+
+.hero-content {
+  max-width: 600px;
+  margin: auto;
+}
+
 .cta-btn {
   display: inline-block;
   margin-top: 20px;
