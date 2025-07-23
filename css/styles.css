@@ -229,21 +229,27 @@ footer {
   RESPONSIVE
 ======================== */
 @media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
   .nav-links ul {
-    flex-direction: column;
     display: none;
+    flex-direction: column;
     background-color: #042f5f;
     padding: 20px;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    width: 220px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   }
 
   .nav-links.active ul {
     display: flex;
   }
-
-  .hamburger {
-    display: block;
-  }}
-
+}
 /* MOBILE */
 @media (max-width: 768px) {
  /* Stiluri navbar general */
@@ -944,4 +950,31 @@ body {
 .cta-btn:hover {
   background-color: #94d9c2;
   transform: translateY(-2px);
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger span {
+  height: 3px;
+  background-color: #fff;
+  border-radius: 3px;
+  transition: all 0.4s ease;
+}
+
+/* ====== Animare spre "X" ====== */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
 }
