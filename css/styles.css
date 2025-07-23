@@ -1,4 +1,6 @@
-/* ====== GENERAL ====== */
+/* ========================
+  RESET & BASE STYLES
+======================== */
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +8,15 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+  margin-bottom: 1rem;
 }
 
 a {
@@ -14,108 +24,206 @@ a {
   color: inherit;
 }
 
-/* ====== HEADER ====== */
+/* ========================
+  NAVBAR
+======================== */
 .navbar {
-  background-color: #002f5f;
-  color: #ffffff;
-  padding: 1rem 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 999;
+  background-color: #042f5f;
+  color: white;
+  padding: 20px 0;
 }
 
-.container {
+.navbar .container {
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.logo {
+.navbar .logo {
   font-size: 1.8rem;
   font-weight: bold;
 }
 
-/* ====== NAVIGATION ====== */
 .nav-links ul {
-  display: flex;
   list-style: none;
-  gap: 2rem;
+  display: flex;
+  gap: 20px;
 }
 
 .nav-links a {
-  color: #ffffff;
-  font-weight: 500;
+  color: #fff;
+  font-weight: bold;
   transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: #00d9a0;
+  color: #A8E6CF;
 }
 
-/* ====== HAMBURGER ====== */
 .hamburger {
   display: none;
-  font-size: 2rem;
+  font-size: 1.8rem;
   cursor: pointer;
-  color: #ffffff;
 }
 
-/* ====== RESPONSIVE ====== */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    width: 100%;
-    background-color: #001f3f;
-    position: absolute;
-    top: 70px;
-    left: 0;
-  }
+/* ========================
+  HERO
+======================== */
+.hero {
+  height: 100vh;
+  background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  color: #fff;
+}
 
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 40px 20px;
+  max-width: 700px;
+  border-radius: 10px;
+}
+
+.btn-primary {
+  background-color: #A8E6CF;
+  color: #042f5f;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: pointer;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #8ddfbe;
+}
+
+/* ========================
+  SERVICII
+======================== */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.service-box {
+  background-color: #F5F5F5;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.service-icon {
+  font-size: 30px;
+  color: #A8E6CF;
+}
+
+.service-text h3 {
+  margin: 0;
+  color: #1F2A44;
+  font-size: 1.1em;
+}
+
+.service-text p {
+  margin: 6px 0 0;
+  color: #555;
+  font-size: 0.95em;
+}
+
+/* ========================
+  CONTACT
+======================== */
+.contact-form {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+  width: 100%;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form button {
+  background-color: #A8E6CF;
+  color: #1F2A44;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #8ddfbe;
+}
+
+/* ========================
+  FOOTER
+======================== */
+footer {
+  background-color: #042f5f;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 60px;
+}
+
+/* ========================
+  RESPONSIVE
+======================== */
+@media (max-width: 768px) {
   .nav-links ul {
     flex-direction: column;
-    padding: 1rem;
-    gap: 1.5rem;
+    display: none;
+    background-color: #042f5f;
+    padding: 20px;
   }
 
-  .nav-links.active {
-    display: block;
+  .nav-links.active ul {
+    display: flex;
   }
 
   .hamburger {
     display: block;
-  }
-}
-
-/* ABOUT & SERVICES */
-.about, .services {
-  padding: 3rem 0;
-}
-.services .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-.card {
-  background: white;
-  padding: 1.5rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  text-align: center;
-}
-
-/* FOOTER */
-footer {
-  background: #001f3f;
-  color: white;
-  text-align: center;
-  padding: 1rem 0;
-  margin-top: 2rem;
-}
+  }}
 
 /* MOBILE */
 @media (max-width: 768px) {
