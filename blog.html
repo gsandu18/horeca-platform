@@ -2,231 +2,76 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blog Personal HoreCa</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background: #f5f7fb;
-      color: #222;
-    }
-
-    header {
-      background-color: #003366;
-      color: white;
-      padding: 20px 0;
-    }
-
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      padding: 0;
-      margin: 0;
-      gap: 20px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .hamburger {
-      display: none;
-      font-size: 28px;
-      cursor: pointer;
-      color: white;
-    }
-
-    .blog-container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2rem;
-      color: #003366;
-      margin-bottom: 10px;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      color: #555;
-      margin-bottom: 40px;
-    }
-
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-    }
-
-    .blog-card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      padding: 20px;
-      transition: transform 0.3s ease;
-    }
-
-    .blog-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .blog-icon {
-      width: 50px;
-      height: 50px;
-      margin-bottom: 15px;
-    }
-
-    .blog-card h3 {
-      margin-top: 0;
-      color: #1c1c1c;
-    }
-
-    .blog-card p {
-      color: #444;
-      font-size: 0.95rem;
-    }
-
-    .btn-citeste {
-      display: inline-block;
-      margin-top: 12px;
-      background: #007b5e;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: background 0.2s ease;
-    }
-
-    .btn-citeste:hover {
-      background: #005f47;
-    }
-
-    footer {
-      background-color: #003366;
-      color: white;
-      text-align: center;
-      padding: 20px 0;
-      margin-top: 40px;
-    }
-
-    /* Responsivitate */
-    @media (max-width: 768px) {
-      .nav-container {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-menu ul {
-        flex-direction: column;
-        width: 100%;
-        display: none;
-        background-color: #003366;
-        padding: 10px 0;
-      }
-
-      .nav-menu ul.active {
-        display: flex;
-      }
-
-      .hamburger {
-        display: block;
-        margin-top: 10px;
-      }
-
-      nav ul {
-        gap: 15px;
-        padding-left: 20px;
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cum să‑ți creezi un CV atrăgător – Blog HoReCa Personal</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-
   <header class="navbar">
-    <div class="nav-container">
+    <div class="container">
       <h1 class="logo">Personal HoReCa</h1>
-      <nav id="nav-menu" class="nav-menu">
+      <nav id="nav-menu" class="nav-links">
         <ul>
           <li><a href="index.html">Acasă</a></li>
           <li><a href="despre.html">Despre Noi</a></li>
           <li><a href="servicii.html">Servicii</a></li>
           <li><a href="blog.html">Blog</a></li>
-          <li><a href="firma-login.html">Cont Firma</a></li>
-          <li><a href="candidat-login.html">Contul Meu</a></li>
+          <li><a href="formular-firma.html">Cont Firmă</a></li>
+          <li><a href="login.html">Contul Meu</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
-      <div class="hamburger" onclick="toggleMenu()">☰</div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
     </div>
   </header>
 
-  <section class="blog-container">
-    <h2 class="section-title">Blog HoReCa Personal</h2>
-    <p class="section-subtitle">Cele mai noi articole & resurse pentru profesioniștii din HoReCa</p>
+  <main class="blog-article">
+    <div class="container">
+      <article>
+        <h1>Cum să‑ți creezi un CV atrăgător</h1>
+        <p class="blog-date">15 Iulie 2025</p>
+        <img src="https://images.unsplash.com/photo-1589571894960-20bbe2828e46?auto=format&fit=crop&w=1200&q=80"
+             alt="CV și pix" class="article-image">
 
-    <div class="blog-grid">
+        <section>
+          <h2>1. Structură clară și logică</h2>
+          <p>Organizează-ți CV-ul în secțiuni: Date personale, Experiență, Educație, Competențe. Folosește titluri clare și alinieri tipografice pentru o lectură rapidă.</p>
+        </section>
 
-      <!-- Articol 1 -->
-      <div class="blog-card">
-        <div class="blog-icon">
-          <svg fill="#007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M6 2a2 2 0 0 0-2 2v16c0 1.103.897 2 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v2H8v-2zm0 4h6v2H8v-2zm0-8h8v2H8V9z"/>
-          </svg>
-        </div>
-        <h3>Cum să-ți creezi un CV atrăgător</h3>
-        <p>Un CV bine structurat face diferența. Află ce caută angajatorii în 2025...</p>
-        <a class="btn-citeste" href="#">Citește mai mult</a>
-      </div>
+        <section>
+          <h2>2. Personalizează pentru HoReCa</h2>
+          <p>Include experiențe relevante – ospățeri, experiență în bucătărie, relații cu clienții. Adaugă cifre – ex. „servit 30+ clienți/zi”, „gestiune stocuri”.</p>
+        </section>
 
-      <!-- Articol 2 -->
-      <div class="blog-card">
-        <div class="blog-icon">
-          <svg fill="#007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12c0 4.63 3.21 8.44 7.44 9.65.54.1.74-.23.74-.52v-1.85c-3.03.66-3.67-1.4-3.67-1.4-.49-1.26-1.2-1.6-1.2-1.6-.98-.66.07-.65.07-.65 1.08.08 1.65 1.11 1.65 1.11.96 1.65 2.51 1.18 3.12.9.1-.7.37-1.17.67-1.44-2.42-.27-4.97-1.21-4.97-5.38 0-1.19.43-2.16 1.13-2.92-.11-.28-.49-1.37.11-2.86 0 0 .92-.29 3.01 1.11a10.44 10.44 0 0 1 2.74-.37c.93.01 1.87.13 2.74.37 2.08-1.4 3-1.11 3-1.11.61 1.49.23 2.58.12 2.86.7.76 1.12 1.73 1.12 2.92 0 4.19-2.56 5.1-5 5.37.38.33.72.98.72 1.98v2.93c0 .29.2.63.75.52C18.79 20.44 22 16.63 22 12c0-5.52-4.48-10-10-10z"/>
-          </svg>
-        </div>
-        <h3>Ghid pentru interviu în restaurante</h3>
-        <p>Află cum să te prezinți la un interviu HoReCa pentru a impresiona angajatorii.</p>
-        <a class="btn-citeste" href="#">Citește mai mult</a>
-      </div>
+        <section>
+          <h2>3. Accentuează soft‑skills</h2>
+          <p>În HoReCa sunt la mare căutare responsabilitatea, organizarea, comunicarea – evidențiază‑le scurt, concret.</p>
+        </section>
 
-      <!-- Articol 3 -->
-      <div class="blog-card">
-        <div class="blog-icon">
-          <svg fill="#007b5e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M3 6l3 18h12l3-18H3zm17.25 2L20 10H4l-.25-2h16.5zM5.5 18h13l-1.5-12H7L5.5 18z"/>
-          </svg>
-        </div>
-        <h3>Top 5 greșeli la început de carieră</h3>
-        <p>Ești la primul job în HoReCa? Iată ce greșeli să eviți și cum să te adaptezi rapid.</p>
-        <a class="btn-citeste" href="#">Citește mai mult</a>
-      </div>
+        <section>
+          <h2>4. Limba & formatarea</h2>
+          <p>Folosește un font clar (Arial, Calibri, Segoe UI), dimensiune 11–12 pt. Păstrează 1–2 pagini. Fără abrevieri incorecte și erori de gramatică.</p>
+        </section>
 
+        <section class="share-section">
+          <p>Ți-a plăcut articolul? Share‑uiește:</p>
+          <a href="#" class="btn-share">📤 Facebook</a>
+          <a href="#" class="btn-share">🐦 Twitter</a>
+        </section>
+
+        <section class="feedback">
+          <h2>Spune-ne părerea ta</h2>
+          <form action="https://formspree.io/f/feedback" method="POST">
+            <input type="hidden" name="article" value="CV atractiv">
+            <textarea name="comentariu" rows="4" placeholder="Comentariul tău..." required></textarea>
+            <button type="submit">Trimite feedback</button>
+          </form>
+        </section>
+      </article>
     </div>
-  </section>
+  </main>
 
   <footer>
     <p>© 2025 Personal HoReCa. Toate drepturile rezervate.</p>
@@ -234,9 +79,11 @@
 
   <script>
     function toggleMenu() {
-      document.querySelector(".nav-menu ul").classList.toggle("active");
+      const menu = document.getElementById('nav-menu');
+      const burger = document.getElementById('hamburger');
+      menu.classList.toggle('active');
+      burger.classList.toggle('active');
     }
   </script>
-
 </body>
 </html>
