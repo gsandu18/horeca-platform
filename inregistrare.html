@@ -1,148 +1,38 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Înregistrare Candidat</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f2f2f2;
-    }
-
-    header {
-      background-color: #042f5f;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    main {
-      max-width: 600px;
-      margin: 40px auto;
-      background: white;
-      padding: 40px 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      color: #042f5f;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    label {
-      font-weight: bold;
-    }
-
-    input, textarea {
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    button {
-      background-color: #042f5f;
-      color: #fff;
-      padding: 14px;
-      font-size: 16px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    button:hover {
-      background-color: #064b8e;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #042f5f;
-      color: white;
-      margin-top: 40px;
-    }
-
-    @media (max-width: 600px) {
-      main {
-        margin: 20px;
-        padding: 30px 20px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
-
-  <header>
-    <h1>Înregistrare Candidat</h1>
-  </header>
-
   <main>
-    <h2>Completează formularul</h2>
-    <form>
-      <label for="nume">Nume complet *</label>
-      <input type="text" id="nume" name="nume" required>
-
-      <label for="email">Email *</label>
-      <input type="email" id="email" name="email" required>
-
-      <!-- Adăugat în interiorul <form> -->
-<div class="field">
-  <label for="password">Parolă *</label>
-  <input type="password" id="password" required minlength="6" />
-</div>
-
-      <label for="experienta">Experiență profesională *</label>
-      <textarea id="experienta" name="experienta" placeholder="Ex: ospătar 2 ani la Restaurant X..." required></textarea>
-
-      <label for="domenii">Domenii preferate</label>
-      <input type="text" id="domenii" name="domenii" placeholder="Ex: restaurante, cafenele">
-
-      
-      <label for="firme">Firme preferate</label>
-      <input type="text" id="firme" name="firme" placeholder="Ex: Starbucks, CityGrill">
-
-      <button type="submit">Trimite aplicația</button>
+    <h1>Înregistrare Candidat HoReCa</h1>
+    <form id="signup-form">
+      <input type="text" id="fullname" placeholder="Nume complet" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Parolă (min. 6 caractere)" required>
+      <textarea id="experienta" placeholder="Experiență profesională" required></textarea>
+      <button type="submit">Înregistrează-te</button>
     </form>
+    <p id="message"></p>
+
+    <hr>
+
+    <h2>Autentificare</h2>
+    <form id="login-form">
+      <input type="email" id="login-email" placeholder="Email" required>
+      <input type="password" id="login-password" placeholder="Parolă" required>
+      <button type="submit">Autentifică-te</button>
+    </form>
+    <p id="login-message"></p>
   </main>
 
-  <footer>
-    © 2025 HoReCa Personal
-  </footer>
-<!-- Firebase SDK-uri (dacă nu ai deja) -->
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
-
-<!-- Config și script propriu -->
-<script>
-  const firebaseConfig = {
-    apiKey: "API_KEY",
-    authDomain: "PROJECT.firebaseapp.com",
-    projectId: "PROJECT_ID",
-    // ... restul
-  };
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-</script>
-
-<!-- JavaScript cu logica -->
-<script src="js/inregistrare-candidat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/inregistrare-candidat.js"></script>
 </body>
 </html>
