@@ -282,3 +282,65 @@ footer {
     display: block;
   }
 }
+/* ===== 8. Blog ===== */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.blog-article h1 {
+  font-size: 2.4rem;
+  margin: 2rem 0 0.5rem;
+  color: #003366;
+}
+.blog-date {
+  font-size: 0.9rem;
+  color: #999;
+}
+.article-image {
+  width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+}
+.blog-article section {
+  margin-bottom: 1.8rem;
+}
+.blog-article h2 {
+  font-size: 1.4rem;
+  color: #1F2A44;
+  margin-bottom: .5rem;
+}
+.share-section {
+  margin: 2rem 0;
+}
+.btn-share {
+  display: inline-block;
+  margin-right: 1rem;
+  background: #007b5e;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+.btn-share:hover {
+  background: #005f47;
+}
+.feedback textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: .8rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+.feedback button {
+  background: #A8E6CF;
+  color: #002f5f;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+.feedback button:hover {
+  background: #94d9c2;
+}
