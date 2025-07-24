@@ -132,76 +132,85 @@ a {
 }
 
 /* ===== 4. SERVICII ===== */
-#servicii {
-  padding: 3rem 1rem;
-  background: #fff;
+.servicii-section {
+  padding: 60px 20px;
+  background: #ffffff;
+  text-align: center;
 }
 
-#servicii h2 {
-  text-align: center;
+.servicii-section h2 {
   font-size: 2rem;
   color: #1F2A44;
-  margin-bottom: 1rem;
-}
-
-#servicii p {
-  text-align: center;
-  color: #555;
-  margin-bottom: 2rem;
-}
-
-.services-grid {
-  display: grid;
-  gap: 2rem;
-  max-width: 900px;
-  margin: 0 auto;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
-.service-box {
-  background: #F5F5F5;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.service-icon {
-  font-size: 2rem;
-  color: #A8E6CF;
-}
-
-.service-text h3 {
-  margin: 0;
-  color: #1F2A44;
-  font-size: 1.1rem;
-}
-
-.service-text p {
-  color: #555;
-  font-size: 0.95rem;
-  margin-top: 0.5rem;
-}
-
-/* ===== 5. CONTACT ===== */
-#contact {
-  padding: 3rem 1rem;
-  background: #f5f5f5;
-}
-
-#contact h2 {
-  text-align: center;
-  color: #1F2A44;
-  font-size: 2rem;
   margin-bottom: 0.5rem;
 }
 
-#contact p {
-  text-align: center;
+.servicii-section .subtitle {
+  color: #666;
+  margin-bottom: 2.5rem;
+  font-size: 1rem;
+}
+
+.services-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.service-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease;
+}
+
+.service-box:hover {
+  transform: translateY(-3px);
+}
+
+.service-icon {
+  font-size: 32px;
+  color: #94e9d2;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.service-text h3 {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+  color: #1F2A44;
+}
+
+.service-text p {
+  margin: 0;
   color: #555;
-  margin-bottom: 2rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* RESPONSIVE GRID */
+@media (min-width: 768px) {
+  .services-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .service-box {
+    width: calc(50% - 16px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-box {
+    width: calc(33.333% - 16px);
+  }
 }
 
 .contact-form {
