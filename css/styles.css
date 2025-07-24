@@ -343,4 +343,52 @@ footer {
 }
 .feedback button:hover {
   background: #94d9c2;
+  
+/* ===== 9. Despre ===== */
+.about-section {
+  padding: 60px 20px;
+  background-color: #f4f7fb;
+  color: #1F2A44;
+}
+
+.about-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+.about-section .intro-text {
+  text-align: center;
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+}
+
+.about-box {
+  background: white;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+}
+
+.about-box h3 {
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+.about-box p,
+.about-box ul {
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.about-box ul {
+  padding-left: 20px;
+}
+
+.about-box li {
+  margin-bottom: 8px;
 }
