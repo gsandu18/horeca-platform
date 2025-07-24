@@ -4,108 +4,197 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Personal HoreCa</title>
-  <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-</head>
-<body>
+  <style>
+    /* === CSS Complet Inclus === */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  <!-- ===== NAVBAR ===== -->
-  <header class="navbar">
-    <div class="container">
-      <h1 class="logo">Personal HoreCa</h1>
-      <nav id="nav-menu" class="nav-links">
-        <ul>
-          <li><a href="#start">Acasă</a></li>
-          <li><a href="despre.html">Despre Noi</a></li>
-          <li><a href="#servicii">Servicii</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="formular-firma.html">Cont Firma</a></li>
-          <li><a href="login.html">Contul Meu</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
-    </div>
-  </header>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: #1F2A44;
+      background-color: #f5f7fb;
+    }
 
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="start">
-      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=80" 
-       alt="Interior restaurant Horeca" class="hero-image">
-    <div class="hero-overlay">
-      <div class="hero-content">
-        <h1>Conectăm profesioniști cu oportunități HoReCa</h1>
-        <p>Recrutăm personal de încredere pentru restaurante, hoteluri și cafenele.</p>
-        <a href="inregistrare.html" class="btn-primary">Începe acum</a>
-      </div>
-    </div>
-  </section>
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-  <!-- ===== SERVICII ===== -->
-  <section id="servicii" style="padding: 60px 20px; background-color: #ffffff;">
-    <h2 style="text-align: center; color: #1F2A44;">Serviciile noastre</h2>
-    <p style="text-align: center; color: #555;">Oferim soluții rapide și eficiente pentru angajatori din domeniul HoReCa.</p>
+    .navbar {
+      background-color: #003366;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-    <div class="services-grid">
-     <div class="service-box">
-      <i class="fas fa-clock service-icon"></i>
-      <div class="service-text">
-        <h3>Recrutare rapidă</h3>
-        <p>Găsim personal potrivit în timp scurt, pentru restaurante, hoteluri și cafenele.</p>
-      </div>
-    </div>
+    .navbar .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: white;
+    }
 
-    <div class="service-box">
-      <i class="fas fa-user-check service-icon"></i>
-      <div class="service-text">
-        <h3>Personal verificat</h3>
-        <p>Lucrăm doar cu candidați validați, cu experiență în domeniul HoReCa.</p>
-      </div>
-    </div>
+    .nav-links ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
 
-    <div class="service-box">
-      <i class="fas fa-calendar-alt service-icon"></i>
-      <div class="service-text">
-        <h3>Personal sezonier</h3>
-        <p>Sprijinim locații care au nevoie de personal temporar sau pe perioadă determinată.</p>
-      </div>
-    </div>
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
 
-    <div class="service-box">
-      <i class="fas fa-comments service-icon"></i>
-      <div class="service-text">
-        <h3>Consultanță dedicată</h3>
-        <p>Îți oferim recomandări personalizate în funcție de specificul afacerii tale.</p>
-      </div>
-    </div>
+    .nav-links a:hover {
+      color: #A8E6CF;
+    }
 
-    <div class="service-box">
-      <i class="fas fa-users service-icon"></i>
-      <div class="service-text">
-        <h3>Staff complet</h3>
-        <p>Ospătari, bucătari, barista, cameriste — tot personalul de care ai nevoie.</p>
-      </div>
-    </div>
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
 
-    <div class="service-box">
-      <i class="fas fa-headset service-icon"></i>
-      <div class="service-text">
-        <h3>Suport constant</h3>
-        <p>Suntem alături de tine pe tot parcursul colaborării, nu doar la început.</p>
-      </div>
-    </div>
-  </section>
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background-color: white;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
 
-  <!-- ===== CONTACT ===== -->
-<section id="contact" style="padding: 60px 20px; background-color: #F5F5F5;">
-  <h2 style="text-align: center; color: #1F2A44;">Contactează-ne</h2>
-  <p style="text-align: center; color: #555;">Trimite-ne un mesaj și îți răspundem cât mai repede.</p>
+    .hero {
+      position: relative;
+      height: 90vh;
+      overflow: hidden;
+    }
 
-        <style>
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content {
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .btn-primary {
+      background-color: #A8E6CF;
+      color: #1F2A44;
+      padding: 12px 24px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #8DDFBE;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+      padding: 0 20px;
+    }
+
+    .service-box {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .service-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      color: #007b5e;
+      margin-bottom: 15px;
+    }
+
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .nav-links ul {
+        display: none;
+        flex-direction: column;
+        background-color: #003366;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        padding: 20px 0;
+        z-index: 1001;
+      }
+
+      .nav-links ul.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero-content h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
+
     .contact-form {
       max-width: 600px;
       margin: 40px auto;
@@ -145,45 +234,120 @@
       background-color: #8DDFBE;
     }
   </style>
-      
-  <form action="https://formspree.io/f/mjvnkzad" method="POST" class="contact-form">
-    <input type="text" name="name" placeholder="Nume complet" required>
-    <input type="email" name="email" placeholder="Adresă de email" required>
-    <input type="text" name="subject" placeholder="Subiect (opțional)">
-    <textarea name="message" placeholder="Mesajul tău..." required></textarea>
-    <button type="submit">Trimite</button>
-  </style>
-        <!-- ===== FOOTER ===== -->
-<footer>
-     <p>© 2025 Personal HoReCa. Toate drepturile rezervate.</p>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container">
+      <h1 class="logo">Personal HoreCa</h1>
+      <nav id="nav-menu" class="nav-links">
+        <ul>
+          <li><a href="#start">Acasă</a></li>
+          <li><a href="despre.html">Despre Noi</a></li>
+          <li><a href="#servicii">Servicii</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="formular-firma.html">Cont Firma</a></li>
+          <li><a href="login.html">Contul Meu</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="start">
+    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=80" 
+         alt="Interior restaurant Horeca" class="hero-image">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h1>Conectăm profesioniști cu oportunități HoReCa</h1>
+        <p>Recrutăm personal de încredere pentru restaurante, hoteluri și cafenele.</p>
+        <a href="inregistrare.html" class="btn-primary">Începe acum</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICII -->
+  <section id="servicii" style="padding: 60px 20px; background-color: #ffffff;">
+    <h2 style="text-align: center; color: #1F2A44;">Serviciile noastre</h2>
+    <p style="text-align: center; color: #555;">Oferim soluții rapide și eficiente pentru angajatori din domeniul HoReCa.</p>
+    <div class="services-grid">
+      <!-- Service Box 1 -->
+      <div class="service-box">
+        <i class="fas fa-clock service-icon"></i>
+        <div class="service-text">
+          <h3>Recrutare rapidă</h3>
+          <p>Găsim personal potrivit în timp scurt.</p>
+        </div>
+      </div>
+      <!-- Service Box 2 -->
+      <div class="service-box">
+        <i class="fas fa-user-check service-icon"></i>
+        <div class="service-text">
+          <h3>Personal verificat</h3>
+          <p>Lucrăm doar cu candidați validați și cu experiență.</p>
+        </div>
+      </div>
+      <!-- Service Box 3 -->
+      <div class="service-box">
+        <i class="fas fa-comments service-icon"></i>
+        <div class="service-text">
+          <h3>Consultanță dedicată</h3>
+          <p>Îți oferim recomandări personalizate în funcție de afacerea ta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="padding: 60px 20px; background-color: #F5F5F5;">
+    <h2 style="text-align: center; color: #1F2A44;">Contactează-ne</h2>
+    <p style="text-align: center; color: #555;">Trimite-ne un mesaj și îți răspundem cât mai repede.</p>
+    <form action="https://formspree.io/f/mjvnkzad" method="POST" class="contact-form">
+      <input type="text" name="name" placeholder="Nume complet" required>
+      <input type="email" name="email" placeholder="Adresă de email" required>
+      <input type="text" name="subject" placeholder="Subiect (opțional)">
+      <textarea name="message" placeholder="Mesajul tău..." required></textarea>
+      <button type="submit">Trimite</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Personal HoReCa. Toate drepturile rezervate.</p>
   </footer>
 
+  <!-- JS -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('nav-menu');
+      const hamburger = document.getElementById('hamburger');
 
-  <!-- ===== JS ===== -->
- <script>
-  function toggleMenu() {
-    const menu = document.getElementById('nav-menu');
-    const hamburger = document.getElementById('hamburger');
+      menu.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    }
 
-    menu.classList.toggle('active');
-    hamburger.classList.toggle('active');
-  }
+    document.addEventListener("DOMContentLoaded", function () {
+      const navLinks = document.querySelectorAll('#nav-menu a');
+      const menu = document.getElementById('nav-menu');
+      const hamburger = document.getElementById('hamburger');
 
-  // Închide meniul când se dă click pe un link
-  document.addEventListener("DOMContentLoaded", function () {
-    const navLinks = document.querySelectorAll('#nav-menu a');
-    const menu = document.getElementById('nav-menu');
-    const hamburger = document.getElementById('hamburger');
-
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        if (menu.classList.contains('active')) {
-          menu.classList.remove('active');
-          hamburger.classList.remove('active');
-        }
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (menu.classList.contains('active')) {
+            menu.classList.remove('active');
+            hamburger.classList.remove('active');
+          }
+        });
       });
     });
-  });
-</script>
+  </script>
+
 </body>
 </html>
