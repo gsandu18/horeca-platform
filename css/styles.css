@@ -210,11 +210,14 @@ a { text-decoration: none; color: inherit; }
 
 /* Footer */
 footer {
-  background: #002f5f;
-  color: #fff;
+  background-color: #042f5f;
+  color: white;
   text-align: center;
-  padding: 1.5rem 0;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
 }
+
 
 /* ===== 4. RESPONSIVE ===== */
 @media (max-width: 768px) {
