@@ -616,3 +616,18 @@ footer {
     display: flex;
   }
 }
+/* ✅ NAV LINK COLOR FIX for hamburger menu */
+.nav-menu ul a {
+  color: white !important;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.nav-menu ul a:visited {
+  color: white !important;
+}
+
+.nav-menu ul a:hover {
+  color: #ffcc00 !important;
+}
