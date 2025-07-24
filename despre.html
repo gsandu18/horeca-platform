@@ -3,54 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Despre Noi - Personal HoreCa</title>
-  <link rel="stylesheet" href="css/despre.css" />
+  <title>Despre Noi – Personal HoReCa</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <header>
-    <h1 class="logo">Personal HoReCa</h1>
+
+  <header class="navbar">
+    <div class="container">
+      <h1 class="logo">Personal HoReCa</h1>
+      <nav id="nav-menu" class="nav-links">
+        <ul>
+          <li><a href="index.html">Acasă</a></li>
+          <li><a href="despre.html" class="active">Despre Noi</a></li>
+          <li><a href="servicii.html">Servicii</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="formular-firma.html">Cont Firmă</a></li>
+          <li><a href="login.html">Contul Meu</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
   </header>
 
-  <main class="container">
-    <h2>Despre Noi</h2>
-    <p class="intro">Suntem o echipă pasionată de conexiuni umane și succes profesional în domeniul HoReCa.</p>
+  <main class="about-section">
+    <div class="container">
+      <h2>Despre Noi</h2>
+      <p class="intro-text">Suntem o echipă pasionată de conexiuni umane și succes profesional în domeniul HoReCa.</p>
 
-    <section class="grid">
-      <div>
+      <section class="about-box">
         <h3>Misiunea Noastră</h3>
-        
         <p>
-          Personal HoReCa este o agenție de recrutare dedicată exclusiv industriei ospitalității.
-          Cu peste <strong>10 ani de experiență</strong> în staffing pentru restaurante, hoteluri și cafenele,
+          Personal HoReCa este o agenție de recrutare dedicată exclusiv industriei ospitalității. Cu peste
+          <strong>10 ani de experiență</strong> în staffing pentru restaurante, hoteluri și cafenele,
           conectăm afacerile cu cei mai potriviți oameni.
         </p>
-      </div>
+      </section>
 
-      <div>
+      <section class="about-box">
         <h3>Ce ne diferențiază</h3>
-        
         <ul>
           <li><strong>Selecție riguroasă</strong> a candidaților</li>
           <li><strong>Consultanță personalizată</strong> pentru fiecare firmă</li>
           <li><strong>Program de formare continuă</strong> (training + onboarding)</li>
+          <li><strong>Rapiditate și eficiență</strong> în procesul de recrutare</li>
         </ul>
-      </div>
+      </section>
 
-      <div>
-        <h3>Metodologie de lucru</h3>
-          
-        <ol>
-          <li>Analiza nevoilor angajatorului</li>
-          <li>Publicare & promovare joburi</li>
-          <li>Intervievare + testare candidați</li>
-          <li>Propuneri adaptate & consultanță post-angajare</li>
-        </ol>
-      </div>
-    </section>
+      <section class="about-box">
+        <h3>Viziunea Noastră</h3>
+        <p>
+          Vrem să redefinim standardele recrutării în HoReCa, punând accent pe parteneriate durabile, performanță
+          și satisfacția ambelor părți – angajat și angajator.
+        </p>
+      </section>
+    </div>
   </main>
 
   <footer>
-    © 2025 HoReCa Personal. Toate drepturile rezervate.
+    <p>© 2025 Personal HoReCa. Toate drepturile rezervate.</p>
   </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("nav-menu");
+      const burger = document.getElementById("hamburger");
+      nav.classList.toggle("active");
+      burger.classList.toggle("active");
+    }
+  </script>
+
 </body>
 </html>
