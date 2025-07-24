@@ -125,6 +125,24 @@
   <footer>
     © 2025 HoReCa Personal
   </footer>
+<!-- Firebase SDK-uri (dacă nu ai deja) -->
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
 
+<!-- Config și script propriu -->
+<script>
+  const firebaseConfig = {
+    apiKey: "API_KEY",
+    authDomain: "PROJECT.firebaseapp.com",
+    projectId: "PROJECT_ID",
+    // ... restul
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+
+<!-- JavaScript cu logica -->
+<script src="js/inregistrare-candidat.js"></script>
 </body>
-</html>p
+</html>
