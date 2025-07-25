@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Înregistrare Candidat</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Înregistrare Firmă</title>
+
+  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -15,54 +18,58 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      margin: 0;
     }
     .form-box {
       background: white;
       padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-      width: 350px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
     }
-    input, select, button {
+    input, button {
       width: 100%;
       margin-top: 10px;
       padding: 10px;
       border-radius: 5px;
       border: 1px solid #ccc;
+      box-sizing: border-box;
     }
     button {
-      background-color: #4CAF50;
+      background-color: #007bff;
       color: white;
       border: none;
       cursor: pointer;
     }
     button:hover {
-      background-color: #45a049;
+      background-color: #0056b3;
     }
     .error {
       color: red;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
   <div class="form-box">
-    <h2>Înregistrare Candidat</h2>
-    <input type="text" id="nume" placeholder="Nume complet" required>
-    <input type="email" id="email" placeholder="Email" required>
-    <input type="password" id="parola" placeholder="Parolă (min. 6 caractere)" required>
-    <input type="text" id="meserie" placeholder="Meserie" required>
-    <input type="text" id="oras" placeholder="Oraș" required>
-    <input type="number" id="experienta" placeholder="Experiență (ani)">
-    <label>CV (PDF)</label>
-    <input type="file" id="cv" accept=".pdf">
-    <label>Poza de profil</label>
-    <input type="file" id="poza" accept="image/*">
-    <button onclick="register()">Înregistrează-te</button>
-    <p class="error" id="error"></p>
+    <h2>Înregistrare Firmă</h2>
+    <input type="text" id="numeFirma" placeholder="Nume firmă" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="parola" placeholder="Parolă" required />
+    <input type="text" id="oras" placeholder="Oraș" required />
+    <input type="text" id="contact" placeholder="Persoană de contact" required />
+    <input type="tel" id="telefon" placeholder="Telefon" required />
+    <input type="text" id="domeniu" placeholder="Domeniu de activitate" required />
+    <label style="margin-top:10px;">Logo firmă (opțional)</label>
+    <input type="file" id="logo" accept="image/*" />
+    <button onclick="registerFirma()">Înregistrează firma</button>
+    <p id="error" class="error"></p>
   </div>
 
   <script>
+    // Configurația Firebase
     const firebaseConfig = {
       apiKey: "xboBl3fmRwayMmEEtCCLoDsHWPG3",
       authDomain: "personal-horeca-e5f0e.firebaseapp.com",
@@ -72,48 +79,51 @@
       appId: "1:332871951184:web:7e65e3a1b1b61c46768255"
     };
 
+    // Inițializează Firebase
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
     const storage = firebase.storage();
 
-    async function register() {
-      const nume = document.getElementById("nume").value;
+    async function registerFirma() {
+      const numeFirma = document.getElementById("numeFirma").value;
       const email = document.getElementById("email").value;
       const parola = document.getElementById("parola").value;
-      const meserie = document.getElementById("meserie").value;
       const oras = document.getElementById("oras").value;
-      const experienta = document.getElementById("experienta").value;
-      const cv = document.getElementById("cv").files[0];
-      const poza = document.getElementById("poza").files[0];
+      const contact = document.getElementById("contact").value;
+      const telefon = document.getElementById("telefon").value;
+      const domeniu = document.getElementById("domeniu").value;
+      const logo = document.getElementById("logo").files[0];
+      const errorEl = document.getElementById("error");
+      errorEl.innerText = "";
 
       try {
+        // Creează cont Firebase Auth
         const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, parola);
         const uid = userCredential.user.uid;
 
-        // Upload fișiere
-        const cvRef = storage.ref(`cv-uri/${uid}.pdf`);
-        const pozaRef = storage.ref(`poze/${uid}.jpg`);
+        // Upload logo în Storage
+        let logoURL = "";
+        if (logo) {
+          const logoRef = storage.ref(`firme/${uid}/logo.jpg`);
+          await logoRef.put(logo);
+          logoURL = await logoRef.getDownloadURL();
+        }
 
-        const [cvSnapshot, pozaSnapshot] = await Promise.all([
-          cvRef.put(cv),
-          pozaRef.put(poza)
-        ]);
-
-        const cvURL = await cvSnapshot.ref.getDownloadURL();
-        const pozaURL = await pozaSnapshot.ref.getDownloadURL();
-
-        // Salvăm în Firestore
-        await db.collection("candidati").doc(uid).set({
-          nume, email, meserie, oras,
-          experienta: parseInt(experienta) || 0,
-          cv: cvURL,
-          poza: pozaURL,
+        // Salvare date firmă în Firestore
+        await db.collection("firme").doc(uid).set({
+          numeFirma,
+          email,
+          oras,
+          contact,
+          telefon,
+          domeniu,
+          logo: logoURL,
           creatLa: new Date()
         });
 
-        window.location.href = "dashboard-candidat.html";
+        window.location.href = "dashboard-firma.html"; // Redirect după succes
       } catch (error) {
-        document.getElementById("error").innerText = "Eroare: " + error.message;
+        errorEl.innerText = "Eroare: " + error.message;
       }
     }
   </script>
