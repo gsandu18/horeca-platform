@@ -1,48 +1,121 @@
-<!-- cv-autocomplete.html -->
 <!DOCTYPE html>
 <html lang="ro">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Validare Firmă HoReCa</title>
-  <link rel="stylesheet" href="css/validare.css">
+  <title>Înregistrare Candidat</title>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f7fb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .form-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+    input, select, button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .error {
+      color: red;
+    }
+  </style>
 </head>
 <body>
-
-  <header class="navbar">
-    <h1 class="logo">HoReCa Personal</h1>
-  </header>
-
-<section class="validare-firma">
-  <div class="form-container">
-    <h2>Validare Firmă</h2>
-    <p class="subheader">Completează formularul pentru a activa contul firmei</p>
-
-    <form action="#" method="post" enctype="multipart/form-data">
-      <label for="numeFirma">Nume firmă *</label>
-      <input type="text" id="numeFirma" name="numeFirma" placeholder="Ex: S.C. HoReCa SRL" required>
-
-      <label for="emailFirma">Email firmă *</label>
-      <input type="email" id="emailFirma" name="emailFirma" placeholder="contact@firma.ro" required>
-
-      <label for="persoanaContact">Persoană de contact *</label>
-      <input type="text" id="persoanaContact" name="persoanaContact" placeholder="Nume complet" required>
-
-      <label for="document">Document validare <small>(PDF, PNG, JPG)</small></label>
-      <input type="file" id="document" name="document" accept=".pdf,.png,.jpg,.jpeg" required>
-
-      <label for="telefon">Telefon *</label>
-      <input type="tel" id="telefon" name="telefon" placeholder="+40 712 345 678" required>
-
-      <button type="submit">✅ Trimite cererea</button>
-    </form>
+  <div class="form-box">
+    <h2>Înregistrare Candidat</h2>
+    <input type="text" id="nume" placeholder="Nume complet" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="parola" placeholder="Parolă (min. 6 caractere)" required>
+    <input type="text" id="meserie" placeholder="Meserie" required>
+    <input type="text" id="oras" placeholder="Oraș" required>
+    <input type="number" id="experienta" placeholder="Experiență (ani)">
+    <label>CV (PDF)</label>
+    <input type="file" id="cv" accept=".pdf">
+    <label>Poza de profil</label>
+    <input type="file" id="poza" accept="image/*">
+    <button onclick="register()">Înregistrează-te</button>
+    <p class="error" id="error"></p>
   </div>
-</section>
-<script src="js/firebase-config.js"></script>
-<script src="js/inregistrare-firma.js"></script>
-  <footer>
-    © 2025 HoReCa Personal. Toate drepturile rezervate.
-  </footer>
 
+  <script>
+    const firebaseConfig = {
+      apiKey: "xboBl3fmRwayMmEEtCCLoDsHWPG3",
+      authDomain: "personal-horeca-e5f0e.firebaseapp.com",
+      projectId: "personal-horeca-e5f0e",
+      storageBucket: "personal-horeca-e5f0e.appspot.com",
+      messagingSenderId: "332871951184",
+      appId: "1:332871951184:web:7e65e3a1b1b61c46768255"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const storage = firebase.storage();
+
+    async function register() {
+      const nume = document.getElementById("nume").value;
+      const email = document.getElementById("email").value;
+      const parola = document.getElementById("parola").value;
+      const meserie = document.getElementById("meserie").value;
+      const oras = document.getElementById("oras").value;
+      const experienta = document.getElementById("experienta").value;
+      const cv = document.getElementById("cv").files[0];
+      const poza = document.getElementById("poza").files[0];
+
+      try {
+        const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, parola);
+        const uid = userCredential.user.uid;
+
+        // Upload fișiere
+        const cvRef = storage.ref(`cv-uri/${uid}.pdf`);
+        const pozaRef = storage.ref(`poze/${uid}.jpg`);
+
+        const [cvSnapshot, pozaSnapshot] = await Promise.all([
+          cvRef.put(cv),
+          pozaRef.put(poza)
+        ]);
+
+        const cvURL = await cvSnapshot.ref.getDownloadURL();
+        const pozaURL = await pozaSnapshot.ref.getDownloadURL();
+
+        // Salvăm în Firestore
+        await db.collection("candidati").doc(uid).set({
+          nume, email, meserie, oras,
+          experienta: parseInt(experienta) || 0,
+          cv: cvURL,
+          poza: pozaURL,
+          creatLa: new Date()
+        });
+
+        window.location.href = "dashboard-candidat.html";
+      } catch (error) {
+        document.getElementById("error").innerText = "Eroare: " + error.message;
+      }
+    }
+  </script>
 </body>
 </html>
