@@ -1,85 +1,91 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dashboard Firmă • HoReCa Personal</title>
-  <link rel="stylesheet" href="css/dashboard-firma.css" />
-</head>
-<body>
-  <nav class="navbar">
-    <div class="nav-left">
-      <h1>HoReCa Personal</h1>
-    </div>
-    <div class="nav-right">
-      <button id="toggle-theme">🌙 Light/Dark</button>
-      <span class="user-label">Cont firmă</span>
-    </div>
-  </nav>
+<!Dbody {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f7fb;
+  color: #222;
+}
 
-  <div class="dashboard">
-    <aside class="sidebar">
-      <ul>
-        <li class="active">Overview</li>
-        <li>Postează job</li>
-        <li>Candidați</li>
-        <li>Abonamente</li>
-        <li>Setări cont</li>
-      </ul>
-    </aside>
+.dashboard {
+  display: flex;
+  height: 100vh;
+}
 
-    <main class="content">
-      <section class="card welcome">
-        <h2>Bun venit în dashboard‑ul firmei</h2>
-        <p>Aici poți vizualiza statistici, joburi active și abonanți.</p>
-      </section>
+.sidebar {
+  width: 240px;
+  background: #003366;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
 
-      <section class="card new-job">
-        <h3>Adaugă un job nou</h3>
-        <form>
-          <div class="form-group">
-            <label>Titlu job</label>
-            <input type="text" required />
-          </div>
-          <div class="form-group">
-            <label>Tip job</label>
-            <select required>
-              <option value="">Selectează</option>
-              <option value="fulltime">Full-time</option>
-              <option value="parttime">Part-time</option>
-            </select>
-          </div>
-          <div class="form-group flex-fill">
-            <label>Descriere</label>
-            <textarea rows="4" placeholder="Scrie descrierea job-ului..."></textarea>
-          </div>
-          <button type="submit" class="btn-accent">Publică job</button>
-        </form>
-      </section>
+.sidebar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
 
-      <section class="card subscriptions">
-        <h3>Alege un abonament</h3>
-        <div class="plans">
-          <div class="plan">
-            <h4>Standard</h4>
-            <p>€49/lună<br>Publică până la 5 joburi</p>
-            <button class="btn-accent">Alege Standard</button>
-          </div>
-          <div class="plan">
-            <h4>Premium</h4>
-            <p>€99/lună<br>Joburi nelimitate + CV-uri</p>
-            <button class="btn-accent">Alege Premium</button>
-          </div>
-          <div class="plan">
-            <h4>Enterprise</h4>
-            <p>€199/lună<br>Totul inclus + API</p>
-            <button class="btn-accent">Contactează-ne</button>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
+.sidebar nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.75rem;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  transition: background 0.3s;
+}
 
-  <script src="js/dashboard-firma.js"></script>
-</body>
-</html>
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background-color: #0055aa;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+header h1 {
+  margin-bottom: 1.5rem;
+}
+
+.stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  flex: 1;
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #007b5e;
+}
+
+.table-section table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.table-section th, .table-section td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table-section th {
+  background-color: #e5f2ff;
+}
