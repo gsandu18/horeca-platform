@@ -1,91 +1,105 @@
-<!Dbody {
+/* Reset de bază */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f7fb;
-  color: #222;
 }
 
-.dashboard {
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+header {
   display: flex;
-  height: 100vh;
-}
-
-.sidebar {
-  width: 240px;
-  background: #003366;
-  color: #fff;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.sidebar .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
-}
-
-.sidebar nav a {
-  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  padding: 0.75rem;
+  background-color: #003366;
   color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  margin-bottom: 0.5rem;
-  transition: background 0.3s;
-}
-
-.sidebar nav a:hover,
-.sidebar nav a.active {
-  background-color: #0055aa;
-}
-
-.main-content {
-  flex: 1;
-  padding: 2rem;
-  overflow-y: auto;
+  padding: 15px 25px;
+  border-radius: 8px;
+  margin-bottom: 30px;
 }
 
 header h1 {
-  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
 }
 
-.stats {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+header button {
+  background-color: #cc0000;
+  border: none;
+  padding: 10px 15px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.card {
-  background: white;
+section {
+  background-color: white;
+  padding: 20px;
   border-radius: 10px;
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  flex: 1;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-.card h3 {
-  margin-top: 0;
-  color: #007b5e;
+.profil {
+  text-align: center;
 }
 
-.table-section table {
+.profil img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  object-fit: cover;
+  border: 2px solid #007bff;
+}
+
+.profil h2 {
+  font-size: 1.4rem;
+}
+
+.form-section input,
+.proiecte input {
   width: 100%;
-  border-collapse: collapse;
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
 }
 
-.table-section th, .table-section td {
-  padding: 1rem;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
+button {
+  padding: 10px 16px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
-.table-section th {
-  background-color: #e5f2ff;
+button:hover {
+  background-color: #0056b3;
 }
+
+@media (min-width: 768px) {
+  body {
+    padding: 40px;
+  }
+
+  header h1 {
+    font-size: 1.6rem;
+  }
+
+  .form-section input,
+  .proiecte input {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
