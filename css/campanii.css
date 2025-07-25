@@ -13,3 +13,28 @@ form button:hover { background:#187bcd; }
 li h3 { margin:0; color:#007b5e; }
 li p { margin:0.5rem 0; }
 li span { font-size:0.9rem; color:#555; }
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.filters input, .filters button {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.filters button {
+  background: #1e90ff;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filters button:hover {
+  background: #187bcd;
+}
