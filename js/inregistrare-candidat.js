@@ -48,3 +48,29 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     loginMessage.style.color = "red";
   }
 });
+<script type="module">
+document.getElementById('formularCandidat').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const diploma = document.getElementById('diploma').value;
+  const fileInput = document.getElementById('documentDiploma');
+  const file = fileInput.files[0];
+
+  const allowedDiplome = ["Bucătar", "Ospătar", "Barman", "Cofetar", "Recepționer"];
+  const allowedTypes = ["application/pdf", "image/jpeg", "image/png"];
+
+  if (!allowedDiplome.includes(diploma)) {
+    alert("Te rugăm să selectezi o diplomă validă.");
+    return;
+  }
+
+  if (!file || !allowedTypes.includes(file.type)) {
+    alert("Documentul încărcat nu este valid. Acceptăm doar PDF, JPG, PNG.");
+    return;
+  }
+
+  alert("Diploma este validă și poate fi încărcată! ✅");
+
+  // Aici poți adăuga logica Firebase pentru stocare dacă vrei
+});
+</script>
