@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Înregistrare HoReCa</title>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f7fb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .register-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-box">
+    <h2>Înregistrează-te</h2>
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="parola" placeholder="Parolă (min. 6 caractere)" required />
+    <button onclick="register()">Creează cont</button>
+    <p id="error" style="color:red;"></p>
+    <p>Ai deja cont? <a href="autentificare.html">Autentifică-te</a></p>
+  </div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "xboBl3fmRwayMmEEtCCLoDsHWPG3",
+      authDomain: "personal-horeca-e5f0e.firebaseapp.com",
+      projectId: "personal-horeca-e5f0e",
+      storageBucket: "personal-horeca-e5f0e.appspot.com",
+      messagingSenderId: "332871951184",
+      appId: "1:332871951184:web:7e65e3a1b1b61c46768255"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    function register() {
+      const email = document.getElementById("email").value;
+      const parola = document.getElementById("parola").value;
+
+      firebase.auth().createUserWithEmailAndPassword(email, parola)
+        .then((userCredential) => {
+          window.location.href = "dashboard-candidat.html"; // Redirecționare după înregistrare
+        })
+        .catch((error) => {
+          document.getElementById("error").innerText = "Eroare: " + error.message;
+        });
+    }
+  </script>
+</body>
+</html>
