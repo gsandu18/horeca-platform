@@ -92,7 +92,26 @@
       <button type="button" class="btn-primary" id="saveProfile">Salvează Profil</button>
       <button type="button" class="btn-primary" id="genereazaPDF">Descarcă CV</button>
       <button type="button" class="btn-primary" id="logoutBtn">Logout</button>
-    </form>
+
+      <form id="formularCandidat">
+  <!-- alte câmpuri: nume, email etc. -->
+
+  <label for="diploma">Diplomă de calificare*</label>
+  <select id="diploma" name="diploma" required>
+    <option value="">-- Selectează diploma --</option>
+    <option value="Bucătar">Bucătar</option>
+    <option value="Ospătar">Ospătar</option>
+    <option value="Barman">Barman</option>
+    <option value="Cofetar">Cofetar</option>
+    <option value="Recepționer">Recepționer</option>
+  </select>
+
+  <label for="documentDiploma">Încarcă diploma (.pdf, .jpg, .png)*</label>
+  <input type="file" id="documentDiploma" accept=".pdf,.jpg,.jpeg,.png" required />
+
+  <button type="submit">Trimite</button>
+</form>
+    
   </section>
 
   <footer>
