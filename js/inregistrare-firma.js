@@ -1,45 +1,56 @@
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const db = firebase.firestore();
-const storage = firebase.storage();
+// Firebase SDK
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
-const form = document.querySelector("form");
+// Config
+const firebaseConfig = {
+  apiKey: "AIzaSyBx7JQBHi3aaIqQW2g_b11UjEBslkAQZ9c",
+  authDomain: "horeca-app-928be.firebaseapp.com",
+  projectId: "horeca-app-928be",
+  storageBucket: "horeca-app-928be.appspot.com",
+  messagingSenderId: "1008068918087",
+  appId: "1:1008068918087:web:47105b8fbcf9bb297f2a62",
+  measurementId: "G-VZ6LVDDQH5"
+};
 
-form.addEventListener("submit", async (e) => {
+// Init Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
+
+// Logică înregistrare
+document.getElementById("firmaForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const numeFirma = form.numeFirma.value.trim();
-  const emailFirma = form.emailFirma.value.trim();
-  const persoanaContact = form.persoanaContact.value.trim();
-  const telefon = form.telefon.value.trim();
-  const documentFile = form.document.files[0];
-
-  const passwordGenerata = Math.random().toString(36).slice(-8);
+  const nume = document.getElementById("numeFirma").value;
+  const email = document.getElementById("emailFirma").value;
+  const parola = document.getElementById("parolaFirma").value;
+  const oras = document.getElementById("orasFirma").value;
+  const contact = document.getElementById("persoanaContact").value;
+  const telefon = document.getElementById("telefonFirma").value;
+  const domeniu = document.getElementById("domeniuActivitate").value;
+  const logoFile = document.getElementById("logoFirma").files[0];
 
   try {
-    // ✅ 1. Creează cont firma
-    const userCredential = await auth.createUserWithEmailAndPassword(emailFirma, passwordGenerata);
-    const firmaUID = userCredential.user.uid;
+    const userCred = await createUserWithEmailAndPassword(auth, email, parola);
+    const uid = userCred.user.uid;
 
-    // ✅ 2. Încarcă document validare
-    const storageRef = storage.ref(`validari_firme/${firmaUID}/${documentFile.name}`);
-    const uploadResult = await storageRef.put(documentFile);
-    const documentURL = await uploadResult.ref.getDownloadURL();
+    let logoUrl = "";
+    if (logoFile) {
+      const storageRef = ref(storage, `logo_firme/${uid}.jpg`);
+      await uploadBytes(storageRef, logoFile);
+      logoUrl = await getDownloadURL(storageRef);
+    }
 
-    // ✅ 3. Salvează date firmă în Firestore
-    await db.collection("firme").doc(firmaUID).set({
-      nume: numeFirma,
-      email: emailFirma,
-      contact: persoanaContact,
-      telefon,
-      documentURL,
-      activ: false,
-      dataInregistrare: firebase.firestore.FieldValue.serverTimestamp()
+    await setDoc(doc(db, "firme", uid), {
+      nume, email, oras, contact, telefon, domeniu, logoUrl
     });
 
-    alert("Cererea a fost trimisă. Veți primi un email după validare.");
-    form.reset();
-  } catch (err) {
-    console.error("Eroare înregistrare firmă:", err.message);
-    alert("A apărut o eroare: " + err.message);
+    window.location.href = `dash_1.html?uid=${uid}`;
+  } catch (error) {
+    alert("Eroare: " + error.message);
   }
+});
