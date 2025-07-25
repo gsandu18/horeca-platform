@@ -2,23 +2,94 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Înregistrare Candidat</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore-compat.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Înregistrare Candidat HoReCa</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f4f7fb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .form-wrapper {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #003366;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input {
+      padding: 12px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .footer-text {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+    }
+
+    .footer-text a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .footer-text a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <main>
+
+  <div class="form-wrapper">
     <h1>Înregistrare Candidat HoReCa</h1>
-    <form id="signup-form">
-      <input type="text" id="fullname" placeholder="Nume complet" required>
-      <input type="email" id="email" placeholder="Email" required>
-      <input type="password" id="password" placeholder="Parolă (min. 6 caractere)" required>
-      <textarea id="experienta" placeholder="Experiență profesională" required></textarea>
+    <form action="https://formspree.io/f/YOUR-ID" method="POST">
+      <input type="text" name="name" placeholder="Nume complet" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="text" name="experienta" placeholder="Experiență profesională (opțional)">
+      <input type="password" name="password" placeholder="Parolă (min. 6 caractere)" minlength="6" required>
       <button type="submit">Înregistrează-te</button>
     </form>
-    <p id="message"></p>
+    <div class="footer-text">
+      Ai deja cont? <a href="login.html">Autentifică-te</a>
+    </div>
+  </div>
 
-    
+</body>
+</html>
