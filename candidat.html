@@ -6,11 +6,6 @@
   <title>HoReCa Personal</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    <!-- Firebase + jsPDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-<!-- Script propriu -->
-<script type="module" src="js/script.js"></script>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -25,28 +20,13 @@
       text-align: center;
     }
 
-    h1 {
-      margin: 0;
-      font-size: 1.8rem;
-    }
-
     .hero {
       text-align: center;
       padding: 3rem 1rem;
-      background-image: url('img/background.jpg'); /* Poți schimba imaginea */
+      background-image: url('img/background.jpg');
       background-size: cover;
       background-position: center;
       color: #fff;
-    }
-
-    .hero h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
     }
 
     .btn-primary {
@@ -57,11 +37,6 @@
       border-radius: 6px;
       font-size: 1rem;
       cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .btn-primary:hover {
-      background-color: #187bcd;
     }
 
     .container {
@@ -77,18 +52,6 @@
       background-color: #f5f5f5;
       padding: 2rem;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    label {
-      font-weight: bold;
-    }
-
-    input, textarea {
-      padding: 0.7rem;
-      font-size: 1rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
     }
 
     footer {
@@ -97,7 +60,6 @@
       color: white;
       padding: 1rem;
       margin-top: 2rem;
-      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -110,37 +72,36 @@
   <section class="hero">
     <h2>Conectăm profesioniști cu oportunități HoReCa</h2>
     <p>Aplică acum pentru joburi în restaurante, hoteluri și cafenele.</p>
-   
   </section>
 
-
-
-<section> id="înregistrare">
+  <section id="înregistrare" class="container">
     <h2>Formular Candidat</h2>
-    <form action="https://formspree.io/f/yourformid" method="POST">
-      <label for="nume">Nume complet*</label>
-      <input type="text" id="nume" name="nume" required />
+    <form>
+      <label for="educatie">Educație</label>
+      <input type="text" id="educatie" placeholder="Ex: Facultate, liceu etc." />
 
-      <label for="email">Email*</label>
-      <input type="email" id="email" name="email" required />
+      <label for="experienta">Experiență</label>
+      <input type="text" id="experienta" placeholder="Unde ai lucrat înainte?" />
 
-      <label for="telefon">Telefon*</label>
-      <input type="tel" id="telefon" name="telefon" required />
+      <label for="abilitati">Abilități</label>
+      <input type="text" id="abilitati" placeholder="Ce știi să faci?" />
 
-      <label for="mesaj">Mesaj (opțional)</label>
-      <textarea id="mesaj" name="mesaj" rows="4" placeholder="Spune-ne mai multe despre tine..."></textarea>
+      <label for="certificari">Certificări</label>
+      <input type="text" id="certificari" placeholder="Ex: HACCP, curs ospătar" />
 
-    
+      <button type="button" class="btn-primary" id="saveProfile">Salvează Profil</button>
+      <button type="button" class="btn-primary" id="genereazaPDF">Descarcă CV</button>
+      <button type="button" class="btn-primary" id="logoutBtn">Logout</button>
     </form>
   </section>
-    <script>
- 
+
   <footer>
     © 2025 HoReCa Personal. Toate drepturile rezervate.
   </footer>
-<!-- jsPDF pentru export CV -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script type="module" src="script.js"></script>
 
+  <!-- Librărie jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- Script principal -->
+  <script type="module" src="js/script.js"></script>
 </body>
 </html>
