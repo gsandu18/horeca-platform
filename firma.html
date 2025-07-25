@@ -3,135 +3,94 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Formular Firmă</title>
+  <title>Înregistrare Firmă HoReCa</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: #f0f2f5;
-      padding: 20px;
+      background-color: #f4f7fb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
       margin: 0;
     }
 
-    .formular-firma {
+    .form-wrapper {
       background: white;
-      max-width: 600px;
-      margin: 30px auto;
       padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      width: 100%;
+      max-width: 460px;
+    }
+
+    h1 {
       text-align: center;
-    }
-
-    h2 {
       color: #003366;
+      margin-bottom: 25px;
+      font-size: 1.7rem;
     }
 
-    .form-row {
-      margin-bottom: 15px;
+    form {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      gap: 15px;
     }
 
-    input, textarea {
-      width: 100%;
-      padding: 10px;
+    input {
+      padding: 12px;
       font-size: 1rem;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 6px;
     }
 
     button {
-      background-color: #007bff;
+      background-color: #28a745;
       color: white;
-      padding: 10px 20px;
-      font-size: 1rem;
       border: none;
-      border-radius: 5px;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 6px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
     button:hover {
-      background-color: #0056b3;
+      background-color: #218838;
     }
 
-    #mesajSuccesFirma {
+    .footer-text {
+      text-align: center;
       margin-top: 20px;
-      color: green;
-      font-size: 1.1rem;
-      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .footer-text a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .footer-text a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-  <section class="formular-firma">
-    <h2>Formular Firmă</h2>
-
-    <form id="formular-firma" onsubmit="trimiteFirma(event)">
-      <div class="form-row">
-        <input type="text" name="numeFirma" placeholder="Nume firmă" required />
-      </div>
-      <div class="form-row">
-        <input type="email" name="emailFirma" placeholder="Email firmă" required />
-      </div>
-      <div class="form-row">
-        <input type="text" name="persContact" placeholder="Persoană de contact" required />
-      </div>
-      <div class="form-row">
-        <textarea name="mesaj" placeholder="Mesaj sau cerințe suplimentare" rows="4"></textarea>
-      </div>
-      <div class="form-row">
-        <button type="submit">Trimite formularul</button>
-      </div>
+  <div class="form-wrapper">
+    <h1>Înregistrare Firmă HoReCa</h1>
+    <form action="https://formspree.io/f/YOUR-ID" method="POST">
+      <input type="text" name="firma" placeholder="Nume firmă" required />
+      <input type="email" name="email" placeholder="Email firmă" required />
+      <input type="text" name="cui" placeholder="Cod unic de înregistrare (CUI)" required />
+      <input type="text" name="telefon" placeholder="Telefon de contact" required />
+      <input type="password" name="password" placeholder="Parolă (min. 6 caractere)" minlength="6" required />
+      <button type="submit">Înregistrează firma</button>
     </form>
+    <div class="footer-text">
+      Ai deja cont? <a href="login.html">Autentifică-te</a>
+    </div>
+  </div>
 
-    <p id="mesajSuccesFirma" style="display:none;">
-      Cererea dumneavoastră a fost înregistrată cu succes. Vom reveni în cel mai scurt timp!
-    </p>
-  </section>
-
-  <script>
-    function trimiteFirma(e) {
-      e.preventDefault();
-      document.getElementById("formular-firma").style.display = "none";
-      document.getElementById("mesajSuccesFirma").style.display = "block";
-    }
-  </script>
-<script>
-  document.getElementById("doc-validare").addEventListener("change", function () {
-    const file = this.files[0];
-    const validTypes = ['application/pdf', 'image/png', 'image/jpeg'];
-
-    if (file && !validTypes.includes(file.type)) {
-      alert("⚠️ Document invalid. Te rugăm să încarci un fișier PDF, PNG sau JPG.");
-      this.value = ""; // Resetăm câmpul
-    }
-  })
-  <script>
-  document.getElementById("firma-nume").textContent = localStorage.getItem("firmaNume") || "Firmă";
-
-  async function incarcaAngajati() {
-    const res = await fetch('angajati.json');
-    const angajati = await res.json();
-    const lista = document.getElementById('angajati-list');
-
-    lista.innerHTML = '';
-
-    angajati.forEach(a => {
-      const li = document.createElement('li');
-      li.className = 'feedback-item';
-      li.innerHTML = `
-        <strong>${a.nume}</strong> — <em>${a.rol}</em><br>
-        <span style="display:block; margin: 5px 0;">„${a.feedback}”</span>
-        <strong>Punctaj:</strong> ${a.punctaj.toFixed(1)} ⭐
-      `;
-      lista.appendChild(li);
-    });
-  }
-
-  incarcaAngajati();
-</script>
-  <ul class="feedback-list" id="angajati-list"></ul>
 </body>
 </html>
