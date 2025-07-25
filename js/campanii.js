@@ -35,12 +35,27 @@ form.addEventListener("submit", async e => {
   }
 });
 
+let campaniiCache = []; // păstrează toate campaniile pentru filtrare locală
+
 async function incarcaCampanii() {
   lista.innerHTML = "<li>Se încarcă...</li>";
   const snapshot = await getDocs(collection(db, "campanii"));
-  lista.innerHTML = "";
-  snapshot.forEach(doc => {
-    const c = doc.data();
+  campaniiCache = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  aplicaFiltrare();
+}
+
+function aplicaFiltrare() {
+  const locatie = document.getElementById('filtruLocatie').value.toLowerCase();
+  const dataStartMin = document.getElementById('filtruDataStart').value;
+
+  const campaniiFiltrate = campaniiCache.filter(c => {
+    const includeLoc = !locatie || c.locatie.toLowerCase().includes(locatie);
+    const includeData = !dataStartMin || (c.dataStart >= dataStartMin);
+    return includeLoc && includeData;
+  });
+
+  lista.innerHTML = campaniiFiltrate.length ? "" : "<li>Nicio campanie găsită.</li>";
+  campaniiFiltrate.forEach(c => {
     lista.innerHTML += `
       <li>
         <h3>${c.titlu}</h3>
@@ -50,4 +65,4 @@ async function incarcaCampanii() {
   });
 }
 
-incarcaCampanii();
+document.getElementById("aplicaFiltru").addEventListener("click", aplicaFiltrare);
