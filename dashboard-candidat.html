@@ -1,61 +1,45 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Profil Candidat</title>
-  <link rel="stylesheet" href="css/dashboard.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Candidat</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <nav class="navbar">
-  <div class="logo-zone">
-    <img src="img/logo-horeca.png" alt="Logo HoReCa" class="logo-img">
-    <span class="logo-text">HoReCa Personal</span>
-  </div>
-  <button id="btn-logout">Deconectare</button>
-</nav>
+  <header>
+    <h1>Profilul Meu - HoReCa</h1>
+    <button onclick="logout()">Deconectare</button>
+  </header>
 
-  <main class="dashboard">
-    <section class="profile-card">
-      <div class="img-container">
-        <img id="profile-pic" src="default-user.png" alt="Profil">
-        <label for="upload-pic" class="upload-icon">📷</label>
-        <input type="file" id="upload-pic" accept="image/*" style="display:none;">
-      </div>
-      <h2 id="profile-nume">Nume Prenume</h2>
-      <p id="profile-email">email@exemplu.com</p>
-    </section>
+  <section class="profil">
+    <img id="avatar" src="default.png" alt="Poză profil" />
+    <h2 id="nume">Nume Prenume</h2>
+    <p id="email">email@exemplu.com</p>
+  </section>
 
-    <section class="form-section">
-      <h2>Completează profilul</h2>
-      <form id="profile-form">
-        <textarea name="educatie" placeholder="Educație (școală, facultate...)" required></textarea>
-        <textarea name="experienta" placeholder="Experiență relevantă (locuri de muncă...)" required></textarea>
-        <button type="submit" class="btn-primary">Salvează profil</button>
-      </form>
-    </section>
-    <!-- Insertăm între Educație și Experiență -->
-<textarea name="abilitati" placeholder="Abilități (separate prin virgulă)"></textarea>
-<textarea name="certificari" placeholder="Certificări (separate prin virgulă)"></textarea>
+  <section class="form-section">
+    <h3>Completează Profilul</h3>
+    <input type="text" id="educatie" placeholder="Educație">
+    <input type="text" id="experienta" placeholder="Experiență">
+    <input type="text" id="abilitati" placeholder="Abilități (virgulă)">
+    <input type="text" id="certificari" placeholder="Certificări (virgulă)">
+    <button onclick="salveazaProfil()">Salvează</button>
+  </section>
 
-<!-- Secțiune dinamică pentru proiecte -->
-<div id="projects-container">
-  <h3>Proiecte</h3>
-  <div class="project-item">
-    <input type="text" name="project-title" placeholder="Titlu proiect">
-    <textarea name="project-desc" placeholder="Descriere proiect"></textarea>
-  </div>
-</div>
-<button id="add-project" type="button">+ Adaugă proiect</button>
+  <section class="proiecte">
+    <h3>Proiecte</h3>
+    <input type="text" id="titluProiect" placeholder="Titlu proiect">
+    <input type="text" id="descriereProiect" placeholder="Descriere">
+    <button onclick="adaugaProiect()">+ Adaugă</button>
+  </section>
 
-    <section class="cv-section">
-      <h2>CV Generat</h2>
-      <div id="generated-cv" class="cv-content"></div>
-      <button id="download-cv" class="btn-primary">Descarcă CV (PDF)</button>
-    </section>
-  </main>
+  <section>
+    <h3>CV Generat</h3>
+    <button onclick="genereazaPDF()">Descarcă CV (PDF)</button>
+  </section>
 
-  <script src="dashboard.js"></script>
+  <script src="firebase.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
