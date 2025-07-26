@@ -106,6 +106,63 @@
       Ai deja cont? <a href="login.html">Autentifică-te</a>
     </div>
   </div>
+<script>
+    // Configurația Firebase
+    const firebaseConfig = {
+      apiKey: "xboBl3fmRwayMmEEtCCLoDsHWPG3",
+      authDomain: "personal-horeca-e5f0e.firebaseapp.com",
+      projectId: "personal-horeca-e5f0e",
+      storageBucket: "personal-horeca-e5f0e.appspot.com",
+      messagingSenderId: "332871951184",
+      appId: "1:332871951184:web:7e65e3a1b1b61c46768255"
+    };
 
-</body>
+    // Inițializează Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const storage = firebase.storage();
+
+    async function registerFirma() {
+      const numeFirma = document.getElementById("numeFirma").value;
+      const email = document.getElementById("email").value;
+      const parola = document.getElementById("parola").value;
+      const oras = document.getElementById("oras").value;
+      const contact = document.getElementById("contact").value;
+      const telefon = document.getElementById("telefon").value;
+      const domeniu = document.getElementById("domeniu").value;
+      const logo = document.getElementById("logo").files[0];
+      const errorEl = document.getElementById("error");
+      errorEl.innerText = "";
+
+      try {
+        // Creează cont Firebase Auth
+        const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, parola);
+        const uid = userCredential.user.uid;
+
+        // Upload logo în Storage
+        let logoURL = "";
+        if (logo) {
+          const logoRef = storage.ref(`firme/${uid}/logo.jpg`);
+          await logoRef.put(logo);
+          logoURL = await logoRef.getDownloadURL();
+        }
+
+        // Salvare date firmă în Firestore
+        await db.collection("firme").doc(uid).set({
+          numeFirma,
+          email,
+          oras,
+          contact,
+          telefon,
+          domeniu,
+          logo: logoURL,
+          creatLa: new Date()
+        });
+
+        window.location.href = "dashboard-firma.html"; // Redirect după succes
+      } catch (error) {
+        errorEl.innerText = "Eroare: " + error.message;
+      }
+    }
+  </script></body>
 </html>
