@@ -103,6 +103,59 @@
   loadFirme();
   loadCandidati();
 </script>
+<body>
+  <div id="login" style="text-align:center;">
+    <h2>Autentificare Admin</h2>
+    <input type="email" id="adminEmail" placeholder="Email admin" /><br><br>
+    <input type="password" id="adminParola" placeholder="Parolă" /><br><br>
+    <button onclick="adminLogin()">Autentifică-te</button>
+    <p id="eroare" style="color:red;"></p>
+  </div>
 
+  <div id="adminContent" style="display:none;">
+    <!-- aici pui tabelele firme & candidați -->
+    <h2>Firme</h2>
+    <table id="firmeTable"> ... </table>
+
+    <h2>Candidați</h2>
+    <table id="candidatiTable"> ... </table>
+  </div>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "xboBl3fmRwayMmEEtCCLoDsHWPG3",
+    authDomain: "personal-horeca-e5f0e.firebaseapp.com",
+    projectId: "personal-horeca-e5f0e",
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  function adminLogin() {
+    const email = document.getElementById("adminEmail").value;
+    const parola = document.getElementById("adminParola").value;
+    const eroare = document.getElementById("eroare");
+
+    firebase.auth().signInWithEmailAndPassword(email, parola)
+      .then(() => {
+        if (email !== "admin@horeca.ro") {
+          eroare.innerText = "Acces interzis!";
+          firebase.auth().signOut();
+          return;
+        }
+
+        // Arată conținut admin
+        document.getElementById("login").style.display = "none";
+        document.getElementById("adminContent").style.display = "block";
+        loadFirme();
+        loadCandidati();
+      })
+      .catch(err => {
+        eroare.innerText = "Eroare: " + err.message;
+      });
+  }
+
+  // funcțiile loadFirme() și loadCandidati() vin aici ca în mesajul anterior
+</script>
 </body>
 </html>
