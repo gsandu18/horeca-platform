@@ -61,7 +61,8 @@
     function login(tab) {
       const email = document.getElementById(`email-${tab}`).value.trim();
       const pass = document.getElementById(`pass-${tab}`).value.trim();
-      if (!email || !pass) return alert("Completează câmpurile!");
+      if (!email || !pass) 
+      return alert("Completează câmpurile!");
       auth.signInWithEmailAndPassword(email, pass)
         .then(() => {
           const dest = tab === 'firma' ? 'dashboard-firma.html' : 'dashboard-candidat.html';
