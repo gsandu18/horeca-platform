@@ -1,53 +1,88 @@
+<!-- login-platforma.html -->
 <!DOCTYPE html>
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Autentificare Platformă</title>
+  <title>Autentificare Platformă HoReCa</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link rel="stylesheet" href="css/login.css"/>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; margin:0; padding:0; }
+    .auth-box {
+      max-width: 400px; background: white; margin: 50px auto; padding: 30px;
+      border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 { text-align:center; color:#003087; }
+    .tab-switcher { display:flex; justify-content:center; gap:10px; margin:20px 0; }
+    .tab { padding:10px 20px; cursor: pointer; background:#eee; border:none; border-radius:20px; }
+    .tab.active { background:#00d1b2; color:white; }
+    .login-form { display:none; animation: fadeIn .3s ease; }
+    .login-form.active { display:block; }
+    .login-form h2 { margin-bottom:15px; color:#1f2a44; text-align:center; }
+    .login-form input { width:100%; padding:12px; margin-bottom:15px; border:1px solid #ccc; border-radius:6px; }
+    .login-form button { width:100%; padding:14px; background:#00ccb4; color:white; border:none; border-radius:6px; margin-bottom:10px; cursor:pointer; }
+    .login-form button:hover { background:#00a99d; }
+    .alt-link { text-align:center; font-size:0.9rem; }
+    .alt-link a { color:#003087; text-decoration:none; }
+    .alt-link a:hover { text-decoration:underline; }
+    @keyframes fadeIn { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+    .google-btn { background:white; color:#333; border:1px solid #ccc; margin-bottom:10px; }
+    .google-btn:hover { background:#f3f3f3; }
+  </style>
 </head>
 <body>
   <div class="auth-box">
     <h1>Platformă HoReCa</h1>
+
     <div class="tab-switcher">
       <button class="tab active" data-tab="candidat">Login Candidat</button>
       <button class="tab" data-tab="firma">Login Firmă</button>
     </div>
-    <div class="forms">
-      <form id="form-candidat" class="login-form active">
-        <h2><i class="fas fa-user"></i> Candidat</h2>
-        <input type="email" id="email-candidat" placeholder="Email" required />
-        <input type="password" id="pass-candidat" placeholder="Parolă" required />
-        <button type="button" onclick="login('candidat')">Intră în cont</button>
-        <button type="button" class="google-btn" onclick="loginWithGoogle()"> <i class="fab fa-google"></i> Continuă cu Google</button>
-        <p class="alt-link"><a href="#">Ai uitat parola?</a> | <a href="#">Creează cont candidat</a></p>
-      </form>
-      <form id="form-firma" class="login-form">
-        <h2><i class="fas fa-building"></i> Firmă</h2>
-        <input type="email" id="email-firma" placeholder="Email firmă" required />
-        <input type="password" id="pass-firma" placeholder="Parolă firmă" required />
-        <button type="button" onclick="login('firma')">Intră în cont</button>
-        <button type="button" class="google-btn" onclick="loginWithGoogle()"> <i class="fab fa-google"></i> Continuă cu Google</button>
-        <p class="alt-link"><a href="#">Ai uitat parola?</a> | <a href="#">Înregistrează firmă</a></p>
-      </form>
-    </div>
+
+    <!-- Candidat -->
+    <form id="form-candidat" class="login-form active">
+      <h2><i class="fas fa-user"></i> Candidat</h2>
+      <input type="email" id="email-candidat" placeholder="Email" required />
+      <input type="password" id="pass-candidat" placeholder="Parolă" required />
+      <button type="button" onclick="login('candidat')">Intră în cont</button>
+      <button type="button" class="google-btn" onclick="loginWithGoogle('candidat')">
+        <i class="fab fa-google"></i> Continuă cu Google
+      </button>
+      <p class="alt-link">
+        <a href="password-candidat.html">Ai uitat parola?</a> |
+        <a href="register-candidat.html">Creează cont candidat</a>
+      </p>
+    </form>
+
+    <!-- Firmă -->
+    <form id="form-firma" class="login-form">
+      <h2><i class="fas fa-building"></i> Firmă</h2>
+      <input type="email" id="email-firma" placeholder="Email firmă" required />
+      <input type="password" id="pass-firma" placeholder="Parolă firmă" required />
+      <button type="button" onclick="login('firma')">Intră în cont</button>
+      <button type="button" class="google-btn" onclick="loginWithGoogle('firma')">
+        <i class="fab fa-google"></i> Continuă cu Google
+      </button>
+      <p class="alt-link">
+        <a href="password-firma.html">Ai uitat parola?</a> |
+        <a href="register-firma.html">Înregistrează firmă</a>
+      </p>
+    </form>
   </div>
 
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
   <script>
+    // Firebase config
     const firebaseConfig = {
-      apiKey: "AlzaSyDvsEfnjVmOkPkExebfxOZ5e3ALRVG0Z-w",
-  authDomain: "personal-horeca-e5f0e.firebaseapp.com",
-  projectId: "personal-horeca-e5f0e",
-  storageBucket: "personal-horeca-e5f0e.appspot.com",
-  messagingSenderId: "332871951184",
-  appId: "1:332871951184:web:YOUR_APP_ID" 
+      apiKey: "AIz…", authDomain: "personal‐horeca-e5f0e.firebaseapp.com", projectId: "personal‐horeca-e5f0e",
+      storageBucket: "personal‐horeca-e5f0e.appspot.com", messagingSenderId: "332871951184",
+      appId: "1:332871951184:web:XXX"
     };
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
+    // Tab switching
     document.querySelectorAll('.tab').forEach(tab => {
       tab.addEventListener('click', () => {
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -61,20 +96,23 @@
     function login(tab) {
       const email = document.getElementById(`email-${tab}`).value.trim();
       const pass = document.getElementById(`pass-${tab}`).value.trim();
-      if (!email || !pass) 
-      return alert("Completează câmpurile!");
+      console.log(`[DEBUG] Logging in as ${tab}, email: ${email}`);
+      if (!email || !pass) return alert("Completează câmpurile!");
       auth.signInWithEmailAndPassword(email, pass)
         .then(() => {
-          const dest = tab === 'firma' ? 'dashboard-firma.html' : 'dashboard-candidat.html';
-          window.location.href = dest;
+          alert("Autentificare reușită!");
+          window.location.href = (tab === 'firma') ? 'dashboard-firma.html' : 'dashboard-candidat.html';
         })
         .catch(err => alert("Eroare: " + err.message));
     }
 
-    function loginWithGoogle() {
+    function loginWithGoogle(tab) {
       const provider = new firebase.auth.GoogleAuthProvider();
       auth.signInWithPopup(provider)
-        .then(() => window.location.href = 'dashboard.html')
+        .then(() => {
+          alert("Logat cu Google!");
+          window.location.href = (tab === 'firma') ? 'dashboard-firma.html' : 'dashboard-candidat.html';
+        })
         .catch(err => alert("Eroare Google: " + err.message));
     }
   </script>
