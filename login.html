@@ -175,13 +175,23 @@
   </div>
 
   <script>
+    // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional    
     const firebaseConfig = {
-      apiKey: "AIz...yourKeyHere",
-      authDomain: "nume-proiect.firebaseapp.com",
-      projectId: "nume-proiect",
-      storageBucket: "nume-proiect.appspot.com",
-      messagingSenderId: "XXXXXXX",
-      appId: "X:XXX:web:XXXX"
+      apiKey: "AIzaSyDvsEfnjVmOkPkExebfxOZ5e3ALRVG0Z-w",
+      authDomain: "personal-horeca-e5f0e firebaseapp.com",
+      projectId: "personal-horeca-e5f0e",
+      storageBucket: "personal-horeca.appspot.com",
+      messagingSenderId: "332871951184",
+      appId: "appId: "1:332871951184:web:7e65e3a1b1b61c46768255",
+  measurementId: "G-7W3VJXW81D"
+};"
     };
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
