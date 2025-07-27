@@ -195,21 +195,24 @@
     }
 
     function login(tab) {
-      const email = document.getElementById(`email-${tab}`).value;
-      const pass = document.getElementById(`pass-${tab}`).value;
+  const email = document.getElementById(`email-${tab}`).value;
+  const pass = document.getElementById(`pass-${tab}`).value;
 
-      if (!email || !pass) return alert("Completează toate câmpurile.");
+  if (!email || !pass) return alert("Completează toate câmpurile.");
 
-      auth.signInWithEmailAndPassword(email, pass)
-        .then(userCred => {
-          alert("Autentificare reușită!");
-          window.location.href = "dashboard.html";
-        })
-        .catch(error => {
-          alert("Eroare: " + error.message);
-        });
-    }
-
+  auth.signInWithEmailAndPassword(email, pass)
+    .then(userCred => {
+      alert("Autentificare reușită!");
+      if (tab === "firma") {
+        window.location.href = "dashboard-firma.html";
+      } else {
+        window.location.href = "dashboard-candidat.html";
+      }
+    })
+    .catch(error => {
+      alert("Eroare: " + error.message);
+    });
+}
     function loginWithGoogle() {
       const provider = new firebase.auth.GoogleAuthProvider();
       auth.signInWithPopup(provider)
