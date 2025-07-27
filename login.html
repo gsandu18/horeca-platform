@@ -217,6 +217,12 @@
           alert("Autentificat cu Google!");
           window.location.href = "dashboard.html";
         })
+        firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    // dacă e firmă identificată
+    window.location.href = "login-firma.html";
+  }
+});
         .catch(error => {
           alert("Eroare Google: " + error.message);
         });
