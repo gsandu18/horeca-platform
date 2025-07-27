@@ -9,8 +9,37 @@
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
   <style>
     /* (stiluri tale) */
-    body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; margin:0; padding:0; }
-    .auth-container { padding: 40px 20px; max-width: 500px; margin: auto; text-align: center; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; margin:0; padding:<style>
+  .auth-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  .auth-container .login-card {
+    margin-top: 20px;
+    padding: 25px;
+  }
+  .auth-container input,
+  .auth-container button {
+    width: 100%;
+    display: block;
+    margin-bottom: 15px;
+  }
+  .tab-switcher {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .tab {
+    flex: 1 1 140px;
+    margin: 5px;
+  }
+</style>
+}
     .tab-switcher { display: flex; justify-content: center; gap:1rem; margin-bottom:1rem; }
     .tab { padding:0.75rem 1.5rem; border:none; border-radius:30px; cursor:pointer; font-weight:bold; background:#eee; transition: all .3s; }
     .tab.active { background:#00d1b2; color:#fff; }
