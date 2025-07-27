@@ -152,7 +152,7 @@
       <h2><i class="fas fa-user"></i> Login Candidat</h2>
       <input type="email" id="email-candidat" placeholder="Email" />
       <input type="password" id="pass-candidat" placeholder="Parolă" />
-      <button onclick="login-('candidat')">Intră în cont</button>
+      <button onclick="login('candidat')">Intră în cont</button>
       <button class="google-btn" onclick="loginWithGoogle()"> <i class="fab fa-google"></i> Continuă cu Google</button>
       <div class="extras">
         <a href="password.html">Ai uitat parola?</a> |
@@ -189,43 +189,37 @@
     function switchTab(tab) {
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.login-card').forEach(f => f.classList.remove('active-form'));
-
       document.getElementById(`form-${tab}`).classList.add('active-form');
       document.querySelector(`.tab-switcher .tab[onclick*="${tab}"]`).classList.add('active');
     }
 
     function login(tab) {
-  const email = document.getElementById(`email-${tab}`).value;
-  const pass = document.getElementById(`pass-${tab}`).value;
+      const email = document.getElementById(`email-${tab}`).value;
+      const pass = document.getElementById(`pass-${tab}`).value;
 
-  if (!email || !pass) return alert("Completează toate câmpurile.");
+      if (!email || !pass) return alert("Completează toate câmpurile.");
 
-  auth.signInWithEmailAndPassword(email, pass)
-    .then(userCred => {
-      alert("Autentificare reușită!");
-      if (tab === "firma") {
-        window.location.href = "dashboard-firma.html";
-      } else {
-        window.location.href = "dashboard-candidat.html";
-      }
-    })
-    .catch(error => {
-      alert("Eroare: " + error.message);
-    });
-}
+      auth.signInWithEmailAndPassword(email, pass)
+        .then(userCred => {
+          alert("Autentificare reușită!");
+          if (tab === "firma") {
+            window.location.href = "dashboard-firma.html";
+          } else {
+            window.location.href = "dashboard-candidat.html";
+          }
+        })
+        .catch(error => {
+          alert("Eroare: " + error.message);
+        });
+    }
+
     function loginWithGoogle() {
       const provider = new firebase.auth.GoogleAuthProvider();
       auth.signInWithPopup(provider)
         .then(result => {
           alert("Autentificat cu Google!");
-          window.location.href = "dashboard.html";
+          window.location.href = "dashboard-candidat.html";
         })
-        firebase.auth().onAuthStateChanged(user => {
-  if (user) {
-    // dacă e firmă identificată
-    window.location.href = "login-firma.html";
-  }
-});
         .catch(error => {
           alert("Eroare Google: " + error.message);
         });
