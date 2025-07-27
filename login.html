@@ -1,235 +1,121 @@
+<!-- login-platforma.html -->
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Autentificare Platformă</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Autentificare Platformă HoReCa</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f0f4f8;
-      margin: 0;
-      padding: 0;
-    }
-
-    .auth-container {
-      padding: 40px 20px;
-      max-width: 500px;
-      margin: auto;
-      text-align: center;
-    }
-
-    .auth-container h1 {
-      font-size: 2rem;
-      color: #003087;
-      margin-bottom: 1rem;
-    }
-
-    .auth-container span {
-      font-size: 1.4rem;
-      color: #0077b6;
-    }
-
-    .tab-switcher {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0;
-      gap: 1rem;
-    }
-
-    .tab {
-      background: #eee;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 30px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: all 0.3s;
-    }
-
-    .tab.active {
-      background: #00d1b2;
-      color: white;
-    }
-
-    .login-card {
-      display: none;
-      background: #fff;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-      animation: fadeIn 0.4s ease;
-    }
-
-    .login-card.active-form {
-      display: block;
-    }
-
-    .login-card h2 {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      color: #1f2a44;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .login-card input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-
-    .login-card button {
-      width: 100%;
-      padding: 14px;
-      background-color: #00ccb4;
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      transition: background 0.3s ease;
-      cursor: pointer;
-    }
-
-    .login-card button:hover {
-      background-color: #00a99d;
-    }
-
-    .extras {
-      margin-top: 15px;
-      font-size: 0.95rem;
-    }
-
-    .extras a {
-      color: #003087;
-      text-decoration: none;
-      display: inline-block;
-      margin: 5px 10px;
-      font-weight: 500;
-    }
-
-    .extras a:hover {
-      text-decoration: underline;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .google-btn {
-      background: #fff;
-      color: #333;
-      border: 1px solid #ccc;
-      margin-top: 10px;
-    }
-
-    .google-btn:hover {
-      background: #f3f3f3;
-    }
+    /* RESET & LAYOUT */
+    body { margin:0; background:#f0f4f8; font-family:'Segoe UI',sans-serif; }
+    .auth-box { max-width:400px; margin:50px auto; background:#fff; padding:30px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
+    h1{text-align:center;color:#003087;margin-bottom:20px;}
+    .tab-switcher { display:flex; justify-content:center; gap:10px; margin-bottom:20px; }
+    .tab { padding:10px 20px; cursor:pointer; background:#eee; border:none; border-radius:20px; }
+    .tab.active { background:#00d1b2; color:#fff; }
+    .login-form { display:none; animation:fadeIn .3s ease; }
+    .login-form.active { display:block !important; }
+    @keyframes fadeIn { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+    .login-form input { width:100%; padding:12px; margin:10px 0; border:1px solid #ccc; border-radius:6px; font-size:1rem; }
+    .login-form button { width:100%; padding:14px; margin:10px 0; background:#00ccb4; color:#fff; border:none; border-radius:6px; cursor:pointer; font-size:1.1rem; touch-action:manipulation; }
+    .login-form button:hover { background:#00a99d; }
+    .google-btn { background:#fff; color:#333; border:1px solid #ccc; }
+    .google-btn:hover { background:#f3f3f3; }
+    .alt-link { text-align:center; font-size:0.9rem; margin-top:10px; }
+    .alt-link a { color:#003087; text-decoration:none; }
+    .alt-link a:hover { text-decoration:underline; }
   </style>
 </head>
 <body>
-  <div class="auth-container">
-    <h1>Autentificare<br><span>Platformă</span></h1>
 
+  <div class="auth-box">
+    <h1>Platformă HoReCa</h1>
     <div class="tab-switcher">
-      <button class="tab active" onclick="switchTab('candidat')">Login Candidat</button>
-      <button class="tab" onclick="switchTab('firma')">Login Firmă</button>
+      <button class="tab active" data-tab="candidat">Login Candidat</button>
+      <button class="tab" data-tab="firma">Login Firmă</button>
     </div>
 
-    <!-- Candidat -->
-    <div class="login-card active-form" id="form-candidat">
-      <h2><i class="fas fa-user"></i> Login Candidat</h2>
-      <input type="email" id="email-candidat" placeholder="Email" />
-      <input type="password" id="pass-candidat" placeholder="Parolă" />
-      <button onclick="login('candidat')">Intră în cont</button>
-      <button class="google-btn" onclick="loginWithGoogle()"> <i class="fab fa-google"></i> Continuă cu Google</button>
-      <div class="extras">
-        <a href="#">Ai uitat parola?</a> |
-        <a href="#">Creează cont</a>
-      </div>
-    </div>
+    <!-- Login Candidat -->
+    <form id="form-candidat" class="login-form active">
+      <h2><i class="fas fa-user"></i> Candidat</h2>
+      <input type="email" id="email-candidat" placeholder="Email" required/>
+      <input type="password" id="pass-candidat" placeholder="Parolă" required/>
+      <button type="button" onclick="login('candidat')">Intră în cont</button>
+      <button type="button" class="google-btn" onclick="loginWithGoogle('candidat')">
+        <i class="fab fa-google"></i> Google
+      </button>
+      <p class="alt-link">
+        <a href="password-candidat.html">Ai uitat parola?</a> |
+        <a href="register-candidat.html">Creează cont candidat</a>
+      </p>
+    </form>
 
-    <!-- Firmă -->
-    <div class="login-card" id="form-firma">
-      <h2><i class="fas fa-building"></i> Login Firmă</h2>
-      <input type="email" id="email-firma" placeholder="Email" />
-      <input type="password" id="pass-firma" placeholder="Parolă" />
-      <button onclick="login('firma')">Intră în cont</button>
-      <button class="google-btn" onclick="loginWithGoogle()"> <i class="fab fa-google"></i> Continuă cu Google</button>
-      <div class="extras">
-        <a href="#">Ai uitat parola?</a> |
-        <a href="#">Înregistrează firmă</a>
-      </div>
-    </div>
+    <!-- Login Firmă -->
+    <form id="form-firma" class="login-form">
+      <h2><i class="fas fa-building"></i> Firmă</h2>
+      <input type="email" id="email-firma" placeholder="Email firmă" required/>
+      <input type="password" id="pass-firma" placeholder="Parolă firmă" required/>
+      <button type="button" onclick="login('firma')">Intră în cont</button>
+      <button type="button" class="google-btn" onclick="loginWithGoogle('firma')">
+        <i class="fab fa-google"></i> Google
+      </button>
+      <p class="alt-link">
+        <a href="password-firma.html">Ai uitat parola?</a> |
+        <a href="register-firma.html">Înregistrează firmă</a>
+      </p>
+    </form>
   </div>
 
-  <script>
-    // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional    
-    const firebaseConfig = {
-      apiKey: "AIzaSyDvsEfnjVmOkPkExebfxOZ5e3ALRVG0Z-w",
-      authDomain: "personal-horeca-e5f0e firebaseapp.com",
-      projectId: "personal-horeca-e5f0e",
-      storageBucket: "personal-horeca.appspot.com",
-      messagingSenderId: "332871951184",
-      appId: "appId: "1:332871951184:web:7e65e3a1b1b61c46768255",
+  <script>
+   const firebaseConfig = {
+  apiKey: "AIzaSyDvsEfnjVmOkPkExebfxOZ5e3ALRVG0Z-w",
+  authDomain: "personal-horeca-e5f0e.firebaseapp.com",
+  projectId: "personal-horeca-e5f0e",
+  storageBucket: "personal-horeca.appspot.com",
+  messagingSenderId: "332871951184",
+  appId: "1:332871951184:web:7e65e3a1b1b61c46768255",
   measurementId: "G-7W3VJXW81D"
-};"
     };
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
-    function switchTab(tab) {
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.login-card').forEach(f => f.classList.remove('active-form'));
-
-      document.getElementById(`form-${tab}`).classList.add('active-form');
-      document.querySelector(`.tab-switcher .tab[onclick*="${tab}"]`).classList.add('active');
-    }
+    // Comutare tab-uri
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        document.querySelectorAll('.login-form').forEach(f => f.classList.remove('active'));
+        document.getElementById('form-' + tab.dataset.tab).classList.add('active');
+      });
+    });
 
     function login(tab) {
-      const email = document.getElementById(`email-${tab}`).value;
-      const pass = document.getElementById(`pass-${tab}`).value;
-
-      if (!email || !pass) return alert("Completează toate câmpurile.");
-
+      console.log('[DEBUG] Login tab:', tab);
+      const email = document.getElementById('email-'+tab).value.trim();
+      const pass = document.getElementById('pass-'+tab).value.trim();
+      if (!email || !pass) {
+        alert("Completează toate câmpurile!");
+        return;
+      }
       auth.signInWithEmailAndPassword(email, pass)
-        .then(userCred => {
-          alert("Autentificare reușită!");
-          window.location.href = "dashboard.html";
+        .then(() => {
+          window.location.href = (tab === 'firma') ? 'dashboard-firma.html' : 'dashboard-candidat.html';
         })
-        .catch(error => {
-          alert("Eroare: " + error.message);
-        });
+        .catch(err => alert("Eroare: " + err.message));
     }
 
-    function loginWithGoogle() {
+    function loginWithGoogle(tab) {
       const provider = new firebase.auth.GoogleAuthProvider();
       auth.signInWithPopup(provider)
-        .then(result => {
-          alert("Autentificat cu Google!");
-          window.location.href = "dashboard.html";
+        .then(() => {
+          window.location.href = (tab === 'firma') ? 'dashboard-firma.html' : 'dashboard-candidat.html';
         })
-        .catch(error => {
-          alert("Eroare Google: " + error.message);
-        });
+        .catch(err => alert("Eroare Google: " + err.message));
     }
   </script>
 </body>
