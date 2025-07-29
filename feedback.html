@@ -4,18 +4,22 @@
 <head>
   <meta charset="UTF-8">
   <title>Feedback - Horeca Admin</title>
-  <link rel="stylesheet" href="css/dashboard.css">
+ <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
-  <div class="sidebar">
-    <h2>Horeca Admin</h2>
-    <a href="dashboard.html">Dashboard</a>
-    <a href="angajati.html">Angajați</a>
-    <a href="campanii.html">Campanii</a>
-    <a href="abonamente.html">Abonamente</a>
-    <a class="active" href="feedback.html">Feedback</a>
-    <a href="#" onclick="logout()">Logout</a>
-  </div>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <div class="logo">Horeca Admin</div>
+      <nav>
+        <a href="#dashboard" class="active"><i class="fas fa-chart-line"></i> Dashboard</a>
+        <a href="#angajati"><i class="fas fa-users"></i> Angajați</a>
+        <a href="campanii.html"><i class="fas fa-bullhorn"></i> Campanii</a>
+        <a href="abonamente.html"><i class="fas fa-coins"></i> Abonamente</a>
+        <a href="feedback.html"><i class="fas fa-comment-dots"></i> Feedback</a>
+        <a href="#logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </nav>
+    </aside>
 
  <div class="card">
   <h2 class="card-title">Feedback de la angajați</h2>
