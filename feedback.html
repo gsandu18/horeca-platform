@@ -17,25 +17,28 @@
     <a href="#" onclick="logout()">Logout</a>
   </div>
 
-  <div class="main">
-    <h1>Feedback de la angajați</h1>
-    <form id="feedbackForm">
-      <label for="nume">Nume:</label>
-      <input type="text" id="nume" required>
+ <div class="card">
+  <h2 class="card-title">Feedback de la angajați</h2>
+  
+  <form id="feedbackForm" class="form-group">
+    <label for="nume">Nume</label>
+    <input type="text" id="nume" placeholder="Ex: Maria Popescu" required>
 
-      <label for="rol">Rol:</label>
-      <input type="text" id="rol" required>
+    <label for="rol">Rol</label>
+    <input type="text" id="rol" placeholder="Ex: Ospătar" required>
 
-      <label for="punctaj">Punctaj (1-5):</label>
-      <input type="number" id="punctaj" min="1" max="5" required>
+    <label for="punctaj">Punctaj (1-5)</label>
+    <input type="number" id="punctaj" min="1" max="5" placeholder="5" required>
 
-      <label for="comentariu">Feedback:</label>
-      <textarea id="comentariu" required></textarea>
+    <label for="comentariu">Feedback</label>
+    <textarea id="comentariu" placeholder="Scrie un comentariu..." required></textarea>
 
-      <button type="submit">Trimite feedback</button>
-    </form>
+    <button type="submit" class="btn">Trimite feedback</button>
+  </form>
 
-    <div id="listaFeedbackuri">
+  <div id="listaFeedbackuri" class="feedback-list"></div>
+</div>
+
       <!-- Aici se vor afișa feedbackurile -->
     </div>
   </div>
