@@ -220,38 +220,85 @@ form button {
 form button:hover {
   background: #003d99;
 }
-form {
+/* Container card cu efect de panou */
+.card {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
+  max-width: 700px;
+  margin: 30px auto;
+}
+
+/* Titlu stilizat */
+.card-title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Form styling */
+.form-group {
   display: flex;
   flex-direction: column;
-  max-width: 600px;
-  margin-bottom: 20px;
 }
 
-form input,
-form textarea {
-  margin-bottom: 10px;
-  padding: 8px;
+.form-group label {
+  margin: 8px 0 4px;
+  font-weight: 500;
+  color: #444;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
   font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
 }
 
-form button {
-  width: fit-content;
-  background-color: #0052cc;
-  color: white;
-  padding: 10px 20px;
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Button stilizat */
+.btn {
+  margin-top: 15px;
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
-form button:hover {
-  background-color: #003b99;
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Feedback list item */
+.feedback-list {
+  margin-top: 30px;
 }
 
 .feedback-entry {
-  background-color: white;
-  padding: 10px;
+  background-color: #f8f9fa;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-left: 4px solid #007bff;
   border-radius: 5px;
-  margin-bottom: 10px;
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+.feedback-entry h4 {
+  margin: 0 0 5px;
+  color: #333;
+}
+
+.feedback-entry p {
+  margin: 2px 0;
 }
