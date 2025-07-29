@@ -2,73 +2,73 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Horeca Admin</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Firmă</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
-  <div class="container">
+  <div class="dashboard">
     <aside class="sidebar">
-      <h2>Horeca Admin</h2>
+      <div class="logo">Horeca Admin</div>
       <nav>
-        <a href="#" class="active" data-section="dashboard">📊 Dashboard</a>
-        <a href="#" data-section="angajati">👥 Angajați</a>
-        <a href="#" data-section="campanii">📣 Campanii</a>
-        <a href="#" data-section="abonamente">💳 Abonamente</a>
-        <a href="#" data-section="feedback">💬 Feedback</a>
-        <a href="#" data-section="companii">🏢 Companii</a>
-        <a href="#" data-section="logout">↩️ Logout</a>
+        <a href="#" class="active"><i class="fas fa-chart-line"></i> Dashboard</a>
+        <a href="#"><i class="fas fa-users"></i> Angajați</a>
+        <a href="#"><i class="fas fa-bullhorn"></i> Campanii</a>
+        <a href="#"><i class="fas fa-coins"></i> Abonamente</a>
+        <a href="#"><i class="fas fa-comment-dots"></i> Feedback</a>
+        <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
       </nav>
     </aside>
 
-    <main>
-      <!-- DASHBOARD -->
-      <section id="dashboard" class="section">
+    <main class="main-content">
+      <header>
         <h1>Panou Administrare</h1>
-        <div class="info-cards">
-          <div class="info-card">
-            <h3>Angajați</h3>
-            <p>24</p>
-          </div>
-          <div class="info-card">
-            <h3>Campanii active</h3>
-            <p>3</p>
-          </div>
-          <div class="info-card">
-            <h3>Abonament</h3>
-            <p>Premium</p>
-          </div>
-        </div>
+      </header>
 
-        <div class="table-wrapper">
-          <h2>Lista angajaților</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Nume</th>
-                <th>Rol</th>
-                <th>Punctaj</th>
-                <th>Feedback</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Maria Popescu</td>
-                <td>Ospătar</td>
-                <td>4.8</td>
-                <td>Excelentă</td>
-              </tr>
-              <tr>
-                <td>Ion Ionescu</td>
-                <td>Bucătar</td>
-                <td>4.5</td>
-                <td>Foarte bun</td>
-              </tr>
-            </tbody>
-          </table>
+      <section class="stats">
+        <div class="card">
+          <h3>Angajați</h3>
+          <p>24</p>
+        </div>
+        <div class="card">
+          <h3>Campanii active</h3>
+          <p>3</p>
+        </div>
+        <div class="card">
+          <h3>Abonament</h3>
+          <p>Premium</p>
         </div>
       </section>
 
-    
+      <section class="table-section">
+        <h2>Lista angajaților</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Nume</th>
+              <th>Rol</th>
+              <th>Punctaj</th>
+              <th>Feedback</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Maria Popescu</td>
+              <td>Ospătar</td>
+              <td>4.8</td>
+              <td>Excelentă</td>
+            </tr>
+            <tr>
+              <td>Ion Ionescu</td>
+              <td>Bucătar</td>
+              <td>4.5</td>
+              <td>Foarte bun</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
