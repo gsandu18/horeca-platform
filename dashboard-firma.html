@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dashboard Firmă</title>
-  <link rel="stylesheet" href="css/dashboard.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <meta charset="UTF-8">
+  <title>Admin Horeca</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="dashboard">
-    <aside class="sidebar">
-      <div class="logo">Horeca Admin</div>
-      <nav>
-        <a href="#" class="active"><i class="fas fa-chart-line"></i> Dashboard</a>
-        <a href="#angajati"><i class="fas fa-users"></i> Angajați</a>
-        <a href="campanii.html"><i class="fas fa-bullhorn"></i> Campanii</a>
-        <a href="abonamente.html"><i class="fas fa-coins"></i> Abonamente</a>
-        <a href="feedback"><i class="fas fa-comment-dots"></i> Feedback</a>
-        <a href="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
-      </nav>
+  <div class="sidebar">
+    <h2>Horeca Admin</h2>
+    <a href="#" onclick="loadPage('dashboard')">Dashboard</a>
+    <a href="#" onclick="loadPage('angajati')">Angajați</a>
+    <a href="#" onclick="loadPage('campanii')">Campanii</a>
+    <a href="#" onclick="loadPage('abonamente')">Abonamente</a>
+    <a href="#" onclick="loadPage('feedback')">Feedback</a>
+    <a href="#" onclick="logout()">Logout</a>
+  </div>
+
+<h1>Feedback</h1>
+<form id="feedbackForm">
+  <input type="text" id="nume" placeholder="Nume" required>
+  <input type="text" id="rol" placeholder="Rol" required>
+  <input type="number" id="punctaj" placeholder="Punctaj (1-5)" min="1" max="5" required>
+  <textarea id="comentariu" placeholder="Comentariu" required></textarea>
+  <button type="submit">Trimite</button>
+</form>
+
+<div id="listaFeedbackuri"></div>
+  
+  <script src="router.js"></script>
+</body>
+</html>
+
     </aside>
 
     <main class="main-content">
