@@ -13,15 +13,17 @@ const auth = firebase.auth();
 
 // 🔐 LOGIN CU GOOGLE (pentru Candidat sau Firmă)
 function loginWithGoogle(userType) {
-  console.log('Apăsat buton Google pentru:', userType);
-
   const provider = new firebase.auth.GoogleAuthProvider();
-  provider.setCustomParameters({ prompt: 'select_account' });
 
   auth.signInWithPopup(provider)
-    .then((result) => {
-      const user = result.user;
-      console.log("Login reușit:", user.email);
+    .then(result => {
+      // ✅ Redirect către Gmail direct
+      window.location.href = 'https://mail.google.com';
+    })
+    .catch(error => {
+      alert("Eroare Google: " + error.message);
+    });
+}
 
       // ✅ Redirecționare după login
       if (userType === 'candidat') {
