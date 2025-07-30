@@ -30,28 +30,18 @@ function loginWithGoogle(userType) {
 }
 
 // 🔐 Login cu Email și Parolă
-function loginWithEmail() {
-  const isCandidatActive = document.getElementById('candidatForm').classList.contains('active');
+function loginWithGoogle(userType) {
+  const provider = new firebase.auth.GoogleAuthProvider();
 
-  const email = isCandidatActive
-    ? document.getElementById('emailCandidat').value
-    : document.getElementById('emailFirma').value;
+  auth.signInWithPopup(provider)
+    .then(result => {
+      const user = result.user;
+      console.log("Autentificat ca:", user.email);
 
-  const password = isCandidatActive
-    ? document.getElementById('parolaCandidat').value
-    : document.getElementById('parolaFirma').value;
-
-  auth.signInWithEmailAndPassword(email, password)
-    .then(userCredential => {
-      const user = userCredential.user;
-      console.log("Logat:", user.email);
-      if (isCandidatActive) {
-        window.location.href = 'dashboard.html';
-      } else {
-        window.location.href = 'firma.html';
-      }
+      // 🔁 Redirect direct către Gmail
+      window.location.href = "https://mail.google.com";
     })
     .catch(error => {
-      alert("Eroare Email/Parolă: " + error.message);
+      alert("Eroare Google: " + error.message);
     });
 }
