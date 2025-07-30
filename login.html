@@ -76,17 +76,22 @@
 
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
-
-  function loginWithGoogle(userType) {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider)
-      .then(result => {
-        console.log("Autentificat:", result.user.email);
-        window.location.href = "https://mail.google.com";
-      })
-      .catch(error => {
-        alert("Eroare Google: " + error.message);
-      });
+  
+function loginWithGoogle(userType) {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider)
+    .then(result => {
+      console.log("Autentificat:", result.user.email);
+      if (userType === 'candidat') {
+        window.location.href = "dashboard.html";
+      } else {
+        window.location.href = "firma.html";
+      }
+    })
+    .catch(error => {
+      alert("Eroare Google: " + error.message);
+    });
+}
   }
 
   function loginWithEmail() {
