@@ -7,313 +7,60 @@
 }
 
 body {
-  background-color: #f9f9f9;
-  color: #333;
-  padding: 20px;
-  line-height: 1.6;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #003366;
-  color: white;
-  padding: 15px 25px;
-  border-radius: 8px;
-  margin-bottom: 30px;
-}
-
-header h1 {
-  font-size: 1.4rem;
-}
-
-header button {
-  background-color: #cc0000;
-  border: none;
-  padding: 10px 15px;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-section {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 25px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.profil {
-  text-align: center;
-}
-
-.profil img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-  object-fit: cover;
-  border: 2px solid #007bff;
-}
-
-.profil h2 {
-  font-size: 1.4rem;
-}
-
-.form-section input,
-.proiecte input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-button {
-  padding: 10px 16px;
-  background-color: #007bff;
-  color: white;
-  font-size: 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-@media (min-width: 768px) {
-  body {
-    padding: 40px;
-  }
-
-  header h1 {
-    font-size: 1.6rem;
-  }
-
-  .form-section input,
-  .proiecte input {
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-  }
-  
-body {
-  margin: 0;
+  background-color: #f5f8fc;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f7fb;
-  color: #222;
-}
-
-.dashboard {
-  display: flex;
-  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 .sidebar {
-  width: 240px;
-  background: #003366;
-  color: #fff;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
+  width: 220px;
+  background: #002f6c;
+  color: white;
+  position: fixed;
+  top: 0; bottom: 0;
+  padding: 40px 20px;
 }
 
-.sidebar .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
+.sidebar h2 {
+  margin-bottom: 30px;
+  font-size: 24px;
 }
 
-.sidebar nav a {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 0.75rem;
+.sidebar a {
   color: white;
   text-decoration: none;
-  border-radius: 5px;
-  margin-bottom: 0.5rem;
-  transition: background 0.3s;
+  display: block;
+  margin: 12px 0;
+  font-size: 18px;
 }
 
-.sidebar nav a:hover,
-.sidebar nav a.active {
-  background-color: #0055aa;
-}
-
-.main-content {
-  flex: 1;
-  padding: 2rem;
-  overflow-y: auto;
-}
-
-header h1 {
-  margin-bottom: 1.5rem;
-}
-
-.stats {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.card {
-  background: white;
-  border-radius: 10px;
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  flex: 1;
-}
-
-.card h3 {
-  margin-top: 0;
-  color: #007b5e;
-}
-
-.table-section table {
-  width: 100%;
-  border-collapse: collapse;
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.table-section th, .table-section td {
-  padding: 1rem;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-.table-section th {
-  background-color: #e5f2ff;
-}
-.feedback-entry {
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 5px;
-  background: #fff;
-}
-form {
-  margin-bottom: 30px;
-}
-form input, form textarea {
-  width: 100%;
-  padding: 8px;
-  margin: 8px 0;
-}
-form button {
-  padding: 10px 20px;
-  background: #0052cc;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-form button:hover {
-  background: #003d99;
-}
-/* Container card cu efect de panou */
-.card {
-  background-color: #fff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
-  max-width: 700px;
-  margin: 30px auto;
-}
-
-/* Titlu stilizat */
-.card-title {
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #333;
-}
-
-/* Form styling */
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  margin: 8px 0 4px;
-  font-weight: 500;
-  color: #444;
-}
-
-.form-group input,
-.form-group textarea {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  transition: border-color 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #007bff;
-}
-
-/* Button stilizat */
-.btn {
-  margin-top: 15px;
-  padding: 12px 20px;
-  background-color: #007bff;
-  color: #fff;
+.sidebar a:hover { text-decoration: underline; }
+.sidebar a.active {
+  background: #014aad;
+  padding: 8px 12px;
+  border-radius: 6px;
   font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
 }
 
-.btn:hover {
-  background-color: #0056b3;
+.main {
+  margin-left: 240px;
+  padding: 40px;
 }
 
-/* Feedback list item */
-.feedback-list {
-  margin-top: 30px;
-}
-
-.feedback-entry {
-  background-color: #f8f9fa;
-  padding: 15px;
-  margin-bottom: 15px;
-  border-left: 4px solid #007bff;
-  border-radius: 5px;
-}
-
-.feedback-entry h4 {
-  margin: 0 0 5px;
-  color: #333;
-}
-
-.feedback-entry p {
-  margin: 2px 0;
-}
-  .card {
-  background-color: #fff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.05);
-  max-width: 700px;
-  margin: 30px auto;
+.card {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
+  width: 100%;
+  max-width: 760px;
+  margin: 40px auto;
 }
 
 .card-title {
-  margin-bottom: 20px;
-  font-size: 24px;
+  margin-bottom: 24px;
+  font-size: 26px;
   color: #333;
 }
 
@@ -330,10 +77,10 @@ form button:hover {
 
 .form-group input,
 .form-group textarea {
-  padding: 10px;
+  padding: 12px;
   font-size: 16px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 6px;
   transition: border-color 0.3s ease;
 }
 
@@ -344,34 +91,33 @@ form button:hover {
 }
 
 .btn {
-  margin-top: 15px;
-  padding: 12px 20px;
+  margin-top: 20px;
+  padding: 14px 22px;
   background-color: #007bff;
   color: #fff;
   font-weight: bold;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
   transition: background 0.3s;
 }
 
-.btn:hover {
-  background-color: #0056b3;
-}
+.btn:hover { background-color: #0056b3; }
 
 .feedback-entry {
   background: #f8f9fa;
-  padding: 15px;
-  margin-bottom: 15px;
+  padding: 18px;
+  margin-bottom: 18px;
   border-radius: 8px;
   border-left: 4px solid #007bff;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
 }
+
 .filtru-form {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin: 20px 0 30px;
+  gap: 12px;
+  margin: 24px 0 30px;
 }
 
 .filtru-form input {
@@ -383,9 +129,6 @@ form button:hover {
 
 .btn-filtru {
   background-color: #dc3545;
-  color: white;
 }
 
-.btn-filtru:hover {
-  background-color: #bb2d3b;
-}
+.btn-filtru:hover { background-color: #bb2d3b; }
