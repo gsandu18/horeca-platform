@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Firebase</title>
+  <style>
+    body { font-family: sans-serif; display: flex; justify-content: center; padding: 40px; background: #f3f5fa; }
+    .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+    input { width: 100%; margin-bottom: 12px; padding: 10px; border-radius: 6px; border: 1px solid #ccc; }
+    button { width: 100%; padding: 12px; font-weight: bold; border: none; cursor: pointer; margin-top: 8px; border-radius: 6px; }
+    .login { background: #007b8a; color: white; }
+    .google { background: #db4437; color: white; }
+    #user-panel { margin-top: 20px; display: none; }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Autentificare Firebase</h2>
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Parolă">
+  <button class="login" onclick="login()">Login cu Email</button>
+  <button class="google" onclick="loginGoogle()">Continua cu Google</button>
+
+  <div id="user-panel">
+    <p><strong>Logat ca:</strong> <span id="user-email"></span></p>
+    <button onclick="logout()">Logout</button>
+  </div>
+</div>
+
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+
+<script>
+  // 🔁 Înlocuiește cu config-ul tău Firebase:
+  const firebaseConfig = {
+    apiKey: "AIz...yourKey...",
+    authDomain: "your-project-id.firebaseapp.com",
+    projectId: "your-project-id",
+    storageBucket: "your-project-id.appspot.com",
+    messagingSenderId: "123456789",
+    appId: "1:123456789:web:abc123"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  function login() {
+    const email = document.getElementById('email').value;
+    const pass = document.getElementById('password').value;
+    auth.signInWithEmailAndPassword(email, pass)
+      .then(user => {
+        alert('Logat cu succes!');
+      })
+      .catch(err => alert('Eroare: ' + err.message));
+  }
+
+  function loginGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider)
+      .then(result => {
+        alert('Logare cu Google reușită!');
+      })
+      .catch(err => alert('Eroare: ' + err.message));
+  }
+
+  function logout() {
+    auth.signOut().then(() => {
+      alert('Delogat!');
+    });
+  }
+
+  // Verifică dacă e logat
+  auth.onAuthStateChanged(user => {
+    const panel = document.getElementById('user-panel');
+    const emailSpan = document.getElementById('user-email');
+    if (user) {
+      panel.style.display = 'block';
+      emailSpan.textContent = user.email;
+    } else {
+      panel.style.display = 'none';
+      emailSpan.textContent = '';
+    }
+  });
+</script>
+</body>
+</html>
