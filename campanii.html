@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-   <div class="card">
+  <div class="card">
   <h2 class="card-title">Campanii Recrutare</h2>
 
   <form id="campanieForm" class="form-group">
@@ -27,9 +27,20 @@
     <button type="submit" class="btn">Creează campanie</button>
   </form>
 
-  <h3 style="margin-top: 30px;">Campanii active</h3>
+  <hr style="margin: 40px 0">
+
+  <h3>Campanii active</h3>
+
+  <!-- Filtrare -->
+  <form id="filtruForm" class="filtru-form">
+    <input type="text" id="filtruLocatie" placeholder="Filtru după locație...">
+    <input type="date" id="filtruData">
+    <button type="submit" class="btn btn-filtru">Aplică filtre</button>
+  </form>
+
   <div id="listaCampanii" class="feedback-list"></div>
 </div>
+
 
   <input type="text" id="filtruLocatie" placeholder="Filtru după locație...">
   <input type="date" id="filtruDataStart">
