@@ -7,25 +7,30 @@
   <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
-  <header><h1>Campanii Recrutare</h1></header>
-  <main class="container">
-    <section class="form-section">
-      <h2>Creează o nouă campanie</h2>
-      <form id="campanieForm">
-        <label for="titlu">Titlu</label>
-        <input type="text" id="titlu" name="titlu" required>
-        <label for="descriere">Descriere</label>
-        <textarea id="descriere" name="descriere" required></textarea>
-        <label for="locatie">Locație</label>
-        <input type="text" id="locatie" name="locatie" required>
-        <label for="dataStart">Data Start</label>
-        <input type="date" id="dataStart" name="dataStart" required>
-        <button type="submit">Creează campanie</button>
-      </form>
-    </section>
-    <section class="list-section">
-      <h2>Campanii active</h2>
-      <div class="filters">
+  <header>
+   <div class="card">
+  <h2 class="card-title">Campanii Recrutare</h2>
+
+  <form id="campanieForm" class="form-group">
+    <label for="titlu">Titlu</label>
+    <input type="text" id="titlu" placeholder="Ex: Campanie Ospătari Brașov" required>
+
+    <label for="descriere">Descriere</label>
+    <textarea id="descriere" placeholder="Descriere scurtă..." required></textarea>
+
+    <label for="locatie">Locație</label>
+    <input type="text" id="locatie" placeholder="Ex: Brașov" required>
+
+    <label for="dataStart">Data Start</label>
+    <input type="date" id="dataStart" required>
+
+    <button type="submit" class="btn">Creează campanie</button>
+  </form>
+
+  <h3 style="margin-top: 30px;">Campanii active</h3>
+  <div id="listaCampanii" class="feedback-list"></div>
+</div>
+
   <input type="text" id="filtruLocatie" placeholder="Filtru după locație...">
   <input type="date" id="filtruDataStart">
   <button id="aplicaFiltru">Aplică filtre</button>
