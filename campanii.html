@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Campanii Recrutare</title>
-  <link rel="stylesheet" href="css/dashboard.css">
-  
-<div class="dashboard">
-    <aside class="sidebar">
-      <div class="logo">Horeca Admin</div>
-      <nav>
-        <a href="#dashboard" class="active"><i class="fas fa-chart-line"></i> Dashboard</a>
-        <a href="#angajati"><i class="fas fa-users"></i> Angajați</a>
-        <a href="campanii.html"><i class="fas fa-bullhorn"></i> Campanii</a>
-        <a href="abonamente.html"><i class="fas fa-coins"></i> Abonamente</a>
-        <a href="feedback.html"><i class="fas fa-comment-dots"></i> Feedback</a>
-        <a href="#logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
-      </nav>
-    </aside>  
+  <meta charset="UTF-8">
+  <title>Horeca Admin</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Horeca Admin</h2>
+    <a href="#" onclick="loadPage('dashboard')">Dashboard</a>
+    <a href="#" onclick="loadPage('angajati')">Angajați</a>
+    <a href="#" onclick="loadPage('campanii')">Campanii</a>
+    <a href="#" onclick="loadPage('feedback')">Feedback</a>
+    <a href="#" onclick="logout()">Logout</a>
+  </div>
+
+  <div class="main" id="main-content"></div>
+
+  <script src="router.js"></script>
+</body>
+</html>
+
 <body>
   
   <header>
