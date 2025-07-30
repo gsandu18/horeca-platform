@@ -2,73 +2,81 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dashboard Firmă</title>
-  <link rel="stylesheet" href="css/dashboard.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Horeca Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="dashboard">
+  <div class="container">
     <aside class="sidebar">
-      <div class="logo">Horeca Admin</div>
+      <h2>Horeca Admin</h2>
       <nav>
-        <a href="dashboard" class="active"><i class="fas fa-chart-line"></i> Dashboard</a>
-        <a href="angajati"><i class="fas fa-users"></i> Angajați</a>
-        <a href="campanii.html"><i class="fas fa-bullhorn"></i> Campanii</a>
-        <a href="abonamente.html"><i class="fas fa-coins"></i> Abonamente</a>
-        <a href="feedback.html"><i class="fas fa-comment-dots"></i> Feedback</a>
-        <a href="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <a href="#" class="active" data-section="dashboard">📊 Dashboard</a>
+        <a href="#" data-section="angajati">👥 Angajați</a>
+        <a href="#" data-section="campanii">📣 Campanii</a>
+        <a href="#" data-section="abonamente">💳 Abonamente</a>
+        <a href="#" data-section="feedback">💬 Feedback</a>
+        <a href="#" data-section="logout">↩️ Logout</a>
       </nav>
     </aside>
 
-    <main class="main-content">
-      <header>
+    <main>
+      <!-- DASHBOARD -->
+      <section id="dashboard" class="section">
         <h1>Panou Administrare</h1>
-      </header>
+        <div class="info-cards">
+          <div class="info-card">
+            <h3>Angajați</h3>
+            <p>24</p>
+          </div>
+          <div class="info-card">
+            <h3>Campanii active</h3>
+            <p>3</p>
+          </div>
+          <div class="info-card">
+            <h3>Abonament</h3>
+            <p>Premium</p>
+          </div>
+        </div>
 
-      <section class="stats">
-        <div class="card">
-          <h3>Angajați</h3>
-          <p>24</p>
-        </div>
-        <div class="card">
-          <h3>Campanii active</h3>
-          <p>3</p>
-        </div>
-        <div class="card">
-          <h3>Abonament</h3>
-          <p>Premium</p>
+        <div class="table-wrapper">
+          <h2>Lista angajaților</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Nume</th>
+                <th>Rol</th>
+                <th>Punctaj</th>
+                <th>Feedback</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Maria Popescu</td>
+                <td>Ospătar</td>
+                <td>4.8</td>
+                <td>Excelentă</td>
+              </tr>
+              <tr>
+                <td>Ion Ionescu</td>
+                <td>Bucătar</td>
+                <td>4.5</td>
+                <td>Foarte bun</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
-      <section class="table-section">
-        <h2>Lista angajaților</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Nume</th>
-              <th>Rol</th>
-              <th>Punctaj</th>
-              <th>Feedback</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Maria Popescu</td>
-              <td>Ospătar</td>
-              <td>4.8</td>
-              <td>Excelentă</td>
-            </tr>
-            <tr>
-              <td>Ion Ionescu</td>
-              <td>Bucătar</td>
-              <td>4.5</td>
-              <td>Foarte bun</td>
-            </tr>
-          
-        </table>
-      </section>
+      <!-- Placeholder sections -->
+      <section id="angajati" class="section hidden"><h1>Angajați</h1></section>
+      <section id="campanii" class="section hidden"><h1>Campanii</h1></section>
+      <section id="abonamente" class="section hidden"><h1>Abonamente</h1></section>
+      <section id="feedback" class="section hidden"><h1>Feedback</h1></section>
+      <section id="logout" class="section hidden"><h1>Ați fost deconectat</h1></section>
     </main>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
