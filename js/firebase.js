@@ -4,7 +4,8 @@ const firebaseConfig = {
   projectId: "personal-horeca-e5f0e",
   storageBucket: "personal-horeca-e5f0e.appspot.com",
   messagingSenderId: "332871951184",
-  appId: "1:332871951184:web:YOUR_APP_ID" // <- Îl vei copia imediat și pe acesta (vezi mai jos)
+  appId: "1:332871951184:web:7e65e3a1b1b61c46768255",
+  measurementId: "G-7W3VJXW81D"
 };
 // Inițializare Firebase
 firebase.initializeApp(firebaseConfig);
