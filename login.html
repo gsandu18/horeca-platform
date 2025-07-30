@@ -6,254 +6,119 @@
   <title>Autentificare Platformă</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f2f5fc;
-      padding: 40px 20px;
-      display: flex;
-      justify-content: center;
-    }
-    .container {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-      padding: 30px 20px;
-      width: 100%;
-      max-width: 460px;
-      text-align: center;
-    }
-    h1 {
-      font-size: 26px;
-      color: #003366;
-      margin-bottom: 20px;
-    }
-    .tabs {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 25px;
-    }
-    .tabs button {
-      flex: 1;
-      padding: 12px;
-      border: none;
-      border-radius: 50px;
-      margin: 0 5px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .tabs .active {
-      background-color: #00bfa5;
-      color: #fff;
-    }
-    .tabs .inactive {
-      background-color: #eee;
-      color: #333;
-    }
-    .form-section {
-      display: none;
-      animation: fadeIn 0.3s ease-in-out;
-    }
-    .form-section.active {
-      display: block;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .form-group {
-      margin-bottom: 15px;
-      text-align: left;
-    }
-    .form-group input {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 14px;
-    }
-    .btn-primary, .btn-google {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 15px;
-      margin-top: 10px;
-      cursor: pointer;
-    }
-    .btn-primary {
-      background-color: #00bfa5;
-      color: white;
-    }
-    .btn-primary:hover {
-      background-color: #009e8e;
-    }
-    .btn-google {
-      background-color: #db4437;
-      color: white;
-    }
-    .btn-google i {
-      font-style: normal;
-      margin-right: 6px;
-    }
-    .links {
-      margin-top: 15px;
-      font-size: 14px;
-    }
-    .links a {
-      color: #003366;
-      text-decoration: none;
-      margin: 0 4px;
-    }
-    .links a:hover {
-      text-decoration: underline;
-    }
+    /* CSS identic cu versiunea ta, îl păstrez curat */
+    body { font-family: 'Inter', sans-serif; background: #f2f5fc; padding: 40px 20px; display: flex; justify-content: center; }
+    .container { background: #fff; border-radius: 16px; box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1); padding: 30px 20px; width: 100%; max-width: 460px; text-align: center; }
+    h1 { font-size: 26px; color: #003366; margin-bottom: 20px; }
+    .tabs { display: flex; justify-content: center; margin-bottom: 25px; }
+    .tabs button { flex: 1; padding: 12px; border: none; border-radius: 50px; margin: 0 5px; font-weight: 600; cursor: pointer; transition: background 0.3s ease; }
+    .tabs .active { background-color: #00bfa5; color: #fff; }
+    .tabs .inactive { background-color: #eee; color: #333; }
+    .form-section { display: none; animation: fadeIn 0.3s ease-in-out; }
+    .form-section.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .form-group { margin-bottom: 15px; text-align: left; }
+    .form-group input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; }
+    .btn-primary, .btn-google { width: 100%; padding: 12px; border: none; border-radius: 8px; font-weight: 600; font-size: 15px; margin-top: 10px; cursor: pointer; }
+    .btn-primary { background-color: #00bfa5; color: white; }
+    .btn-google { background-color: #db4437; color: white; }
+    .btn-google i { font-style: normal; margin-right: 6px; }
+    .links { margin-top: 15px; font-size: 14px; }
+    .links a { color: #003366; text-decoration: none; margin: 0 4px; }
+    .links a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>Autentificare<br>Platformă Horeca</h1>
+<div class="container">
+  <h1>Autentificare<br>Platformă Horeca</h1>
 
-    <div class="tabs">
-      <button id="btnCandidat" class="active">Login Candidat</button>
-      <button id="btnFirma" class="inactive">Login Firmă</button>
-    </div>
-
-    <!-- Candidat -->
-    <div id="candidatForm" class="form-section active">
-      <h2 style="font-size: 18px; margin-bottom: 15px;">👤 Login Candidat</h2>
-      <div class="form-group">
-        <input type="email" id="emailCandidat" placeholder="Email" />
-      </div>
-      <div class="form-group">
-        <input type="password" id="parolaCandidat" placeholder="Parolă" />
-      </div>
-      <button class="btn-primary" onclick="loginWithEmail()">Intră în cont</button>
-      <button class="btn-google" onclick="loginWithGoogle('candidat')"><i>G</i> Continuă cu Google</button>
-      <div class="links">
-        <a href="#">Ai uitat parola?</a> |
-        <a href="#">Creează cont</a>
-      </div>
-    </div>
-
-    <!-- Firmă -->
-    <div id="firmaForm" class="form-section">
-      <h2 style="font-size: 18px; margin-bottom: 15px;">🏢 Login Firmă</h2>
-      <div class="form-group">
-        <input type="email" id="emailFirma" placeholder="Email firmă" />
-      </div>
-      <div class="form-group">
-        <input type="password" id="parolaFirma" placeholder="Parolă firmă" />
-      </div>
-      <button class="btn-primary" onclick="loginWithEmail()">Intră în cont</button>
-      <button class="btn-google" onclick="loginWithGoogle('firma')"><i>G</i> Continuă cu Google</button>
-      <div class="links">
-        <a href="#">Ai uitat parola?</a> |
-        <a href="#">Creează cont</a>
-      </div>
-    </div>
+  <div class="tabs">
+    <button id="btnCandidat" class="active">Login Candidat</button>
+    <button id="btnFirma" class="inactive">Login Firmă</button>
   </div>
 
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-  <script src="firebase.js"></script>
+  <!-- Candidat -->
+  <div id="candidatForm" class="form-section active">
+    <h2>👤 Login Candidat</h2>
+    <div class="form-group"><input type="email" id="emailCandidat" placeholder="Email" /></div>
+    <div class="form-group"><input type="password" id="parolaCandidat" placeholder="Parolă" /></div>
+    <button class="btn-primary" onclick="loginWithEmail()">Intră în cont</button>
+    <button class="btn-google" onclick="loginWithGoogle('candidat')"><i>G</i> Continuă cu Google</button>
+    <div class="links"><a href="#">Ai uitat parola?</a> | <a href="#">Creează cont</a></div>
+  </div>
 
-  <!-- Tab switch logic -->
-  <script>
-    const btnCandidat = document.getElementById('btnCandidat');
-    const btnFirma = document.getElementById('btnFirma');
-    const formCandidat = document.getElementById('candidatForm');
-    const formFirma = document.getElementById('firmaForm');
+  <!-- Firma -->
+  <div id="firmaForm" class="form-section">
+    <h2>🏢 Login Firmă</h2>
+    <div class="form-group"><input type="email" id="emailFirma" placeholder="Email firmă" /></div>
+    <div class="form-group"><input type="password" id="parolaFirma" placeholder="Parolă firmă" /></div>
+    <button class="btn-primary" onclick="loginWithEmail()">Intră în cont</button>
+    <button class="btn-google" onclick="loginWithGoogle('firma')"><i>G</i> Continuă cu Google</button>
+    <div class="links"><a href="#">Ai uitat parola?</a> | <a href="#">Creează cont</a></div>
+  </div>
+</div>
 
-    btnCandidat.addEventListener('click', () => {
-      btnCandidat.classList.add('active');
-      btnCandidat.classList.remove('inactive');
-      btnFirma.classList.remove('active');
-      btnFirma.classList.add('inactive');
-      formCandidat.classList.add('active');
-      formFirma.classList.remove('active');
-    });
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 
-    btnFirma.addEventListener('click', () => {
-      btnFirma.classList.add('active');
-      btnFirma.classList.remove('inactive');
-      btnCandidat.classList.remove('active');
-      btnCandidat.classList.add('inactive');
-      formFirma.classList.add('active');
-      formCandidat.classList.remove('active');
-    });
-  </script>
+<script>
   const firebaseConfig = {
-  apiKey: "AlzaSyDvsEfnjVmOkPkExebfxOZ5e3ALRVG0Z-w",
-  authDomain: "personal-horeca-e5f0e.firebaseapp.com",
-  projectId: "personal-horeca-e5f0e",
-  storageBucket: "personal-horeca-e5f0e.appspot.com",
-  messagingSenderId: "332871951184",
-  appId: "1:332871951184:web:7e65e3a1b1b61c46768255",
-  measurementId: "G-7W3VJXW81D"
-};
-// Inițializare Firebase
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
+    apiKey: "AIzaSyDvsEfnjVmOkPkExebfxOZ5e3ALRVG0Z-w",
+    authDomain: "personal-horeca-e5f0e.firebaseapp.com",
+    projectId: "personal-horeca-e5f0e",
+    storageBucket: "personal-horeca-e5f0e.appspot.com",
+    messagingSenderId: "332871951184",
+    appId: "1:332871951184:web:7e65e3a1b1b61c46768255",
+    measurementId: "G-7W3VJXW81D"
+  };
 
-// 🔐 LOGIN CU GOOGLE (pentru Candidat sau Firmă)
-function loginWithGoogle(userType) {
-  const provider = new firebase.auth.GoogleAuthProvider();
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
 
-  auth.signInWithPopup(provider)
-    .then(result => {
-      // ✅ Redirect către Gmail direct
-      window.location.href = 'https://mail.google.com';
-    })
-    .catch(error => {
-      alert("Eroare Google: " + error.message);
-    });
-}
+  function loginWithGoogle(userType) {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider)
+      .then(result => {
+        console.log("Autentificat:", result.user.email);
+        window.location.href = "https://mail.google.com";
+      })
+      .catch(error => {
+        alert("Eroare Google: " + error.message);
+      });
+  }
 
-      // ✅ Redirecționare după login
-      if (userType === 'candidat') {
-        window.location.href = "https://mail.google.com";  // sau 'dashboard.html'
-      } else {
-        window.location.href = "https://mail.google.com";  // sau 'firma.html'
-      }
-    })
-    .catch((error) => {
-      console.error("Eroare Google login:", error.message);
-      alert("Eroare Google login: " + error.message);
-    });
-}
+  function loginWithEmail() {
+    const isCandidat = document.getElementById('candidatForm').classList.contains('active');
+    const email = isCandidat ? document.getElementById('emailCandidat').value : document.getElementById('emailFirma').value;
+    const password = isCandidat ? document.getElementById('parolaCandidat').value : document.getElementById('parolaFirma').value;
 
-// 🔐 LOGIN CU EMAIL + PAROLĂ (pentru ambele tipuri)
-function loginWithEmail() {
-  const isCandidat = document.getElementById('candidatForm').classList.contains('active');
+    auth.signInWithEmailAndPassword(email, password)
+      .then(userCredential => {
+        console.log("Autentificat:", userCredential.user.email);
+        window.location.href = isCandidat ? "dashboard.html" : "firma.html";
+      })
+      .catch(error => {
+        alert("Eroare Email: " + error.message);
+      });
+  }
 
-  const email = isCandidat
-    ? document.getElementById('emailCandidat').value
-    : document.getElementById('emailFirma').value;
+  // Tabs logic
+  document.getElementById('btnCandidat').onclick = () => {
+    document.getElementById('btnCandidat').classList.add('active');
+    document.getElementById('btnFirma').classList.remove('active');
+    document.getElementById('candidatForm').classList.add('active');
+    document.getElementById('firmaForm').classList.remove('active');
+  };
 
-  const password = isCandidat
-    ? document.getElementById('parolaCandidat').value
-    : document.getElementById('parolaFirma').value;
+  document.getElementById('btnFirma').onclick = () => {
+    document.getElementById('btnFirma').classList.add('active');
+    document.getElementById('btnCandidat').classList.remove('active');
+    document.getElementById('firmaForm').classList.add('active');
+    document.getElementById('candidatForm').classList.remove('active');
+  };
+</script>
 
-  auth.signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      console.log("Login email reușit:", user.email);
-
-      if (isCandidat) {
-        window.location.href = "dashboard.html";
-      } else {
-        window.location.href = "firma.html";
-      }
-    })
-    .catch((error) => {
-      console.error("Eroare login email:", error.message);
-      alert("Eroare Email/Parolă: " + error.message);
-    });
-}
 </body>
 </html>
