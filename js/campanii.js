@@ -15,44 +15,63 @@ const db = getFirestore(app);
 
 const form = document.getElementById("campanieForm");
 const lista = document.getElementById("listaCampanii");
+const filtruForm = document.getElementById("filtruForm");
 
-form.addEventListener("submit", async e => {
+// Salvează campanie
+form.addEventListener("submit", function (e) {
   e.preventDefault();
-  const data = new FormData(form);
-  try {
-    await addDoc(collection(db, "campanii"), {
-      titlu: data.get("titlu"),
-      descriere: data.get("descriere"),
-      locatie: data.get("locatie"),
-      dataStart: data.get("dataStart"),
-      creatLa: new Date()
-    });
-    alert("Campanie creată!");
-    form.reset();
-    incarcaCampanii();
-  } catch (err) {
-    alert("Eroare: " + err.message);
-  }
+
+  const campanie = {
+    titlu: titlu.value,
+    descriere: descriere.value,
+    locatie: locatie.value,
+    data: dataStart.value
+  };
+
+  const existente = JSON.parse(localStorage.getItem("campanii")) || [];
+  existente.unshift(campanie);
+  localStorage.setItem("campanii", JSON.stringify(existente));
+  this.reset();
+  afiseazaCampanii(existente);
 });
 
-let campaniiCache = []; // păstrează toate campaniile pentru filtrare locală
+// Afișare campanii filtrate
+filtruForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const loc = filtruLocatie.value.toLowerCase();
+  const data = filtruData.value;
 
-async function incarcaCampanii() {
-  lista.innerHTML = "<li>Se încarcă...</li>";
-  const snapshot = await getDocs(collection(db, "campanii"));
-  campaniiCache = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-  aplicaFiltrare();
+  const toate = JSON.parse(localStorage.getItem("campanii")) || [];
+
+  const filtrate = toate.filter(c =>
+    (!loc || c.locatie.toLowerCase().includes(loc)) &&
+    (!data || c.data === data)
+  );
+
+  afiseazaCampanii(filtrate);
+});
+
+// Afișare generală
+function afiseazaCampanii(listaCampanii) {
+  lista.innerHTML = "";
+  listaCampanii.forEach(c => {
+    const div = document.createElement("div");
+    div.className = "feedback-entry";
+    div.innerHTML = `
+      <h4>${c.titlu}</h4>
+      <p><strong>Locație:</strong> ${c.locatie}</p>
+      <p><strong>Start:</strong> ${c.data}</p>
+      <p>${c.descriere}</p>
+    `;
+    lista.appendChild(div);
+  });
 }
 
-function aplicaFiltrare() {
-  const locatie = document.getElementById('filtruLocatie').value.toLowerCase();
-  const dataStartMin = document.getElementById('filtruDataStart').value;
-
-  const campaniiFiltrate = campaniiCache.filter(c => {
-    const includeLoc = !locatie || c.locatie.toLowerCase().includes(locatie);
-    const includeData = !dataStartMin || (c.dataStart >= dataStartMin);
-    return includeLoc && includeData;
-  });
+// Inițial
+window.addEventListener("DOMContentLoaded", () => {
+  const campanii = JSON.parse(localStorage.getItem("campanii")) || [];
+  afiseazaCampanii(campanii);
+});
 
   lista.innerHTML = campaniiFiltrate.length ? "" : "<li>Nicio campanie găsită.</li>";
   campaniiFiltrate.forEach(c => {
