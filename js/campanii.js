@@ -66,3 +66,49 @@ function aplicaFiltrare() {
 }
 
 document.getElementById("aplicaFiltru").addEventListener("click", aplicaFiltrare);
+document.getElementById("campanieForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const titlu = document.getElementById("titlu").value;
+  const descriere = document.getElementById("descriere").value;
+  const locatie = document.getElementById("locatie").value;
+  const data = document.getElementById("dataStart").value;
+
+  const campanie = { titlu, descriere, locatie, data };
+
+  const lista = document.getElementById("listaCampanii");
+
+  const card = document.createElement("div");
+  card.className = "feedback-entry";
+  card.innerHTML = `
+    <h4>${titlu}</h4>
+    <p><strong>Locație:</strong> ${locatie}</p>
+    <p><strong>Start:</strong> ${data}</p>
+    <p>${descriere}</p>
+  `;
+  lista.prepend(card);
+
+  // localStorage save
+  const existente = JSON.parse(localStorage.getItem("campanii")) || [];
+  existente.unshift(campanie);
+  localStorage.setItem("campanii", JSON.stringify(existente));
+
+  this.reset();
+});
+
+// Load existing
+window.addEventListener("DOMContentLoaded", () => {
+  const saved = JSON.parse(localStorage.getItem("campanii")) || [];
+  const lista = document.getElementById("listaCampanii");
+  saved.forEach(({ titlu, descriere, locatie, data }) => {
+    const card = document.createElement("div");
+    card.className = "feedback-entry";
+    card.innerHTML = `
+      <h4>${titlu}</h4>
+      <p><strong>Locație:</strong> ${locatie}</p>
+      <p><strong>Start:</strong> ${data}</p>
+      <p>${descriere}</p>
+    `;
+    lista.appendChild(card);
+  });
+});
