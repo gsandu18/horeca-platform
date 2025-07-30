@@ -367,3 +367,25 @@ form button:hover {
   border-left: 4px solid #007bff;
   box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
+.filtru-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0 30px;
+}
+
+.filtru-form input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn-filtru {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-filtru:hover {
+  background-color: #bb2d3b;
+}
