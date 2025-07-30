@@ -302,3 +302,41 @@ form button:hover {
 .feedback-entry p {
   margin: 2px 0;
 }
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif; }
+body { background:#f4f7fb; color:#222; }
+header { background:#003366; color:#fff; text-align:center; padding:1.5rem 0; }
+.container { max-width:800px; margin:2rem auto; padding:0 1rem; }
+.form-section, .list-section { background:#fff; padding:1.5rem; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1); margin-bottom:2rem; }
+form label { display:block; margin:0.5rem 0 0.2rem; font-weight:bold; }
+form input, form textarea { width:100%; padding:0.8rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:4px; font-size:1rem; }
+form textarea { resize:vertical; min-height:100px; }
+form button { padding:0.8rem 1.2rem; background:#1e90ff; color:#fff; border:none; border-radius:6px; cursor:pointer; transition:0.3s; }
+form button:hover { background:#187bcd; }
+.list-section ul { list-style:none; }
+.list-section li { background:#fff; border:1px solid #ddd; border-radius:6px; margin-bottom:1rem; padding:1rem; }
+li h3 { margin:0; color:#007b5e; }
+li p { margin:0.5rem 0; }
+li span { font-size:0.9rem; color:#555; }
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.filters input, .filters button {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.filters button {
+  background: #1e90ff;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filters button:hover {
