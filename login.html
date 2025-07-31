@@ -139,7 +139,7 @@
       const provider = new firebase.auth.GoogleAuthProvider();
       auth.signInWithPopup(provider)
         .then(() => {
-          const dest = (role === 'firma') ? 'dashboard.html' : 'landing.html';
+          const dest = (role === 'firma') ? 'dashboard-firma.html' : 'dashboard-candidat.html';
           window.location.href = dest;
         })
         .catch(e => {
