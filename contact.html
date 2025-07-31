@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | HoReCa Personal</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-container">
+      <h1 class="logo">HoReCa Personal</h1>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">Acasă</a></li>
+          <li><a href="despre.html">Despre Noi</a></li>
+          <li><a href="servicii.html">Servicii</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
+  </header>
+
+  <main>
+    <section id="contact" class="content-section">
+      <h2>Contactează-ne</h2>
+      <p>Trimite-ne un mesaj și îți răspundem cât mai repede.</p>
+      <form action="submit_contact.php" method="post" class="contact-form">
+        <input type="text" name="name" placeholder="Nume complet" required/>
+        <input type="email" name="email" placeholder="Adresă de email" required/>
+        <input type="text" name="subject" placeholder="Subiect (opțional)" />
+        <textarea name="message" placeholder="Mesajul tău..." required></textarea>
+        <button type="submit" class="btn-primary">Trimite</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <p>© 2025 HoReCa Personal. Toate drepturile rezervate.</p>
+      </div>
+      <div class="footer-right">
+        <a href="confidentialitate.html">Politica de Confidențialitate</a>
+        <a href="termeni.html">Termeni și Condiții</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav-menu').classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
