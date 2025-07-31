@@ -100,7 +100,7 @@
           if (user.emailVerified) {
             msg.textContent = "Autentificare reușită!";
             msg.style.color = 'green';
-            setTimeout(() => window.location.href = 'dashboard.html', 800);
+            setTimeout(() => window.location.href = 'dashboard-firma.html', 800);
           } else {
             msg.textContent = "Confirmă emailul înainte.";
             msg.style.color = 'orange';
@@ -109,7 +109,7 @@
         } else {
           msg.textContent = "Autentificare reușită!";
           msg.style.color = 'green';
-          setTimeout(() => window.location.href = 'landing.html', 800);
+          setTimeout(() => window.location.href = 'dashboard-candidat.html', 800);
         }
       } catch(e) {
         msg.textContent = "Eroare: " + e.message;
