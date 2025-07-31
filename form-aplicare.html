@@ -1,45 +1,83 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Formular Aplicare</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplicare job cu CV</title>
   <style>
-    body { font-family: Arial; background:#f4f4f4; display:flex; justify-content:center; padding:30px; }
-    form { background:white; padding:20px; border-radius:10px; box-shadow:0 0 15px rgba(0,0,0,0.1); width:100%; max-width:400px; }
-    input, textarea { width:100%; margin:10px 0; padding:10px; border:1px solid #ccc; border-radius:5px; }
+    body { font-family: Arial, background: #f4f4f4; display:flex; justify-content:center; align-items:center; padding:30px; }
+    form { background:max-width:400px; padding:20px; border-radius:10px; box-shadow:0 0 15px rgba(0,0,0,0.1); width:100%; max-width:400px; }
+    input, textarea { width:100%; padding:10px; margin:10px 0; border:1px solid #ccc; border-radius:5px; }
     button { background:#007b8a; color:white; padding:12px; border:none; width:100%; border-radius:5px; cursor:pointer; }
-    p { margin-top:10px; }
+    p { text-align:center; margin-top:10px; }
   </style>
 </head>
 <body>
-
 <form id="jobForm">
   <h3>Aplică pentru job</h3>
   <input type="text" id="nume" placeholder="Nume complet" required>
   <input type="email" id="email" placeholder="Email" required>
-  <textarea id="mesaj" rows="4" placeholder="Scrisoare de intenție"></textarea>
+  <textarea id="mesaj" rows="4" placeholder="Mesaj/opțional"></textarea>
+  <label>CV în format PDF</label>
+  <input type="file" id="cvFile" accept=".pdf" required>
   <input type="hidden" id="campaignUrl">
   <button type="submit">Trimite aplicația</button>
   <p id="msg"></p>
 </form>
 
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-storage-compat.js"></script>
+
 <script>
+  const firebaseConfig = {
+    apiKey: "...",
+    authDomain: "...firebaseapp.com",
+    projectId: "...",
+    storageBucket: "...appspot.com",
+    messagingSenderId: "...",
+    appId: "..."
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  const storage = firebase.storage();
+
   const params = new URLSearchParams(window.location.search);
   const jobSlug = params.get('job') || 'chef-bucatar';
-  document.getElementById('campaignUrl').value = `oferta-${jobSlug}.html`;
+  const campaignUrl = `oferta-${jobSlug}.html`;
+  document.getElementById('campaignUrl').value = campaignUrl;
 
-  document.getElementById("jobForm").addEventListener("submit", function(e){
+  document.getElementById("jobForm").addEventListener("submit", async function(e) {
     e.preventDefault();
-    document.getElementById("msg").textContent = "Aplicație trimisă cu succes! Redirecționare...";
-    document.getElementById("msg").style.color = "green";
+    const nume = document.getElementById("nume").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const mesaj = document.getElementById("mesaj").value.trim();
+    const cv = document.getElementById("cvFile").files[0];
+    const msg = document.getElementById("msg");
 
-    const redirectURL = document.getElementById("campaignUrl").value;
-    setTimeout(() => {
-      window.location.href = redirectURL;
-    }, 2000);
+    if (!cv) return msg.textContent = "Încarcă CV-ul PDF!";
+
+    msg.textContent = "Se încarcă CV-ul...";
+    try {
+      const storageRef = storage.ref(`cvs/${Date.now()}_${cv.name}`);
+      const uploadSnap = await storageRef.put(cv);
+      const cvURL = await uploadSnap.ref.getDownloadURL();
+
+      await db.collection("aplicatii").add({
+        nume, email, mesaj, job: jobSlug,
+        cvURL,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      });
+
+      msg.textContent = "✅ Aplicație trimisă! Redirecționare...";
+      msg.style.color = "green";
+      setTimeout(() => window.location.href = campaignUrl, 1500);
+    } catch (err) {
+      msg.textContent = "Eroare: " + err.message;
+      msg.style.color = "red";
+    }
   });
 </script>
-
 </body>
 </html>
