@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aplică la Job</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f6f7fb;
+      margin: 0;
+      padding: 0;
+    }
+    .form-container {
+      max-width: 500px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+    h2 {
+      text-align: center;
+      color: #003366;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 14px;
+      background: #007b8a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #005f6b;
+    }
+    .msg {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+  <h2>Aplică la Job</h2>
+  <form id="jobForm">
+    <label>Nume complet</label>
+    <input type="text" id="nume" required />
+
+    <label>Email</label>
+    <input type="email" id="email" required />
+
+    <label>Telefon</label>
+    <input type="text" id="telefon" required />
+
+    <label>Mesaj (opțional)</label>
+    <textarea id="mesaj" rows="4"></textarea>
+
+    <button type="submit">Trimite aplicația</button>
+    <p id="msg" class="msg"></p>
+  </form>
+</div>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDvsEfnjVmOkPkExebfxOZ5e3ALRVG0Z-w",
+    authDomain: "personal-horeca-e5f0e.firebaseapp.com",
+    projectId: "personal-horeca-e5f0e",
+    storageBucket: "personal-horeca.appspot.com",
+    messagingSenderId: "332871951184",
+    appId: "1:332871951184:web:7e65e3a1b1b61c46768255",
+    measurementId: "G-7W3VJXW81D"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  document.getElementById("jobForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const nume = document.getElementById("nume").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const telefon = document.getElementById("telefon").value.trim();
+    const mesaj = document.getElementById("mesaj").value.trim();
+    const msg = document.getElementById("msg");
+
+    try {
+      await db.collection("aplicatii").add({
+        nume,
+        email,
+        telefon,
+        mesaj,
+        data: new Date().toISOString()
+      });
+
+      msg.textContent = "✅ Aplicație trimisă cu succes!";
+      msg.style.color = "green";
+      document.getElementById("jobForm").reset();
+    } catch (err) {
+      msg.textContent = "Eroare la trimitere: " + err.message;
+      msg.style.color = "red";
+    }
+  });
+</script>
+
+</body>
+</html>
