@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard Firmă - Evaluare Angajați</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/dasboard-angajati.css" />
 </head>
 <body>
 
@@ -45,7 +45,66 @@
     <h2>Evaluări trimise</h2>
     <div id="listaEvaluari"></div>
   </section>
+  
+let angajatCurent = "";
 
+function deschideFormular(nume, email) {
+  angajatCurent = { nume, email };
+  document.getElementById("numeAngajat").innerText = nume;
+  document.getElementById("formularModal").style.display = "block";
+}
+
+function inchideFormular() {
+  document.getElementById("formularModal").style.display = "none";
+}
+
+function afiseazaSlider(val) {
+  document.getElementById("valoarePunctaj").innerText = val;
+}
+
+document.getElementById("formEvaluare").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const punctaj = document.getElementById("punctaj").value;
+  const feedback = document.getElementById("feedback").value;
+
+  const evaluare = {
+    nume: angajatCurent.nume,
+    email: angajatCurent.email,
+    punctaj,
+    feedback,
+    data: new Date().toLocaleString()
+  };
+
+  let evaluari = JSON.parse(localStorage.getItem("evaluari") || "[]");
+  evaluari.push(evaluare);
+  localStorage.setItem("evaluari", JSON.stringify(evaluari));
+
+  inchideFormular();
+  this.reset();
+  afiseazaSlider(5);
+  incarcaEvaluari();
+});
+
+function incarcaEvaluari() {
+  const container = document.getElementById("listaEvaluari");
+  container.innerHTML = "";
+
+  const evaluari = JSON.parse(localStorage.getItem("evaluari") || "[]");
+  evaluari.reverse().forEach(e => {
+    const card = document.createElement("div");
+    card.className = "evaluare";
+    card.innerHTML = `
+      <strong>${e.nume}</strong> (${e.email})<br/>
+      Punctaj: <strong>${e.punctaj}/10</strong><br/>
+      Feedback: <em>${e.feedback}</em><br/>
+      <small>${e.data}</small>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// Inițializare
+window.onload = incarcaEvaluari;
   <script src="script.js"></script>
 </body>
 </html>
