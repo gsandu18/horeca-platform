@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Firmă</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h2>Angajați activi</h2>
+  <div id="listaAngajati">
+    <div class="angajat">
+      <p><strong>Ion Popescu</strong> - ion@example.com</p>
+      <button onclick="deschideFormular('Ion Popescu', 'ion@example.com')">Evaluează</button>
+    </div>
+    <div class="angajat">
+      <p><strong>Maria Ionescu</strong> - maria@example.com</p>
+      <button onclick="deschideFormular('Maria Ionescu', 'maria@example.com')">Evaluează</button>
+    </div>
+  </div>
+
+  <!-- FORMULAR MODAL -->
+  <div id="formularModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="inchideFormular()">&times;</span>
+      <h3>Evaluare pentru <span id="numeAngajat"></span></h3>
+      <form id="formEvaluare">
+        <label for="punctaj">Punctaj (0-10):</label>
+        <input type="range" id="punctaj" name="punctaj" min="0" max="10" value="5" oninput="afiseazaSlider(this.value)">
+        <span id="valoarePunctaj">5</span>/10
+
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" rows="4" required></textarea>
+
+        <button type="submit">Salvează</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- LISTARE EVALUĂRI -->
+  <section id="evaluari">
+    <h2>Evaluări trimise</h2>
+    <div id="listaEvaluari"></div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
