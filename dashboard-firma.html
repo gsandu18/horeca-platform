@@ -1,192 +1,210 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Horeca Admin</title>
+  <meta charset="UTF‑8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Firmă – HoReCa Admin</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f6fc;
-      display: flex;
-    }
-
-    .sidebar {
-      width: 250px;
-      background-color: #003366;
-      color: #fff;
-      min-height: 100vh;
-      padding: 20px;
-      position: relative;
-      transition: transform 0.3s ease;
-    }
-
-    .sidebar h2 {
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-
-    .sidebar ul {
-      list-style: none;
-    }
-
-    .sidebar ul li {
-      margin: 15px 0;
-    }
-
-    .sidebar ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-    }
-
-    .sidebar ul li a:hover {
-      text-decoration: underline;
-    }
-
-    .content {
-      flex: 1;
-      padding: 30px;
-    }
-
-    .form-container {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      max-width: 500px;
-      margin: auto;
-    }
-
-    .form-container h3 {
-      margin-bottom: 20px;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-
-    .submit-btn {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      padding: 12px;
-      width: 100%;
-      font-size: 16px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .submit-btn:hover {
-      background-color: #0056b3;
-    }
-
-    /* Hamburger Menu */
-    #toggleSidebar {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 26px;
-      color: #003366;
-      padding: 10px 20px;
-      position: absolute;
-      top: 15px;
-      left: 10px;
-      z-index: 1001;
-    }
-
-    @media (max-width: 768px) {
-      .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        transform: translateX(-100%);
-        z-index: 1000;
-      }
-
-      .sidebar.active {
-        transform: translateX(0);
-      }
-
-      #toggleSidebar {
-        display: block;
-      }
-
-      body {
-        padding-left: 0;
-      }
-
-      .content {
-        width: 100%;
-        padding-top: 60px;
-      }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Segoe UI',sans-serif;display:flex;background:#eef3f8;color:#333;}
+    nav{width:260px;background:#1e2a47;color:#fff;position:fixed;height:100vh;padding:30px;transition:transform .3s;}
+    nav h2{font-size:1.5rem;margin-bottom:30px;}
+    nav ul{list-style:none;}
+    nav ul li{margin:20px 0;}
+    nav ul li a{color:#fff;text-decoration:none;font-size:1.1rem;display:flex;align-items:center;transition:color .2s;}
+    nav ul li a .fa-fw{width:20px;margin-right:10px;}
+    nav ul li a.active, nav ul li a:hover{color:#4ac0e8;}
+    .toggle-btn{display:none;position:absolute;top:20px;left:280px;font-size:28px;color:#1e2a47;background:none;border:none;cursor:pointer;z-index:999;}
+    main{margin-left:260px;flex:1;padding:40px;}
+    header h1{font-size:2rem;color:#1e2a47;margin-bottom:40px;}
+    section{margin-bottom:60px;}
+    h2{font-size:1.6rem;color:#1e2a47;margin-bottom:20px;}
+    .card{background:#fff;border-radius:10px;padding:25px;box-shadow:0 4px 16px rgba(0,0,0,0.08);margin-bottom:20px;transition:transform .2s;}
+    .card:hover{transform:translateY(-3px);}
+    table{width:100%;border-collapse:collapse;background:#fff;margin-top:20px;}
+    th,td{padding:14px;border:1px solid #ddd;text-align:left;}
+    th{background:#e8f1fa;color:#1e2a47;}
+    form{background:#fff;padding:25px;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,0.08);margin-bottom:25px;}
+    input,textarea,select{width:100%;padding:14px;margin:10px 0;border:1px solid #ccc;border-radius:6px;font-size:1rem;}
+    button.submit-form, .plan-card button {background:#4ac0e8;color:#fff;padding:14px;border:none;border-radius:6px;font-size:1rem;cursor:pointer;transition:background .2s;}
+    button.submit-form:hover, .plan-card button:hover{background:#349fc6;}
+    .plans-container{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:20px;}
+    .plan-card{flex:1 1 200px;padding:20px;background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);text-align:center;}
+    @media(max-width:768px){
+      nav{transform:translateX(-100%);}
+      nav.active{transform:translateX(0);}
+      .toggle-btn{display:block;}
+      main{margin-left:0;padding:20px;}
     }
   </style>
 </head>
 <body>
 
-  <!-- Sidebar -->
-  <nav class="sidebar" id="sidebar">
-    <h2>Horeca Admin</h2>
-    <ul>
-      <li><a href="#dashboard">📊 Dashboard</a></li>
-      <li><a href="angajati">👥 Angajați</a></li>
-      <li><a href="campanii.html">🎯 Campanii</a></li>
-      <li><a href="abonamente.html">🧾 Abonamente</a></li>
-      <li><a href="feedback">💬 Feedback</a></li>
-      <li><a href="logout">🔒 Logout</a></li>
-    </ul>
-  </nav>
+<nav id="sidebar">
+  <h2>HoReCa Admin</h2>
+  <ul>
+    <li><a href="#" data-sec="dashboard" class="active"><i class="fa-solid fa-chart-line fa-fw"></i> Dashboard</a></li>
+    <li><a href="#" data-sec="angajati"><i class="fa-solid fa-users fa-fw"></i> Angajați</a></li>
+    <li><a href="#" data-sec="campanii"><i class="fa-solid fa-bullseye fa-fw"></i> Campanii</a></li>
+    <li><a href="#" data-sec="abonamente"><i class="fa-solid fa-receipt fa-fw"></i> Abonamente</a></li>
+    <li><a href="#" data-sec="feedback"><i class="fa-solid fa-comment fa-fw"></i> Feedback</a></li>
+    <li><a href="#" id="logout"><i class="fa-solid fa-sign-out-alt fa-fw"></i> Logout</a></li>
+  </ul>
+</nav>
+<button class="toggle-btn" id="toggleBtn">☰</button>
 
-  <!-- Hamburger Toggle -->
-  <button id="toggleSidebar">☰</button>
+<main>
+  <header><h1>Dashboard Firmă</h1></header>
 
-  <!-- Main Content -->
-  <div class="content">
-    <div class="form-container">
-      <h3>Feedback de la angajați</h3>
-      <div class="form-group">
-        <input type="text" placeholder="Nume complet ex: Ion Popescu" />
+  <section id="dashboard">
+    <h2>Statistici Aplicații</h2>
+    <div class="card"><canvas id="appsChart"></canvas></div>
+    <h2>Aplicații Recente</h2>
+    <div id="recent-apps"></div>
+  </section>
+
+  <section id="angajati" style="display:none;">
+    <h2>Angajați</h2>
+    <div id="staff-list"></div>
+  </section>
+
+  <section id="campanii" style="display:none;">
+    <h2>Campanii</h2>
+    <form id="add-campaign-form">
+      <input type="text" id="camp-title" placeholder="Titlu Campanie" required/>
+      <textarea id="camp-desc" placeholder="Descriere" rows="3" required></textarea>
+      <input type="text" id="camp-program" placeholder="Program (9:00–17:00)" required/>
+      <input type="number" id="camp-net" placeholder="Salariu net estimat" required/>
+      <input type="date" id="camp-start" required/>
+      <input type="date" id="camp-end" required/>
+      <button type="submit" class="submit-form">Creează Campanie</button>
+    </form>
+    <div id="campaigns-list"></div>
+  </section>
+
+  <section id="abonamente" style="display:none;">
+    <h2>Abonamente</h2>
+    <div class="plans-container">
+      <div class="plan-card">
+        <h3>Basic</h3>
+        <p>Beneficii: 1 campanie activă</p>
+        <p>Probă gratuită: 7 zile</p>
+        <p>€19/lună</p>
+        <p>€205.20/an (10% reducere)</p>
+        <button class="select-plan" data-plan="Basic">Selectează Basic</button>
       </div>
-      <div class="form-group">
-        <input type="text" placeholder="Postul de lucru" />
+      <div class="plan-card">
+        <h3>Standard</h3>
+        <p>Beneficii: 5 campanii + rapoarte</p>
+        <p>Probă gratuită: 7 zile</p>
+        <p>€49/lună</p>
+        <p>€529.20/an (10% reducere)</p>
+        <button class="select-plan" data-plan="Standard">Selectează Standard</button>
       </div>
-      <div class="form-group">
-        <input type="number" min="1" max="5" placeholder="Rating (1-5)" />
+      <div class="plan-card">
+        <h3>Premium</h3>
+        <p>Beneficii: Aplicații nelimitate + suport 24/7</p>
+        <p>Probă gratuită: 7 zile</p>
+        <p>€99/lună</p>
+        <p>€1069.20/an (10% reducere)</p>
+        <button class="select-plan" data-plan="Premium">Selectează Premium</button>
       </div>
-      <div class="form-group">
-        <textarea rows="4" placeholder="Comentariu feedback..."></textarea>
-      </div>
-      <button class="submit-btn">Trimite feedback</button>
     </div>
-  </div>
+    <div id="subscription-info"></div>
+  </section>
 
-  <script>
-    const toggleBtn = document.getElementById('toggleSidebar');
-    const sidebar = document.getElementById('sidebar');
+  <section id="feedback" style="display:none;">
+    <h2>Feedback Angajați</h2>
+    <div id="feedback-list"></div>
+  </section>
+</main>
 
-    toggleBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('active');
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const cfg = {
+    apiKey: "AIzaSyD...",
+    authDomain: "personal-horeca-e5f0e.firebaseapp.com",
+    projectId: "personal-horeca-e5f0e",
+    storageBucket: "personal-horeca.appspot.com",
+    messagingSenderId: "332871951184",
+    appId: "1:332871951184:..."
+  };
+  firebase.initializeApp(cfg);
+  const auth = firebase.auth(), db = firebase.firestore();
+
+  document.getElementById('toggleBtn').onclick = () =>
+    document.getElementById('sidebar').classList.toggle('active');
+  document.getElementById('logout').onclick = () =>
+    auth.signOut().then(() => window.location = 'login-firma.html');
+
+  const tabs = document.querySelectorAll('nav ul li a[data-sec]');
+  const sections = document.querySelectorAll('main section');
+  tabs.forEach(tab => {
+    tab.onclick = e => {
+      e.preventDefault();
+      const tgt = tab.dataset.sec;
+      sections.forEach(sec => sec.id === tgt ? sec.style.display = 'block' : sec.style.display = 'none');
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      if (window.innerWidth < 768) document.getElementById('sidebar').classList.remove('active');
+    };
+  });
+
+  auth.onAuthStateChanged(user => {
+    if (!user) return window.location = 'login-firma.html';
+    const uid = user.uid;
+    initDashboard(uid);
+    initAngajati(uid);
+    initCampanii(uid);
+    initAbonament(uid);
+    initFeedback(uid);
+  });
+
+  const ctx = document.getElementById('appsChart').getContext('2d');
+  const appsChart = new Chart(ctx, {
+    type: 'line',
+    data: { labels: [], datasets: [{ label: 'Aplicații', backgroundColor: 'rgba(74,192,232,0.2)', borderColor: '#4ac0e8', data: [] }] },
+    options: { responsive: true, scales: { x: { title: { display: true, text: 'Ziua' } }, y: { beginAtZero: true } } }
+  });
+
+  function initAbonament(uid) {
+    const info = document.getElementById('subscription-info');
+    const plans = {
+      Basic: { priceM: 19, priceY: (19 * 12 * 0.9).toFixed(2), benefits: '1 campanie activă' },
+      Standard: { priceM: 49, priceY: (49 * 12 * 0.9).toFixed(2), benefits: '5 campanii + rapoarte' },
+      Premium: { priceM: 99, priceY: (99 * 12 * 0.9).toFixed(2), benefits: 'Nelimitat + suport 24/7' }
+    };
+
+    document.querySelectorAll('.select-plan').forEach(btn => {
+      btn.onclick = () => {
+        const type = btn.dataset.plan;
+        const plan = plans[type];
+        db.collection('abonamente').doc(uid).set({
+          plan: type, benefits: plan.benefits,
+          trialEnds: new Date(Date.now() + 7*86400000).toISOString().split('T')[0],
+          priceMonthly: plan.priceM, priceAnnual: plan.priceY, status: 'trial'
+        }).then(() => renderSub());
+      };
     });
-  </script>
 
+    function renderSub() {
+      db.collection('abonamente').doc(uid).get().then(doc => {
+        if (!doc.exists) {
+          info.innerHTML = '<p>Selectează un plan și începe proba gratuită de 7 zile.</p>';
+        } else {
+          const d = doc.data();
+          info.innerHTML = `<div class="card"><p><strong>Plan:</strong> </p><p><strong>Beneficii:</strong> </p><p><strong>Trial până:</strong> </p><p><strong>Lunar:</strong> €</p><p><strong>Anual:</strong> €</p><p><strong>Status:</strong> </p></div>`;
+        }
+      });
+    }
+    renderSub();
+  }
+
+  // initDashboard, initAngajati, initCampanii, initFeedback - ca anterior ...
+</script>
 </body>
-</html>
