@@ -124,6 +124,10 @@
         <input type="text" placeholder="Experiență">
         <input type="text" placeholder="Abilități (virgulă)">
         <input type="text" placeholder="Certificări (virgulă)">
+<!-- Adăugăm aici -->
+<label for="diploma">Încarcă Diplomă sau Certificat:</label>
+<input type="file" id="diploma" accept=".pdf,.jpg,.jpeg,.png">
+<p id="mesajValidare" style="color:red;"></p>
       </div>
       <button>Salvează</button>
     </div>
@@ -144,6 +148,38 @@
       <button>📄 Descarcă CV (PDF)</button>
     </div>
   </div>
+<script>
+  const diplomaInput = document.getElementById("diploma");
+  const mesaj = document.getElementById("mesajValidare");
 
+  diplomaInput.addEventListener("change", function () {
+    const fisier = this.files[0];
+
+    if (!fisier) {
+      mesaj.textContent = "Nu ai selectat niciun fișier.";
+      return;
+    }
+
+    const tipAcceptat = ["application/pdf", "image/jpeg", "image/png"];
+    const numeAcceptate = ["bucatar", "ospatar", "barman", "chef"];
+
+    const extensie = fisier.type;
+    const numeFisier = fisier.name.toLowerCase();
+
+    const esteTipValid = tipAcceptat.includes(extensie);
+    const esteNumeValid = numeAcceptate.some(nume => numeFisier.includes(nume));
+
+    if (!esteTipValid) {
+      mesaj.textContent = "Acceptăm doar PDF, JPG sau PNG.";
+      this.value = "";
+    } else if (!esteNumeValid) {
+      mesaj.textContent = "Fișierul trebuie să fie o diplomă validă (ex: bucatar, ospatar).";
+      this.value = "";
+    } else {
+      mesaj.textContent = "";
+      alert("Diplomă încărcată cu succes!");
+    }
+  });
+</script>
 </body>
 </html>
