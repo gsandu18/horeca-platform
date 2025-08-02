@@ -3,42 +3,147 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Candidat</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Profilul Meu - HoReCa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f7fa;
+      padding: 40px;
+      color: #333;
+    }
+
+    .wrapper {
+      max-width: 800px;
+      margin: auto;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .logout {
+      text-align: right;
+    }
+
+    .logout button {
+      background-color: #cc3333;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    .section {
+      margin: 20px 0;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .flex {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .flex input {
+      flex: 1;
+    }
+
+    button {
+      background-color: #007b55;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005f40;
+    }
+
+    .cv-section {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .project-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .project-row input {
+      flex: 1;
+    }
+
+    hr {
+      margin-top: 30px;
+      margin-bottom: 30px;
+      border: none;
+      height: 1px;
+      background-color: #ddd;
+    }
+  </style>
 </head>
-  <header>
+<body>
+
+  <div class="wrapper">
+    <div class="logout">
+      <button>Deconectare</button>
+    </div>
+
     <h1>Profilul Meu - HoReCa</h1>
-    <button onclick="logout()">Deconectare</button>
-  </header>
+    <p><strong>Nume Prenume</strong><br>email@exemplu.com</p>
 
-  <section class="profil">
-    <img id="avatar" src="default.png" alt="Poză profil" />
-    <h2 id="nume">Nume Prenume</h2>
-    <p id="email">email@exemplu.com</p>
-  </section>
+    <div class="section">
+      <h2>Completează Profilul</h2>
+      <div class="flex">
+        <input type="text" placeholder="Educație">
+        <input type="text" placeholder="Experiență">
+        <input type="text" placeholder="Abilități (virgulă)">
+        <input type="text" placeholder="Certificări (virgulă)">
+      </div>
+      <button>Salvează</button>
+    </div>
 
-  <section class="form-section">
-    <h3>Completează Profilul</h3>
-    <input type="text" id="educatie" placeholder="Educație">
-    <input type="text" id="experienta" placeholder="Experiență">
-    <input type="text" id="abilitati" placeholder="Abilități (virgulă)">
-    <input type="text" id="certificari" placeholder="Certificări (virgulă)">
-    <button onclick="salveazaProfil()">Salvează</button>
-  </section>
+    <hr>
 
-  <section class="proiecte">
-    <h3>Proiecte</h3>
-    <input type="text" id="titluProiect" placeholder="Titlu proiect">
-    <input type="text" id="descriereProiect" placeholder="Descriere">
-    <button onclick="adaugaProiect()">+ Adaugă</button>
-  </section>
+    <div class="section">
+      <h2>Proiecte</h2>
+      <div class="project-row">
+        <input type="text" placeholder="Titlu proiect">
+        <input type="text" placeholder="Descriere">
+        <button>+ Adaugă</button>
+      </div>
+    </div>
 
-  <section>
-    <h3>CV Generat</h3>
-    <button onclick="genereazaPDF()">Descarcă CV (PDF)</button>
-  </section>
+    <div class="cv-section">
+      <h2>CV Generat</h2>
+      <button>📄 Descarcă CV (PDF)</button>
+    </div>
+  </div>
 
-  <script src="firebase.js"></script>
-  <script src="script.js"></script>
 </body>
 </html>
