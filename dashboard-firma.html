@@ -127,12 +127,13 @@
 
 <script>
   const cfg = {
-    apiKey: "AIzaSyD...",
+    apiKey: "AIzaSyDvsEfnjVmOkPkExebfxOZ5e3ALRVG0Z-w",
     authDomain: "personal-horeca-e5f0e.firebaseapp.com",
     projectId: "personal-horeca-e5f0e",
     storageBucket: "personal-horeca.appspot.com",
     messagingSenderId: "332871951184",
-    appId: "1:332871951184:..."
+    appId: "1:332871951184:web:7e65e3a1b1b61c46768255"
+    measurementId: "G-7W3VJXW81D"
   };
   firebase.initializeApp(cfg);
   const auth = firebase.auth(), db = firebase.firestore();
@@ -140,7 +141,7 @@
   document.getElementById('toggleBtn').onclick = () =>
     document.getElementById('sidebar').classList.toggle('active');
   document.getElementById('logout').onclick = () =>
-    auth.signOut().then(() => window.location = 'login-firma.html');
+    auth.signOut().then(() => window.location = 'dashboard-firma.html');
 
   const tabs = document.querySelectorAll('nav ul li a[data-sec]');
   const sections = document.querySelectorAll('main section');
