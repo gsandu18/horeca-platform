@@ -1,62 +1,190 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <title>Horeca Admin</title>
-  <link rel="stylesheet" href="css/dashboard.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Campanii Recrutare</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f1f5f9;
+      margin: 0;
+      padding: 2rem;
+      color: #1e293b;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    .form-section, .active-section {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    button {
+      background: #2563eb;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    .campaign-card {
+      background: #f8fafc;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 8px;
+    }
+    @media (max-width: 600px) {
+      body { padding: 1rem; }
+      .form-section, .active-section { padding: 1.5rem; }
+    }
+  </style>
 </head>
 <body>
-  <div class="sidebar">
-    <h2>Horeca Admin</h2>
-    <a href="dashboard-firma.html" onclick="loadPage('dashboard')">Dashboard</a>
-    <a href="angajati" onclick="loadPage('angajati')">Angajați</a>
-    <a href="campanii.html" onclick="loadPage('campanii')">Campanii</a>
-    <a href="feedback" onclick="loadPage('feedback')">Feedback</a>
-    <a href="logout" onclick="logout()">Logout</a>
+  <h1>📣 Campanii Recrutare</h1>
+
+  <div class="form-section">
+    <h2>Adaugă Campanie</h2>
+    <div class="form-group">
+      <label for="titlu">Titlu</label>
+      <input type="text" id="titlu" placeholder="Ex: Campanie Ospătari Brașov" />
+    </div>
+    <div class="form-group">
+      <label for="descriere">Descriere</label>
+      <textarea id="descriere" rows="3" placeholder="Scurtă descriere..."></textarea>
+    </div>
+    <div class="form-group">
+      <label for="locatie">Locație</label>
+      <input type="text" id="locatie" placeholder="Ex: Brașov" />
+    </div>
+    <div class="form-group">
+      <label for="buget">Buget estimativ (€)</label>
+      <input type="number" id="buget" placeholder="Ex: 500" />
+    </div>
+    <button onclick="creeazaCampanie()">Creează campanie</button>
   </div>
 
-  <div class="main" id="main-content"></div>
+  <div class="active-section">
+    <h2>Campanii Active</h2>
 
-  <script src="router.js"></script>
-</body>
-</html>
-  
-  <header>
-  <div class="card">
-  <h2 class="card-title">Campanii Recrutare</h2>
+    <div style="text-align:center; margin-bottom: 1rem;">
+      <input id="filtruLocatie" type="text" placeholder="Filtru locație..." style="padding: 0.5rem; border-radius: 6px; border: 1px solid #ccc;">
+      <button onclick="filtreaza()" style="padding: 0.5rem 1rem; background:#ef4444; color:white; border:none; border-radius:6px; margin-left:0.5rem;">Aplică Filtru</button>
+    </div>
 
-  <form id="campanieForm" class="form-group">
-    <label for="titlu">Titlu</label>
-    <input type="text" id="titlu" placeholder="Ex: Campanie Ospătari Brașov" required>
+    <div id="lista-campanii">
+      <!-- Campaniile din Firestore vor apărea aici -->
+    </div>
+  </div>
 
-    <label for="descriere">Descriere</label>
-    <textarea id="descriere" placeholder="Descriere scurtă..." required></textarea>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 
-    <label for="locatie">Locație</label>
-    <input type="text" id="locatie" placeholder="Ex: Brașov" required>
+  <script>
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID"
+    };
 
-    <label for="dataStart">Data Start</label>
-    <input type="date" id="dataStart" required>
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
 
-    <button type="submit" class="btn">Creează campanie</button>
-  </form>
+    auth.onAuthStateChanged(user => {
+      if (!user) return alert("Trebuie să fii autentificat.");
+      incarcaCampanii(user.uid);
+    });
 
-  <hr style="margin: 40px 0">
+    function creeazaCampanie() {
+      const titlu = document.getElementById("titlu").value;
+      const descriere = document.getElementById("descriere").value;
+      const locatie = document.getElementById("locatie").value;
+      const buget = document.getElementById("buget").value;
+      const user = auth.currentUser;
 
-  <h3>Campanii active</h3>
+      if (!titlu || !descriere || !locatie || !buget) {
+        alert("Completează toate câmpurile!");
+        return;
+      }
 
-  <!-- Filtrare -->
-  <form id="filtruForm" class="filtru-form">
-    <input type="text" id="filtruLocatie" placeholder="Filtru după locație...">
-    <input type="date" id="filtruData">
-    <button type="submit" class="btn btn-filtru">Aplică filtre</button>
-  </form>
+      db.collection("campanii").add({
+        uid: user.uid,
+        titlu,
+        descriere,
+        locatie,
+        buget: parseFloat(buget),
+        creatLa: firebase.firestore.FieldValue.serverTimestamp()
+      }).then(() => {
+        alert("✅ Campanie creată cu succes!");
+        incarcaCampanii(user.uid);
+        document.getElementById("titlu").value = "";
+        document.getElementById("descriere").value = "";
+        document.getElementById("locatie").value = "";
+        document.getElementById("buget").value = "";
+      }).catch(err => {
+        alert("Eroare: " + err.message);
+      });
+    }
 
-  <div id="listaCampanii" class="feedback-list"></div>
-</div>
+    function incarcaCampanii(uid, locatieFiltrata = null) {
+      let query = db.collection("campanii").where("uid", "==", uid);
+      if (locatieFiltrata) {
+        query = query.where("locatie", "==", locatieFiltrata);
+      }
+      query.orderBy("creatLa", "desc").get().then(snapshot => {
+        const container = document.getElementById("lista-campanii");
+        container.innerHTML = "";
+        if (snapshot.empty) {
+          container.innerHTML = "<p style='text-align:center;'>Nicio campanie găsită.</p>";
+          return;
+        }
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          const div = document.createElement("div");
+          div.className = "campaign-card";
+          div.innerHTML = `
+            <strong>${data.titlu}</strong><br>
+            📍 ${data.locatie} | 💰 €${data.buget}<br>
+            <em>${data.descriere}</em>
+          `;
+          container.appendChild(div);
+        });
+      });
+    }
 
-  
-
-  <script type="module" src="js/campanii.js"></script>
+    function filtreaza() {
+      const locatie = document.getElementById("filtruLocatie").value.trim();
+      const user = auth.currentUser;
+      if (!user) return;
+      incarcaCampanii(user.uid, locatie !== "" ? locatie : null);
+    }
+  </script>
 </body>
 </html>
