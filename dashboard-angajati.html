@@ -2,109 +2,179 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard Firmă - Evaluare Angajați</title>
-  <link rel="stylesheet" href="css/dasboard-angajati.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Angajați</title>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8fafc;
+      padding: 30px;
+      color: #0a355d;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    form {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    input, textarea, select, button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    button {
+      background: #0a355d;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      max-width: 600px;
+    }
+    li {
+      background: #ffffff;
+      margin-bottom: 15px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .delete-btn {
+      background: crimson;
+      color: white;
+      padding: 6px 10px;
+      border: none;
+      border-radius: 6px;
+      float: right;
+      cursor: pointer;
+    }
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0a355d;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      display: none;
+    }
+  </style>
 </head>
 <body>
+  <h1>👥 Administrează Angajații</h1>
 
-  <h1>Dashboard Firmă</h1>
-  <h2>Angajați activi</h2>
+  <form id="form-angajat">
+    <label>Nume complet</label>
+    <input type="text" id="nume" required />
 
-  <div id="listaAngajati">
-    <div class="angajat">
-      <p><strong>Ion Popescu</strong> - ion@example.com</p>
-      <button onclick="deschideFormular('Ion Popescu', 'ion@example.com')">Evaluează</button>
-    </div>
-    <div class="angajat">
-      <p><strong>Maria Ionescu</strong> - maria@example.com</p>
-      <button onclick="deschideFormular('Maria Ionescu', 'maria@example.com')">Evaluează</button>
-    </div>
-  </div>
+    <label>Punct de lucru</label>
+    <input type="text" id="punct" required />
 
-  <!-- FORMULAR MODAL -->
-  <div id="formularModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="inchideFormular()">&times;</span>
-      <h3>Evaluare pentru <span id="numeAngajat"></span></h3>
-      <form id="formEvaluare">
-        <label for="punctaj">Punctaj (0-10):</label>
-        <input type="range" id="punctaj" name="punctaj" min="0" max="10" value="5" oninput="afiseazaSlider(this.value)">
-        <span id="valoarePunctaj">5</span>/10
+    <label>Feedback</label>
+    <textarea id="feedback" rows="3"></textarea>
 
-        <label for="feedback">Feedback:</label>
-        <textarea id="feedback" rows="4" required></textarea>
+    <label>Punctaj (1-5)</label>
+    <select id="punctaj">
+      <option value="1">⭐</option>
+      <option value="2">⭐⭐</option>
+      <option value="3">⭐⭐⭐</option>
+      <option value="4">⭐⭐⭐⭐</option>
+      <option value="5" selected>⭐⭐⭐⭐⭐</option>
+    </select>
 
-        <button type="submit">Salvează</button>
-      </form>
-    </div>
-  </div>
+    <button type="submit">✅ Adaugă Angajat</button>
+  </form>
 
-  <!-- LISTARE EVALUĂRI -->
-  <section id="evaluari">
-    <h2>Evaluări trimise</h2>
-    <div id="listaEvaluari"></div>
-  </section>
-  
-let angajatCurent = "";
+  <h2>📋 Lista Angajați</h2>
+  <ul id="lista-angajati"></ul>
 
-function deschideFormular(nume, email) {
-  angajatCurent = { nume, email };
-  document.getElementById("numeAngajat").innerText = nume;
-  document.getElementById("formularModal").style.display = "block";
-}
+  <div class="toast" id="toast">Angajat adăugat!</div>
 
-function inchideFormular() {
-  document.getElementById("formularModal").style.display = "none";
-}
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDEMO-KEY",
+      authDomain: "demo-project.firebaseapp.com",
+      projectId: "demo-project"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const auth = firebase.auth();
 
-function afiseazaSlider(val) {
-  document.getElementById("valoarePunctaj").innerText = val;
-}
+    const lista = document.getElementById("lista-angajati");
+    const toast = document.getElementById("toast");
 
-document.getElementById("formEvaluare").addEventListener("submit", function(e) {
-  e.preventDefault();
-  const punctaj = document.getElementById("punctaj").value;
-  const feedback = document.getElementById("feedback").value;
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.style.display = "block";
+      setTimeout(() => toast.style.display = "none", 2500);
+    }
 
-  const evaluare = {
-    nume: angajatCurent.nume,
-    email: angajatCurent.email,
-    punctaj,
-    feedback,
-    data: new Date().toLocaleString()
-  };
+    function loadAngajati() {
+      lista.innerHTML = "";
+      db.collection("angajati").orderBy("addedAt", "desc").get().then(snapshot => {
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          const li = document.createElement("li");
+          li.innerHTML = `
+            <strong>${data.nume}</strong> – ${data.punct}<br>
+            <small>⭐ ${data.punctaj} / 5</small><br>
+            <em>${data.feedback}</em>
+            <button class="delete-btn" onclick="deleteAngajat('${doc.id}')">🗑️</button>
+          `;
+          lista.appendChild(li);
+        });
+      });
+    }
 
-  let evaluari = JSON.parse(localStorage.getItem("evaluari") || "[]");
-  evaluari.push(evaluare);
-  localStorage.setItem("evaluari", JSON.stringify(evaluari));
+    document.getElementById("form-angajat").addEventListener("submit", e => {
+      e.preventDefault();
+      const nume = document.getElementById("nume").value.trim();
+      const punct = document.getElementById("punct").value.trim();
+      const feedback = document.getElementById("feedback").value.trim();
+      const punctaj = parseInt(document.getElementById("punctaj").value);
 
-  inchideFormular();
-  this.reset();
-  afiseazaSlider(5);
-  incarcaEvaluari();
-});
+      if (!nume || !punct) return alert("Completează câmpurile!");
 
-function incarcaEvaluari() {
-  const container = document.getElementById("listaEvaluari");
-  container.innerHTML = "";
+      db.collection("angajati").add({
+        nume, punct, feedback, punctaj,
+        addedAt: firebase.firestore.FieldValue.serverTimestamp()
+      }).then(() => {
+        showToast("Angajat adăugat!");
+        document.getElementById("form-angajat").reset();
+        loadAngajati();
+      });
+    });
 
-  const evaluari = JSON.parse(localStorage.getItem("evaluari") || "[]");
-  evaluari.reverse().forEach(e => {
-    const card = document.createElement("div");
-    card.className = "evaluare";
-    card.innerHTML = `
-      <strong>${e.nume}</strong> (${e.email})<br/>
-      Punctaj: <strong>${e.punctaj}/10</strong><br/>
-      Feedback: <em>${e.feedback}</em><br/>
-      <small>${e.data}</small>
-    `;
-    container.appendChild(card);
-  });
-}
+    function deleteAngajat(id) {
+      if (confirm("Ștergi acest angajat?")) {
+        db.collection("angajati").doc(id).delete().then(() => {
+          showToast("Șters cu succes");
+          loadAngajati();
+        });
+      }
+    }
 
-// Inițializare
-window.onload = incarcaEvaluari;
-  <script src="script.js"></script>
+    auth.onAuthStateChanged(user => {
+      if (!user) {
+        window.location.href = "login.html";
+      } else {
+        loadAngajati();
+      }
+    });
+  </script>
 </body>
 </html>
