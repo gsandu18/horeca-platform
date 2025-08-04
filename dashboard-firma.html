@@ -110,6 +110,17 @@
   <div class="card">
     <h2><i class="dashboard-angajati.html"></i> Angajați</h2>
     <div id="staff-list"></div>
+    <div class="card card-employees">
+  <h2><i class="fa-solid fa-users"></i> Angajați</h2>
+  <form id="add-employee-form">
+    <input type="text" id="emp-name" placeholder="Nume complet" required>
+    <input type="text" id="emp-post" placeholder="Post" required>
+    <input type="number" id="emp-rating" placeholder="Rating (1‑5)" min="1" max="5" required>
+    <textarea id="emp-feedback" rows="2" placeholder="Feedback opțional"></textarea>
+    <button type="submit" class="add-btn">Adaugă Angajat</button>
+  </form>
+  <ul id="employeeList"></ul>
+</div>
   </div>
 
   <!-- Campanii -->
