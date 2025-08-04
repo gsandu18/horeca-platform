@@ -223,12 +223,44 @@
       appsChart.update();
     });
   }
-  function initEmployees(uid){
-    db.collection('angajati').where('firmaUID','==',uid).onSnapshot(snap => {
-      const el = document.getElementById('staff-list'); el.innerHTML = '';
-      snap.forEach(doc => el.insertAdjacentHTML('beforeend',
-        `<p>${doc.data().numeAngajat} – ${doc.data().postAngajat}</p>`));
+  function initEmployees(uid) {
+  const form = document.getElementById('add-employee-form');
+  const list = document.getElementById('employeeList');
+
+  form.onsubmit = async e => {
+    e.preventDefault();
+    const name = document.getElementById('emp-name').value.trim();
+    const post = document.getElementById('emp-post').value.trim();
+    const rating = parseInt(document.getElementById('emp-rating').value);
+    const comment = document.getElementById('emp-feedback').value.trim();
+
+    await db.collection('angajati').add({
+      firmaUID: uid,
+      numeAngajat: name,
+      postAngajat: post,
+      rating,
+      comment: comment || '',
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
     });
+
+    form.reset();
+  };
+
+  db.collection('angajati')
+    .where('firmaUID', '==', uid)
+    .orderBy('timestamp', 'desc')
+    .onSnapshot(snapshot => {
+      list.innerHTML = '';
+      snapshot.forEach(doc => {
+        const d = doc.data();
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <strong>${d.numeAngajat}</strong> – ${d.postAngajat}<br>
+          Rating: ${d.rating}/5<br>
+          ${d.comment ? `<em>${d.comment}</em>` : ''}
+        `;
+        list.appendChild(li);
+      });
   }
   function initCampaigns(uid){
     document.getElementById('add-campaign-form').onsubmit = e => {
