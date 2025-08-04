@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Angajați - Dashboard Firmă</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f7f9fc; color: #333; }
+    header {
+      background-color: #003366;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 { margin: 0; font-size: 1.8rem; }
+
+    .container {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .employee-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: all 0.2s;
+    }
+
+    .employee-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .employee-card h3 {
+      margin-top: 0;
+      color: #2e5aac;
+    }
+
+    .employee-card p {
+      margin: 8px 0;
+      font-size: 0.95rem;
+    }
+
+    .rating {
+      font-weight: bold;
+      color: #007b8a;
+    }
+
+    .comment {
+      font-style: italic;
+      color: #666;
+    }
+
+    @media(max-width: 600px) {
+      header h1 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1><i class="fas fa-users"></i> Angajații tăi</h1>
+  </header>
+
+  <div class="container" id="employeeList">
+    <p>Se încarcă angajații...</p>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDvsEfnjVmOkPkExebfxOZ5e3ALRVG0Z-w",
+      authDomain: "personal-horeca-e5f0e.firebaseapp.com",
+      projectId: "personal-horeca-e5f0e",
+      storageBucket: "personal-horeca.appspot.com",
+      messagingSenderId: "332871951184",
+      appId: "1:332871951184:web:7e65e3a1b1b61c46768255"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    auth.onAuthStateChanged(user => {
+      if (!user) {
+        window.location.href = "login-firma.html";
+        return;
+      }
+
+      const uid = user.uid;
+      const container = document.getElementById("employeeList");
+      db.collection("angajati")
+        .where("firmaUID", "==", uid)
+        .orderBy("timestamp", "desc")
+        .onSnapshot(snapshot => {
+          container.innerHTML = "";
+          if (snapshot.empty) {
+            container.innerHTML = "<p>Nu ai adăugat angajați încă.</p>";
+          } else {
+            snapshot.forEach(doc => {
+              const data = doc.data();
+              const card = document.createElement("div");
+              card.className = "employee-card";
+              card.innerHTML = `
+                <h3>${data.numeAngajat}</h3>
+                <p><strong>Post:</strong> ${data.postAngajat}</p>
+                <p class="rating">⭐ Rating: ${data.rating || 'N/A'}/5</p>
+                <p class="comment">${data.comment || "Fără comentariu."}</p>
+              `;
+              container.appendChild(card);
+            });
+          }
+        });
+    });
+  </script>
+
+</body>
+</html>
