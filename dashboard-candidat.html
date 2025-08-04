@@ -228,11 +228,15 @@
   </div>
 
 <script>
-  const firebaseConfig = {
-    apiKey:'YOUR_KEY',
-    authDomain:'YOUR_DOMAIN.firebaseapp.com',
-    projectId:'YOUR_PROJECT_ID',
-    storageBucket:'YOUR_BUCKET.appspot.com'
+    // Firebase config DEMO – înlocuiește cu datele tale
+    const firebaseConfig = {
+      apiKey: "AIzaSyDvsEfnjVmOkPkExebfxOZ5e3ALRVG0Z-w",
+      authDomain: "personal-horeca-e5f0e.firebaseapp.com",
+      projectId: "personal-horeca-e5f0e",
+      storageBucket: "personal-horeca-e5f0e.firebasestorage.app",
+      messagingSenderId: "332871951184",
+      appId: "1:332871951184:web:7e65e3a1b1b61c46768255"
+      measurementId: "G-7W3VJXW81D"
   };
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth(), db = firebase.firestore(), storage = firebase.storage();
