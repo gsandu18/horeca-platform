@@ -1,324 +1,190 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dashboard Firmă</title>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-  <style>
-    :root {
-      --overlay-bg: rgba(10, 53, 93, 0.85);
-      --text-color: #ffffff;
-      --card-bg: rgba(255, 255, 255, 0.15);
-    }
-    body.dark {
-      --overlay-bg: rgba(255, 255, 255, 0.9);
-      --text-color: #0a355d;
-      --card-bg: rgba(0, 0, 0, 0.05);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: url('https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1200&q=80') no-repeat center center fixed;
-      background-size: cover;
-      color: var(--text-color);
-    }
-    .overlay {
-      background-color: var(--overlay-bg);
-      min-height: 100vh;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: background-color 0.3s;
-    }
-    .top-bar {
-      width: 100%;
-      max-width: 1000px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .dark-toggle {
-      background: var(--card-bg);
-      padding: 8px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .profile {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .profile img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 2px solid white;
-    }
-    .status-dot {
-      width: 10px;
-      height: 10px;
-      background-color: limegreen;
-      border-radius: 50%;
-      border: 2px solid white;
-      position: absolute;
-      right: -2px;
-      bottom: -2px;
-    }
-    h1 {
-      margin-top: 30px;
-      margin-bottom: 10px;
-      font-size: 2rem;
-      text-align: center;
-    }
-    .breadcrumb {
-      margin-bottom: 30px;
-      font-size: 0.9rem;
-      color: #ccc;
-    }
-    .dashboard-container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      max-width: 500px;
-      width: 100%;
-    }
-    .card {
-      background-color: var(--card-bg);
-      padding: 25px;
-      border-radius: 14px;
-      text-align: center;
-      font-size: 1.2rem;
-      color: var(--text-color);
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-    .card:hover {
-      transform: translateY(-3px);
-      background-color: rgba(255, 255, 255, 0.25);
-    }
-    .logout-card {
-      background-color: crimson;
-      color: white;
-      font-weight: bold;
-    }
-    .logout-card:hover {
-      background-color: darkred;
-    }
-    .calendar {
-      margin-top: 30px;
-      font-size: 0.95rem;
-      background: var(--card-bg);
-      padding: 10px 20px;
-      border-radius: 10px;
-      text-align: center;
-      max-width: 500px;
-      width: 100%;
-    }
-    .modal, .toast {
-      position: fixed;
-      left: 50%;
-      transform: translateX(-50%);
-      background: white;
-      color: #333;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      display: none;
-      z-index: 9999;
-    }
-    .modal {
-      top: 20%;
-      width: 90%;
-      max-width: 400px;
-    }
-    .modal input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    .modal button {
-      padding: 10px 20px;
-      background: #0a355d;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .toast {
-      bottom: 30px;
-      background: #0a355d;
-      color: white;
-    }
-    .angajati-lista {
-      margin-top: 40px;
-      background: var(--card-bg);
-      padding: 20px;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 500px;
-      color: var(--text-color);
-    }
-    .angajati-lista h3 {
-      margin-bottom: 10px;
-    }
-    .angajati-lista ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    .angajati-lista li {
-      padding: 6px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    @media (max-width: 480px) {
-      h1 { font-size: 1.6rem; }
-      .card { font-size: 1rem; padding: 20px; }
-      .top-bar { flex-direction: column; gap: 10px; align-items: flex-end; }
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dashboard Firmă</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>/* (păstrează același CSS furnizat anterior) */</style>
 </head>
 <body>
-  <div class="overlay">
-    <div class="top-bar">
-      <div class="dark-toggle" onclick="toggleDarkMode()">🌗 Schimbă Tema</div>
-      <div class="profile">
-        <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Profil">
-        <div class="status-dot"></div>
+<header>
+  <div class="header-content">
+    <h1><i class="fa-solid fa-building"></i> Dashboard Firmă</h1>
+    <button class="logout-btn" id="logoutBtn">Logout</button>
+  </div>
+</header>
+<div class="container">
+  <div class="card">
+    <h2><i class="fa-solid fa-chart-line"></i> Aplicații</h2>
+    <p>Aplicații pe zile + listă recentă</p>
+    <canvas id="appsChart"></canvas>
+    <div id="recent-apps"></div>
+  </div>
+  <div class="card">
+    <h2><i class="fa-solid fa-users"></i> Angajați</h2><div id="staff-list"></div>
+  </div>
+  <div class="card">
+    <h2><i class="fa-solid fa-bullhorn"></i> Campanii</h2>
+    <form id="add-campaign-form">
+      <input id="camp-title" type="text" placeholder="Titlu campanie" required>
+      <input id="camp-program" type="text" placeholder="Program (ex: 9–17)" required>
+      <input id="camp-net" type="number" placeholder="Salariu net (€)" required>
+      <div style="display:flex;gap:8px;"><input type="date" id="camp-start" required><input type="date" id="camp-end" required></div>
+      <textarea id="camp-desc" rows="2" placeholder="Descriere..." required></textarea>
+      <button type="submit" class="add-btn">Adaugă Campanie</button>
+    </form>
+    <div id="campaigns-list"></div>
+  </div>
+  <div class="card">
+    <h2><i class="fa-solid fa-receipt"></i> Abonamente</h2>
+    <p>Selectează planul dorit:</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>Basic</h3><ul><li>1 campanie activă</li><li>Raport simplu</li><li>Trial 7 zile</li></ul>
+        <p><strong>€19/lună</strong> • <strong>€205/an (‑10%)</strong></p>
+        <button class="select-plan" data-plan="Basic">Selectează Basic</button>
+      </div>
+      <div class="plan">
+        <h3>Standard</h3><ul><li>5 campanii active</li><li>Rapoarte detaliate</li><li>Suport prioritar</li><li>Trial 7 zile</li></ul>
+        <p><strong>€49/lună</strong> • <strong>€529/an (‑10%)</strong></p>
+        <button class="select-plan" data-plan="Standard">Selectează Standard</button>
+      </div>
+      <div class="plan">
+        <h3>Premium</h3><ul><li>Campanii nelimitate</li><li>Rapoarte avansate</li><li>Suport 24/7</li><li>Trial 7 zile</li></ul>
+        <p><strong>€99/lună</strong> • <strong>€1069/an (‑10%)</strong></p>
+        <button class="select-plan" data-plan="Premium">Selectează Premium</button>
       </div>
     </div>
-
-    <h1>📊 Dashboard Firmă</h1>
-    <div class="breadcrumb">Acasă › Dashboard</div>
-
-    <div class="dashboard-container">
-      <div class="dashboard-angajati.html" onclick="openModal()">👥 Angajați</div>
-      <a href="campanii.html" class="card">📢 Campanii</a>
-      <a href="abonamente.html" class="card">📦 Abonamente</a>
-      <div class="logout.card" onclick="handleLogout()">🔓 Logout</div>
-    </div>
-
-    <div class="calendar">
-      📅 Azi este: <span id="current-date"></span>
-    </div>
-
-    <div class="angajati-lista" id="angajati-lista">
-      <h3>👥 Angajați Existenti:</h3>
-      <ul id="angajati-ul"></ul>
-    </div>
+    <div id="subscription-info"></div>
   </div>
-
-  <!-- Modal -->
-  <div class="modal" id="modal">
-    <h3>Adaugă Angajat</h3>
-    <input type="text" id="nume" placeholder="Nume complet" />
-    <input type="text" id="punct" placeholder="Punct de lucru" />
-    <button onclick="saveAngajat()">Salvează</button>
+  <div class="card">
+    <h2><i class="fa-solid fa-comment-dots"></i> Feedback</h2>
+    <div id="feedback-list"></div>
   </div>
+</div>
 
-  <div class="toast" id="toast">✅ Angajat salvat!</div>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const firebaseConfig = { /* completează cu datele tale */ };
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth(), db = firebase.firestore();
+  
+  document.getElementById('logoutBtn').onclick = () =>
+    auth.signOut().then(() => location = 'login-firma.html');
 
-  <script>
-    // Firebase config DEMO – înlocuiește cu datele tale
-    const firebaseConfig = {
-      apiKey: "AIzaSyDvsEfnjVmOkPkExebfxOZ5e3ALRVG0Z-w",
-      authDomain: "personal-horeca-e5f0e.firebaseapp.com",
-      projectId: "personal-horeca-e5f0e",
-      storageBucket: "personal-horeca-e5f0e.firebasestorage.app",
-      messagingSenderId: "332871951184",
-      appId: "1:332871951184:web:7e65e3a1b1b61c46768255"
-      measurementId: "G-7W3VJXW81D"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-
-    const today = new Date();
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    document.getElementById("current-date").textContent =
-      today.toLocaleDateString("ro-RO", options);
-
-    gsap.from(".card", { opacity: 0, y: 50, duration: 0.6, stagger: 0.1 });
-
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark");
-      localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+  const appsChart = new Chart(
+    document.getElementById('appsChart').getContext('2d'),
+    { type:'line', data:{ labels: [], datasets:[{label:'Aplicații',data:[], backgroundColor:'rgba(23,143,118,0.2)', borderColor:'#178f76'}] },
+      options:{responsive:true, scales:{y:{beginAtZero:true}}}
     }
-    if (localStorage.getItem("theme") === "dark") {
-      document.body.classList.add("dark");
-    }
+  );
 
-    function handleLogout() {
-      if (confirm("Sigur vrei să te deloghezi?")) {
-        gsap.to(".dashboard-container", {
-          opacity: 0, y: -30, duration: 0.4,
-          onComplete: () => window.location.href = "login.html"
+  auth.onAuthStateChanged(user => {
+    if (!user) { location = 'login-firma.html'; return; }
+    const uid = user.uid;
+    initApps(uid); initEmployees(uid); initCampaigns(uid); initSubscriptions(uid); initFeedback(uid);
+  });
+
+  function initApps(uid) {
+    const daily = {}, rec = document.getElementById('recent-apps');
+    db.collection('aplicatii').where('firmaUID','==',uid).orderBy('timestamp','desc')
+      .onSnapshot(snap => {
+        rec.innerHTML = '';
+        Object.keys(daily).forEach(k => delete daily[k]);
+        snap.forEach(doc => {
+          const d = doc.data(), day = d.timestamp.toDate().toLocaleDateString();
+          daily[day] = (daily[day]||0) + 1;
+          rec.insertAdjacentHTML('beforeend', `<p>${d.nume} – ${d.job} (${d.email})</p>`);
         });
-      }
-    }
-
-    function openModal() {
-      const m = document.getElementById("modal");
-      m.style.display = "block";
-      gsap.fromTo(m, { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.4 });
-    }
-
-    function saveAngajat() {
-      const nume = document.getElementById("nume").value.trim();
-      const punct = document.getElementById("punct").value.trim();
-      if (!nume || !punct) {
-        alert("Completează toate câmpurile!");
-        return;
-      }
-
-      db.collection("angajati").add({
-        nume,
-        punct,
-        addedAt: firebase.firestore.FieldValue.serverTimestamp()
-      }).then(() => {
-        document.getElementById("modal").style.display = "none";
-        document.getElementById("nume").value = "";
-        document.getElementById("punct").value = "";
-        showToast("✅ Angajat salvat!");
-        loadAngajati();
-      }).catch(err => {
-        alert("Eroare la salvare: " + err.message);
+        appsChart.data.labels = Object.keys(daily).reverse();
+        appsChart.data.datasets[0].data = Object.values(daily).reverse();
+        appsChart.update();
       });
-    }
+  }
 
-    function showToast(msg) {
-      const t = document.getElementById("toast");
-      t.textContent = msg;
-      t.style.display = "block";
-      gsap.fromTo(t, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5 });
-      setTimeout(() => {
-        gsap.to(t, { opacity: 0, duration: 0.5, onComplete: () => t.style.display = "none" });
-      }, 2500);
-    }
-
-    function loadAngajati() {
-      const ul = document.getElementById("angajati-ul");
-      ul.innerHTML = '';
-      db.collection("angajati").orderBy("addedAt", "desc").limit(10).get().then(snapshot => {
-        snapshot.forEach(doc => {
-          const li = document.createElement("li");
-          li.textContent = `${doc.data().nume} – ${doc.data().punct}`;
-          ul.appendChild(li);
-        });
+  function initEmployees(uid) {
+    db.collection('angajati').where('firmaUID','==',uid).onSnapshot(snap => {
+      const el = document.getElementById('staff-list');
+      el.innerHTML = '';
+      snap.forEach(doc => {
+        const d = doc.data();
+        el.insertAdjacentHTML('beforeend', `<p>${d.numeAngajat} – ${d.postAngajat}</p>`);
       });
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      loadAngajati();
     });
-  </script>
+  }
+
+  function initCampaigns(uid) {
+    document.getElementById('add-campaign-form').onsubmit = e => {
+      e.preventDefault();
+      db.collection('campanii').add({
+        firmaUID: uid,
+        title: d('#camp-title'), program: d('#camp-program'),
+        net: parseFloat(d('#camp-net')), start: d('#camp-start'),
+        end: d('#camp-end'), description: d('#camp-desc'),
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      }).then(() => e.target.reset());
+    };
+    db.collection('campanii').where('firmaUID','==',auth.currentUser.uid).orderBy('createdAt','desc')
+      .onSnapshot(snap => {
+        const out = document.getElementById('campaigns-list');
+        out.innerHTML = '';
+        snap.forEach(doc => {
+          const c = doc.data();
+          out.insertAdjacentHTML('beforeend', `<p>${c.title} – ${c.program}, €${c.net} (${c.start}→${c.end})</p>`);
+        });
+      });
+  }
+
+  function initSubscriptions(uid) {
+    const info = document.getElementById('subscription-info');
+    const planMap = {
+      Basic: {monthly:19, annual:205, benefits:'1 campanie activă'},
+      Standard: {monthly:49, annual:529, benefits:'5 campanii + rapoarte detaliate'},
+      Premium: {monthly:99, annual:1069, benefits:'Campanii nelimitate + suport 24/7'}
+    };
+    document.querySelectorAll('.select-plan').forEach(btn => btn.onclick = () => {
+      const plan = btn.dataset.plan;
+      db.collection('abonamente').doc(uid).set({
+        plan, benefits: planMap[plan].benefits,
+        priceMonthly: planMap[plan].monthly,
+        priceAnnual: planMap[plan].annual,
+        trialEnds: new Date(Date.now()+7*86400000).toISOString().split('T')[0],
+        status: 'trial'
+      }).then(renderSub);
+    });
+    function renderSub() {
+      db.collection('abonamente').doc(uid).get().then(doc => {
+        if (!doc.exists) {
+          info.innerHTML = '<p>Niciun plan activ.</p>';
+        } else {
+          const d = doc.data();
+          info.innerHTML = `<p><strong>${d.plan}</strong> – ${d.benefits}<br>Trial până: ${d.trialEnds}<br>€${d.priceMonthly}/lună • €${d.priceAnnual}/an</p>`;
+        }
+      });
+    }
+    renderSub();
+  }
+
+  function initFeedback(uid) {
+    db.collection('feedback').where('firmaUID','==',uid).orderBy('timestamp','desc')
+      .onSnapshot(snap => {
+        const list = document.getElementById('feedback-list');
+        list.innerHTML = '';
+        if (snap.empty) list.innerHTML = '<p>Niciun feedback.</p>';
+        snap.forEach(doc => {
+          const f = doc.data();
+          list.insertAdjacentHTML('beforeend', `<p>${f.numeAngajat}: ⭐${f.rating} – ${f.comment || '-'}</p>`);
+        });
+      });
+  }
+
+  function d(sel) {
+    return document.querySelector(sel).value.trim();
+  }
+</script>
 </body>
 </html>
