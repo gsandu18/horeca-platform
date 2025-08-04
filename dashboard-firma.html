@@ -1,65 +1,150 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Dashboard Firmă</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<style>/* (păstrează același CSS furnizat anterior) */</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Dashboard Firmă</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f7f9fa; color: #333; }
+    header { background: #2e5aac; color: white; padding: 16px; }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .header-content h1 {
+      font-size: 1.7rem;
+    }
+    .logout-btn {
+      background: white;
+      color: #2e5aac;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .container { max-width: 600px; margin: 24px auto; padding: 0 16px; }
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+    h2 {
+      display: flex;
+      align-items: center;
+      font-size: 1.2rem;
+      color: #2e5aac;
+      margin-bottom: 8px;
+    }
+    h2 i { margin-right: 8px; }
+    p { font-size: 0.95rem; color: #555; margin-bottom: 8px; }
+    canvas { width: 100% !important; height: 140px !important; }
+    input, textarea {
+      width: 100%; padding: 10px; border: 1px solid #ccc;
+      border-radius: 6px; margin-bottom: 8px; font-size: 0.95rem;
+    }
+    .add-btn {
+      width: 100%; padding: 10px; background: #2e5aac;
+      color: white; border: none; border-radius: 6px;
+      font-size: 1rem; cursor: pointer;
+    }
+    .add-btn:hover { background: #22408a; }
+    .plans { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+    .plan {
+      border: 1px solid #2e5aac; border-radius: 6px;
+      padding: 12px;
+    }
+    .plan h3 { margin-bottom: 6px; font-size: 1.1rem; color: #2e5aac; }
+    .plan ul {
+      list-style: disc inside; margin-bottom: 6px;
+      font-size: 0.95rem; color: #555;
+    }
+    .plan button {
+      width: 100%; padding: 8px; background: #2e5aac;
+      color: white; border: none; border-radius: 4px;
+      font-size: 0.95rem; cursor: pointer;
+    }
+    .plan button:hover { background: #22408a; }
+    #subscription-info { margin-top: 8px; font-size: 0.95rem; color: #333; }
+  </style>
 </head>
 <body>
+
 <header>
   <div class="header-content">
     <h1><i class="fa-solid fa-building"></i> Dashboard Firmă</h1>
     <button class="logout-btn" id="logoutBtn">Logout</button>
   </div>
 </header>
+
 <div class="container">
+  <!-- Aplicații -->
   <div class="card">
     <h2><i class="fa-solid fa-chart-line"></i> Aplicații</h2>
-    <p>Aplicații pe zile + listă recentă</p>
+    <p>Aplicații pe zile + listă recentă.</p>
     <canvas id="appsChart"></canvas>
     <div id="recent-apps"></div>
   </div>
+
+  <!-- Angajați -->
   <div class="card">
-    <h2><i class="fa-solid fa-users"></i> Angajați</h2><div id="staff-list"></div>
+    <h2><i class="fa-solid fa-users"></i> Angajați</h2>
+    <div id="staff-list"></div>
   </div>
+
+  <!-- Campanii -->
   <div class="card">
     <h2><i class="fa-solid fa-bullhorn"></i> Campanii</h2>
     <form id="add-campaign-form">
       <input id="camp-title" type="text" placeholder="Titlu campanie" required>
-      <input id="camp-program" type="text" placeholder="Program (ex: 9–17)" required>
+      <input id="camp-program" type="text" placeholder="Program (ex: 9‑17)" required>
       <input id="camp-net" type="number" placeholder="Salariu net (€)" required>
-      <div style="display:flex;gap:8px;"><input type="date" id="camp-start" required><input type="date" id="camp-end" required></div>
+      <div style="display:flex;gap:8px;">
+        <input type="date" id="camp-start" required>
+        <input type="date" id="camp-end" required>
+      </div>
       <textarea id="camp-desc" rows="2" placeholder="Descriere..." required></textarea>
       <button type="submit" class="add-btn">Adaugă Campanie</button>
     </form>
     <div id="campaigns-list"></div>
   </div>
+
+  <!-- Abonamente -->
   <div class="card">
     <h2><i class="fa-solid fa-receipt"></i> Abonamente</h2>
     <p>Selectează planul dorit:</p>
     <div class="plans">
       <div class="plan">
-        <h3>Basic</h3><ul><li>1 campanie activă</li><li>Raport simplu</li><li>Trial 7 zile</li></ul>
-        <p><strong>€19/lună</strong> • <strong>€205/an (‑10%)</strong></p>
+        <h3>Basic</h3>
+        <ul><li>1 campanie activă</li><li>Raport simplu</li><li>Trial 7 zile</li></ul>
+        <p><strong>€19/lună</strong> • <strong>€205/an</strong></p>
         <button class="select-plan" data-plan="Basic">Selectează Basic</button>
       </div>
       <div class="plan">
-        <h3>Standard</h3><ul><li>5 campanii active</li><li>Rapoarte detaliate</li><li>Suport prioritar</li><li>Trial 7 zile</li></ul>
-        <p><strong>€49/lună</strong> • <strong>€529/an (‑10%)</strong></p>
+        <h3>Standard</h3>
+        <ul><li>5 campanii</li><li>Rapoarte detaliate</li><li>Suport prioritar</li><li>Trial 7 zile</li></ul>
+        <p><strong>€49/lună</strong> • <strong>€529/an</strong></p>
         <button class="select-plan" data-plan="Standard">Selectează Standard</button>
       </div>
       <div class="plan">
-        <h3>Premium</h3><ul><li>Campanii nelimitate</li><li>Rapoarte avansate</li><li>Suport 24/7</li><li>Trial 7 zile</li></ul>
-        <p><strong>€99/lună</strong> • <strong>€1069/an (‑10%)</strong></p>
+        <h3>Premium</h3>
+        <ul><li>Campanii nelimitate</li><li>Rapoarte avansate</li><li>Suport 24/7</li><li>Trial 7 zile</li></ul>
+        <p><strong>€99/lună</strong> • <strong>€1069/an</strong></p>
         <button class="select-plan" data-plan="Premium">Selectează Premium</button>
       </div>
     </div>
     <div id="subscription-info"></div>
   </div>
+
+  <!-- Feedback -->
   <div class="card">
-    <h2><i class="fa-solid fa-comment-dots"></i> Feedback</h2>
+    <h2><i class="fa-solid fa-comment-dots"></i> Feedback angajați</h2>
     <div id="feedback-list"></div>
   </div>
 </div>
@@ -69,122 +154,107 @@
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-  const firebaseConfig = { /* completează cu datele tale */ };
-  firebase.initializeApp(firebaseConfig);
+  const config = { /* pune aici config-ul tău */ };
+  firebase.initializeApp(config);
   const auth = firebase.auth(), db = firebase.firestore();
-  
+
   document.getElementById('logoutBtn').onclick = () =>
     auth.signOut().then(() => location = 'login-firma.html');
 
-  const appsChart = new Chart(
-    document.getElementById('appsChart').getContext('2d'),
-    { type:'line', data:{ labels: [], datasets:[{label:'Aplicații',data:[], backgroundColor:'rgba(23,143,118,0.2)', borderColor:'#178f76'}] },
-      options:{responsive:true, scales:{y:{beginAtZero:true}}}
-    }
-  );
+  const appsChart = new Chart(document.getElementById('appsChart').getContext('2d'), {
+    type:'line', data:{ labels: [], datasets:[{label:'Aplicații', data:[], backgroundColor:'rgba(23,143,118,0.2)', borderColor:'#178f76'}]},
+    options:{responsive:true, scales:{y:{beginAtZero:true}}}
+  });
 
   auth.onAuthStateChanged(user => {
-    if (!user) { location = 'login-firma.html'; return; }
+    if (!user) return location = 'login-firma.html';
     const uid = user.uid;
     initApps(uid); initEmployees(uid); initCampaigns(uid); initSubscriptions(uid); initFeedback(uid);
   });
 
-  function initApps(uid) {
+  function initApps(uid){
     const daily = {}, rec = document.getElementById('recent-apps');
-    db.collection('aplicatii').where('firmaUID','==',uid).orderBy('timestamp','desc')
-      .onSnapshot(snap => {
-        rec.innerHTML = '';
-        Object.keys(daily).forEach(k => delete daily[k]);
-        snap.forEach(doc => {
-          const d = doc.data(), day = d.timestamp.toDate().toLocaleDateString();
-          daily[day] = (daily[day]||0) + 1;
-          rec.insertAdjacentHTML('beforeend', `<p>${d.nume} – ${d.job} (${d.email})</p>`);
-        });
-        appsChart.data.labels = Object.keys(daily).reverse();
-        appsChart.data.datasets[0].data = Object.values(daily).reverse();
-        appsChart.update();
-      });
-  }
-
-  function initEmployees(uid) {
-    db.collection('angajati').where('firmaUID','==',uid).onSnapshot(snap => {
-      const el = document.getElementById('staff-list');
-      el.innerHTML = '';
+    db.collection('aplicatii').where('firmaUID','==',uid).orderBy('timestamp','desc').onSnapshot(snap => {
+      rec.innerHTML = '';
+      Object.keys(daily).forEach(k => delete daily[k]);
       snap.forEach(doc => {
-        const d = doc.data();
-        el.insertAdjacentHTML('beforeend', `<p>${d.numeAngajat} – ${d.postAngajat}</p>`);
+        let d = doc.data(), day = d.timestamp.toDate().toLocaleDateString();
+        daily[day] = (daily[day] || 0) + 1;
+        rec.insertAdjacentHTML('beforeend', `<p>${d.nume} – ${d.job} (${d.email})</p>`);
       });
+      appsChart.data.labels = Object.keys(daily).reverse();
+      appsChart.data.datasets[0].data = Object.values(daily).reverse();
+      appsChart.update();
     });
   }
-
-  function initCampaigns(uid) {
+  function initEmployees(uid){
+    db.collection('angajati').where('firmaUID','==',uid).onSnapshot(snap => {
+      const el = document.getElementById('staff-list'); el.innerHTML = '';
+      snap.forEach(doc => el.insertAdjacentHTML('beforeend',
+        `<p>${doc.data().numeAngajat} – ${doc.data().postAngajat}</p>`));
+    });
+  }
+  function initCampaigns(uid){
     document.getElementById('add-campaign-form').onsubmit = e => {
       e.preventDefault();
       db.collection('campanii').add({
-        firmaUID: uid,
-        title: d('#camp-title'), program: d('#camp-program'),
-        net: parseFloat(d('#camp-net')), start: d('#camp-start'),
-        end: d('#camp-end'), description: d('#camp-desc'),
-        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        firmaUID: uid, title: d('#camp-title'), program: d('#camp-program'),
+        net: parseFloat(d('#camp-net')), start: d('#camp-start'), end: d('#camp-end'),
+        description: d('#camp-desc'), createdAt: firebase.firestore.FieldValue.serverTimestamp()
       }).then(() => e.target.reset());
     };
     db.collection('campanii').where('firmaUID','==',auth.currentUser.uid).orderBy('createdAt','desc')
       .onSnapshot(snap => {
-        const out = document.getElementById('campaigns-list');
-        out.innerHTML = '';
+        const out = document.getElementById('campaigns-list'); out.innerHTML = '';
         snap.forEach(doc => {
-          const c = doc.data();
-          out.insertAdjacentHTML('beforeend', `<p>${c.title} – ${c.program}, €${c.net} (${c.start}→${c.end})</p>`);
+          let c = doc.data();
+          out.insertAdjacentHTML('beforeend',
+            `<p>${c.title} – ${c.program}, €${c.net} (${c.start} → ${c.end})</p>`);
         });
       });
   }
-
-  function initSubscriptions(uid) {
+  function initSubscriptions(uid){
     const info = document.getElementById('subscription-info');
-    const planMap = {
-      Basic: {monthly:19, annual:205, benefits:'1 campanie activă'},
-      Standard: {monthly:49, annual:529, benefits:'5 campanii + rapoarte detaliate'},
-      Premium: {monthly:99, annual:1069, benefits:'Campanii nelimitate + suport 24/7'}
+    const plans = {
+      Basic: { monthly:19, annual:205, benefits:'1 campanie activă' },
+      Standard: { monthly:49, annual:529, benefits:'5 campanii + rapoarte detaliate' },
+      Premium: { monthly:99, annual:1069, benefits:'Campanii nelimitate + suport 24/7' }
     };
     document.querySelectorAll('.select-plan').forEach(btn => btn.onclick = () => {
-      const plan = btn.dataset.plan;
+      let plan = btn.dataset.plan;
       db.collection('abonamente').doc(uid).set({
-        plan, benefits: planMap[plan].benefits,
-        priceMonthly: planMap[plan].monthly,
-        priceAnnual: planMap[plan].annual,
+        plan, benefits: plans[plan].benefits,
+        priceMonthly: plans[plan].monthly,
+        priceAnnual: plans[plan].annual,
         trialEnds: new Date(Date.now()+7*86400000).toISOString().split('T')[0],
-        status: 'trial'
+        status:'trial'
       }).then(renderSub);
     });
-    function renderSub() {
+    function renderSub(){
       db.collection('abonamente').doc(uid).get().then(doc => {
         if (!doc.exists) {
           info.innerHTML = '<p>Niciun plan activ.</p>';
         } else {
-          const d = doc.data();
+          let d = doc.data();
           info.innerHTML = `<p><strong>${d.plan}</strong> – ${d.benefits}<br>Trial până: ${d.trialEnds}<br>€${d.priceMonthly}/lună • €${d.priceAnnual}/an</p>`;
         }
       });
     }
     renderSub();
   }
-
-  function initFeedback(uid) {
-    db.collection('feedback').where('firmaUID','==',uid).orderBy('timestamp','desc')
-      .onSnapshot(snap => {
-        const list = document.getElementById('feedback-list');
-        list.innerHTML = '';
-        if (snap.empty) list.innerHTML = '<p>Niciun feedback.</p>';
-        snap.forEach(doc => {
-          const f = doc.data();
-          list.insertAdjacentHTML('beforeend', `<p>${f.numeAngajat}: ⭐${f.rating} – ${f.comment || '-'}</p>`);
-        });
+  function initFeedback(uid){
+    const fl = document.getElementById('feedback-list');
+    db.collection('feedback').where('firmaUID','==',uid).orderBy('timestamp','desc').onSnapshot(snap => {
+      fl.innerHTML = '';
+      if (snap.empty) fl.innerHTML = '<p>Niciun feedback.</p>';
+      snap.forEach(doc => {
+        let f = doc.data();
+        fl.insertAdjacentHTML('beforeend',
+          `<p>${f.numeAngajat}: ⭐${f.rating} – ${f.comment || '-'}</p>`);
       });
+    });
   }
-
-  function d(sel) {
-    return document.querySelector(sel).value.trim();
-  }
+  function d(sel){ return document.querySelector(sel).value.trim(); }
 </script>
 </body>
 </html>
