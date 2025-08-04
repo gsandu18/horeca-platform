@@ -105,11 +105,15 @@
   <div class="toast" id="toast">Angajat adăugat!</div>
 
   <script>
+    // Firebase config DEMO – înlocuiește cu datele tale
     const firebaseConfig = {
-      apiKey: "AIzaSyDEMO-KEY",
-      authDomain: "demo-project.firebaseapp.com",
-      projectId: "demo-project"
-    };
+      apiKey: "AIzaSyDvsEfnjVmOkPkExebfxOZ5e3ALRVG0Z-w",
+      authDomain: "personal-horeca-e5f0e.firebaseapp.com",
+      projectId: "personal-horeca-e5f0e",
+      storageBucket: "personal-horeca-e5f0e.firebasestorage.app",
+      messagingSenderId: "332871951184",
+      appId: "1:332871951184:web:7e65e3a1b1b61c46768255"
+      measurementId: "G-7W3VJXW81D"
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
     const auth = firebase.auth();
